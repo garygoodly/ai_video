@@ -6,6 +6,7 @@ from kvf.steps.create_workspace_step import CreateWorkspaceStep
 from kvf.steps.print_project_step import PrintProjectStep
 from kvf.utils.yaml_loader import load_yaml
 from kvf.models.application import Application
+from kvf.steps.generate_research_prompt_step import GenerateResearchPromptStep
 
 settings = load_yaml("config/settings.yaml")
 
@@ -35,5 +36,5 @@ workflow = Workflow(application)
 
 workflow.add_step(CreateWorkspaceStep())
 workflow.add_step(PrintProjectStep())
-
+workflow.add_step(GenerateResearchPromptStep())
 workflow.run()

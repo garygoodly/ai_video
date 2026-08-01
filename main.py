@@ -7,6 +7,11 @@ from kvf.steps.print_project_step import PrintProjectStep
 from kvf.utils.yaml_loader import load_yaml
 from kvf.models.application import Application
 from kvf.steps.generate_research_prompt_step import GenerateResearchPromptStep
+from kvf.steps.wait_for_research_step import WaitForResearchStep
+from kvf.steps.validate_research_step import ValidateResearchStep
+from kvf.steps.generate_script_prompt_step import GenerateScriptPromptStep
+from kvf.steps.wait_for_script_step import WaitForScriptStep
+from kvf.steps.validate_script_step import ValidateScriptStep
 
 settings = load_yaml("config/settings.yaml")
 
@@ -36,5 +41,13 @@ workflow = Workflow(application)
 
 workflow.add_step(CreateWorkspaceStep())
 workflow.add_step(PrintProjectStep())
+
 workflow.add_step(GenerateResearchPromptStep())
+workflow.add_step(WaitForResearchStep())
+workflow.add_step(ValidateResearchStep())
+
+workflow.add_step(GenerateScriptPromptStep())
+workflow.add_step(WaitForScriptStep())
+workflow.add_step(ValidateScriptStep())
+
 workflow.run()

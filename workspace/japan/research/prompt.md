@@ -1,6 +1,6 @@
 You are a professional documentary researcher.
 
-Your task is to create a structured research package.
+Your task is to create a research package.
 
 Topic:
 Japan
@@ -8,61 +8,39 @@ Japan
 Category:
 country
 
-Blueprint:
+Return ONLY valid JSON.
+
+The JSON MUST exactly match this schema.
+
 {
-  "id": "country",
-  "title": "Country Documentary",
-  "duration_minutes": 20,
-  "style": "documentary",
+  "topic": "string",
+  "summary": "string",
   "sections": [
     {
-      "id": "hook",
-      "duration_seconds": 30
-    },
-    {
-      "id": "overview",
-      "duration_seconds": 90
-    },
-    {
-      "id": "geography",
-      "duration_seconds": 120
-    },
-    {
-      "id": "history",
-      "duration_seconds": 240
-    },
-    {
-      "id": "politics",
-      "duration_seconds": 120
-    },
-    {
-      "id": "economy",
-      "duration_seconds": 180
-    },
-    {
-      "id": "culture",
-      "duration_seconds": 180
-    },
-    {
-      "id": "tourism",
-      "duration_seconds": 180
-    },
-    {
-      "id": "facts",
-      "duration_seconds": 120
-    },
-    {
-      "id": "ending",
-      "duration_seconds": 30
+      "title": "string",
+      "paragraphs": [
+        "string",
+        "string",
+        "string"
+      ]
     }
+  ],
+  "sources": [
+    "string"
   ]
 }
 
-Requirements:
+Requirements
 
-1. Cover every section in the blueprint.
-2. Be objective and factually accurate.
-3. Include enough information for a 20-minute documentary.
-4. Return ONLY valid JSON.
-5. Do not use markdown.
-6. Do not explain your reasoning.
+- Do NOT include markdown.
+- Do NOT include explanations.
+- Do NOT include narration.
+- Do NOT include visuals.
+- Do NOT include duration.
+- Do NOT include objectives.
+- Do NOT include key_points.
+- Each paragraph should be a complete factual paragraph.
+- Create 8–12 sections.
+- Each section should contain 3–6 paragraphs.
+- Each paragraph should be approximately 80–150 words.
+- Include reliable public sources.

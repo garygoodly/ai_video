@@ -6,12 +6,19 @@ from kvf.steps.create_workspace_step import CreateWorkspaceStep
 from kvf.steps.print_project_step import PrintProjectStep
 from kvf.utils.yaml_loader import load_yaml
 from kvf.models.application import Application
+
 from kvf.steps.generate_research_prompt_step import GenerateResearchPromptStep
 from kvf.steps.wait_for_research_step import WaitForResearchStep
 from kvf.steps.validate_research_step import ValidateResearchStep
+
 from kvf.steps.generate_script_prompt_step import GenerateScriptPromptStep
 from kvf.steps.wait_for_script_step import WaitForScriptStep
 from kvf.steps.validate_script_step import ValidateScriptStep
+
+from kvf.steps.generate_storyboard_prompt_step import GenerateStoryboardPromptStep
+from kvf.steps.wait_for_storyboard_step import WaitForStoryboardStep
+from kvf.steps.validate_storyboard_step import ValidateStoryboardStep
+
 
 settings = load_yaml("config/settings.yaml")
 
@@ -49,5 +56,9 @@ workflow.add_step(ValidateResearchStep())
 workflow.add_step(GenerateScriptPromptStep())
 workflow.add_step(WaitForScriptStep())
 workflow.add_step(ValidateScriptStep())
+
+workflow.add_step(GenerateStoryboardPromptStep())
+workflow.add_step(WaitForStoryboardStep())
+workflow.add_step(ValidateStoryboardStep())
 
 workflow.run()

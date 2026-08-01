@@ -7,4 +7,4 @@ class Project(BaseModel):
     model_config = ConfigDict(arbitrary_types_allowed=True)
     topic: Topic
     blueprint: Blueprint
-    workspace: Path
+    workspace: Path | None = None

@@ -1,0 +1,39 @@
+id: country
+
+title: Country Documentary
+
+duration_minutes: 20
+
+style: documentary
+
+sections:
+
+  - id: hook
+    duration_seconds: 30
+
+  - id: overview
+    duration_seconds: 90
+
+  - id: geography
+    duration_seconds: 120
+
+  - id: history
+    duration_seconds: 240
+
+  - id: politics
+    duration_seconds: 120
+
+  - id: economy
+    duration_seconds: 180
+
+  - id: culture
+    duration_seconds: 180
+
+  - id: tourism
+    duration_seconds: 180
+
+  - id: facts
+    duration_seconds: 120
+
+  - id: ending
+    duration_seconds: 30

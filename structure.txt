@@ -1,0 +1,99 @@
+knowledge-video-factory/
+│
+├── main.py                     # Application entry point
+├── requirements.txt
+├── README.md
+│
+├── src/
+│   └── kvf/
+│       │
+│       ├── core/               # Core workflow engine
+│       │   ├── workflow.py
+│       │   ├── pipeline.py
+│       │   └── state.py
+│       │
+│       ├── models/             # Pydantic models
+│       │   ├── blueprint.py
+│       │   ├── project.py
+│       │   ├── topic.py
+│       │   └── workspace.py    # (Next milestone)
+│       │
+│       ├── repositories/       # Read/write data
+│       │   ├── topic_repository.py
+│       │   ├── workflow_repository.py
+│       │   └── research_repository.py
+│       │
+│       ├── services/           # Business logic
+│       │   ├── blueprint_service.py
+│       │   ├── workspace_service.py
+│       │   ├── prompt_service.py
+│       │   └── llm_service.py
+│       │
+│       ├── providers/          # External systems
+│       │   ├── llm/
+│       │   │   ├── manual_provider.py
+│       │   │   └── openai_provider.py   # Future
+│       │   │
+│       │   ├── image/
+│       │   ├── voice/
+│       │   └── upload/
+│       │
+│       ├── steps/              # Workflow steps
+│       │   ├── base_step.py
+│       │   ├── select_topic_step.py
+│       │   ├── create_workspace_step.py
+│       │   ├── generate_research_prompt_step.py
+│       │   ├── manual_input_step.py
+│       │   └── validate_research_step.py
+│       │
+│       ├── artifacts/          # Data passed between steps
+│       │   ├── topic_artifact.py
+│       │   ├── research_artifact.py
+│       │   └── script_artifact.py
+│       │
+│       └── utils/
+│           ├── yaml_loader.py
+│           ├── json_loader.py
+│           └── logger.py
+│
+├── config/
+│   ├── settings.yaml
+│   │
+│   └── blueprints/
+│       ├── country.yaml
+│       ├── people.yaml          # Future
+│       └── company.yaml         # Future
+│
+├── prompts/
+│   ├── research.md
+│   ├── script.md
+│   ├── storyboard.md
+│   └── thumbnail.md
+│
+├── plugins/
+│   ├── countries/
+│   │   └── countries.csv
+│   │
+│   ├── people/
+│   ├── companies/
+│   └── history/
+│
+├── workspace/
+│   ├── japan/
+│   ├── france/
+│   └── ...
+│
+├── database/
+│   ├── workflow.db             # Future
+│   └── analytics.db            # Future
+│
+├── outputs/                    # Generated prompts, debug files
+│
+├── assets/                     # Shared assets (logos, music, etc.)
+│
+├── tests/
+│
+└── docs/
+    ├── architecture.md
+    ├── workflow.md
+    └── roadmap.md

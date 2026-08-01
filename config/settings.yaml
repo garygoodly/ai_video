@@ -1,0 +1,17 @@
+project:
+  name: Knowledge Video Factory
+  version: 0.1.0
+
+video:
+  language: zh-TW
+  resolution: 1920x1080
+  fps: 30
+
+workspace:
+  root: workspace
+
+plugin:
+  active: countries
+
+llm:
+  provider: manual

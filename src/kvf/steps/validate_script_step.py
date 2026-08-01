@@ -15,6 +15,8 @@ class ValidateScriptStep(BaseStep):
             / "script"
             / "script.json"
         )
+        if not path.exists():
+            raise FileNotFoundError(path)
 
         script = ScriptRepository().load(
             path

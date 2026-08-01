@@ -15,6 +15,9 @@ class ValidateResearchStep(BaseStep):
 
         repository = ResearchRepository()
 
+        if not path.exists():
+            raise FileNotFoundError(path)
+
         research = repository.load(path)
 
         print()

@@ -3,6 +3,7 @@ import json
 from kvf.models.application import Application
 from kvf.services.prompt_service import PromptService
 from kvf.steps.base_step import BaseStep
+from kvf.utils.file_utils import file_exists
 
 
 class GenerateResearchPromptStep(BaseStep):
@@ -13,6 +14,16 @@ class GenerateResearchPromptStep(BaseStep):
     ) -> None:
 
         project = application.project
+
+        prompt_path = (
+            project.workspace
+            / "research"
+            / "prompt.md"
+        )
+
+        if file_exists(prompt_path):
+            print("Research prompt already exists. [SKIP]")
+            return
 
         service = PromptService()
 
@@ -30,15 +41,14 @@ class GenerateResearchPromptStep(BaseStep):
             context,
         )
 
-        output_path = (
-            project.workspace
-            / "research"
-            / "prompt.md"
+        prompt_path.parent.mkdir(
+            parents=True,
+            exist_ok=True,
         )
 
-        output_path.write_text(
+        prompt_path.write_text(
             prompt,
             encoding="utf-8",
         )
 
-        print(f"Prompt generated: {output_path}")
+        print(f"Prompt generated: {prompt_path} [DONE]")

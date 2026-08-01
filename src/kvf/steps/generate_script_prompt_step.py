@@ -4,6 +4,7 @@ from kvf.models.application import Application
 from kvf.repositories.research_repository import ResearchRepository
 from kvf.services.prompt_service import PromptService
 from kvf.steps.base_step import BaseStep
+from kvf.utils.file_utils import file_exists
 
 
 class GenerateScriptPromptStep(BaseStep):
@@ -14,6 +15,16 @@ class GenerateScriptPromptStep(BaseStep):
     ) -> None:
 
         workspace = application.project.workspace
+
+        prompt_path = (
+            workspace
+            / "script"
+            / "prompt.md"
+        )
+
+        if file_exists(prompt_path):
+            print("Script prompt already exists. [SKIP]")
+            return
 
         research_path = (
             workspace
@@ -39,22 +50,16 @@ class GenerateScriptPromptStep(BaseStep):
             context,
         )
 
-        output = (
-            workspace
-            / "script"
-            / "prompt.md"
-        )
-
-        output.parent.mkdir(
+        prompt_path.parent.mkdir(
             parents=True,
             exist_ok=True,
         )
 
-        output.write_text(
+        prompt_path.write_text(
             prompt,
             encoding="utf-8",
         )
 
         print(
-            f"Script prompt generated: {output}"
+            f"Script prompt generated: {prompt_path} [DONE]"
         )

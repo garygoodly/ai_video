@@ -1,5 +1,6 @@
 from kvf.models.application import Application
 from kvf.steps.base_step import BaseStep
+from kvf.utils.file_utils import file_exists
 
 
 class WaitForScriptStep(BaseStep):
@@ -14,6 +15,10 @@ class WaitForScriptStep(BaseStep):
             / "script"
             / "script.json"
         )
+
+        if file_exists(path):
+            print("Script already exists. [SKIP]")
+            return
 
         print()
 

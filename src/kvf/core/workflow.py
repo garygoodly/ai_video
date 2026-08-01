@@ -18,8 +18,7 @@ class Workflow:
         print("=" * 60)
 
         for step in self.steps:
-
-            print(f"\n>>> {step.name}")
+            print(f">>> {step.name:<35}", end="")
 
             step.execute(self.application)
 

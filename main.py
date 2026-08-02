@@ -21,6 +21,12 @@ from kvf.steps.validate_storyboard_step import ValidateStoryboardStep
 
 from kvf.steps.download_media_step import DownloadMediaStep
 
+from kvf.steps.generate_voice_step import GenerateVoiceStep
+
+from kvf.steps.generate_subtitle_step import GenerateSubtitleStep
+
+from kvf.steps.generate_timeline_step import GenerateTimelineStep
+
 settings = load_yaml("config/settings.yaml")
 
 topic_repository = TopicRepository(
@@ -63,5 +69,7 @@ workflow.add_step(WaitForStoryboardStep())
 workflow.add_step(ValidateStoryboardStep())
 
 workflow.add_step(DownloadMediaStep())
-
+workflow.add_step(GenerateVoiceStep())
+workflow.add_step(GenerateSubtitleStep())
+workflow.add_step(GenerateTimelineStep())
 workflow.run()

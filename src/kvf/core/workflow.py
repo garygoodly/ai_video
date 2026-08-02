@@ -1,5 +1,5 @@
 from kvf.models.application import Application
-
+import time
 
 class Workflow:
 
@@ -12,16 +12,28 @@ class Workflow:
         self.steps.append(step)
 
     def run(self):
-
         print("=" * 60)
         print("Workflow Started")
         print("=" * 60)
 
+        workflow_start = time.perf_counter()
+
         for step in self.steps:
-            print(f">>> {step.name:<35}", end="")
+            name = step.__class__.__name__
+
+            print(f">>> {name:<35}", end="", flush=True)
+
+            start = time.perf_counter()
 
             step.execute(self.application)
 
-        print("\n" + "=" * 60)
-        print("Workflow Finished")
+            elapsed = time.perf_counter() - start
+
+            print(f" [DONE {elapsed:.2f}s]")
+
+        total = time.perf_counter() - workflow_start
+
+        print()
+        print("=" * 60)
+        print(f"Workflow Finished ({total:.2f}s)")
         print("=" * 60)

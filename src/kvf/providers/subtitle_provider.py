@@ -3,12 +3,12 @@ from abc import abstractmethod
 from pathlib import Path
 
 
-class TTSProvider(ABC):
+class SubtitleProvider(ABC):
 
     @abstractmethod
     def generate(
         self,
-        text: str,
-        output: Path,
+        audio: Path,
+        output_dir: Path,
     ) -> None:
         pass

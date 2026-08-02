@@ -40,6 +40,13 @@ class DownloadMediaStep(BaseStep):
 
             output = media_dir / filename
 
+            if output.exists():
+                print(
+                    f"Scene {scene.id} already downloaded. [SKIP]"
+                )
+
+                continue
+
             asset = provider.download(
                 scene,
                 output,

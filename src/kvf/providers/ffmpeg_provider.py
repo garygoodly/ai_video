@@ -26,6 +26,8 @@ class FFmpegProvider:
 
             "-i", str(audio),
 
+            "-vf", "scale=-2:1080",
+
             "-c:v", "libx264",
 
             "-t", str(duration),

@@ -1,0 +1,323 @@
+{
+  "assets": [
+    {
+      "scene": 1,
+      "provider": "wikimedia",
+      "query": "kyoto temple",
+      "file": "0001.jpg",
+      "width": 6720,
+      "height": 4480,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/9/99/Sunlight_through_clouds_and_view_of_Ginkaku-ji_Temple_from_above%2C_Kyoto%2C_Japan.jpg"
+    },
+    {
+      "scene": 2,
+      "provider": "wikimedia",
+      "query": "Map of Japanese archipelago East Asia",
+      "file": "0002.jpg",
+      "width": 8315,
+      "height": 9984,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Asia_1932.jpg"
+    },
+    {
+      "scene": 3,
+      "provider": "wikimedia",
+      "query": "mount fuji",
+      "file": "0003.jpg",
+      "width": 11650,
+      "height": 7767,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/6/66/Mount_Fuji_at_sunset%2C_March_2025.jpg"
+    },
+    {
+      "scene": 4,
+      "provider": "wikimedia",
+      "query": "panoramic japan",
+      "file": "0004.jpg",
+      "width": 17298,
+      "height": 3442,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Naha_Okinawa_Japan_Panoramic-view-of-town-from-Shikinaen-01.jpg"
+    },
+    {
+      "scene": 5,
+      "provider": "wikimedia",
+      "query": "Map Honshu Hokkaido Kyushu Shikoku",
+      "file": "0005.jpg",
+      "width": 901,
+      "height": 887,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/0/09/Flag-map_of_Japan.png"
+    },
+    {
+      "scene": 6,
+      "provider": "wikimedia",
+      "query": "tokyo skyline",
+      "file": "0006.jpg",
+      "width": 6000,
+      "height": 4000,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Tokyo_-_Sunset_Skyline.jpg"
+    },
+    {
+      "scene": 7,
+      "provider": "wikimedia",
+      "query": "Pacific Ring of Fire map Japan",
+      "file": "0007.jpg",
+      "width": 942,
+      "height": 706,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/The_%22Ring_of_Fire%22_-_Annular_Solar_Eclipse%2C_Mesquite%2C_Nevada_%282%29_%287239346638%29.jpg"
+    },
+    {
+      "scene": 8,
+      "provider": "wikimedia",
+      "query": "japan earthquake",
+      "file": "0008.jpg",
+      "width": 4000,
+      "height": 3000,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Wrecks_and_ruins_after_the_2011_T%C5%8Dhoku_earthquake_20110617_02.jpg"
+    },
+    {
+      "scene": 9,
+      "provider": "wikimedia",
+      "query": "hokkaido snow",
+      "file": "0009.jpg",
+      "width": 4288,
+      "height": 3216,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Navy_Misawa_Snow_Sculpture_team_takes_part_in_Sapporo_Snow_Festival_DVIDS519683.jpg"
+    },
+    {
+      "scene": 10,
+      "provider": "wikimedia",
+      "query": "cherry blossoms",
+      "file": "0010.jpg",
+      "width": 6720,
+      "height": 4480,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/2/22/Cherry_blossoms_%28Somei_Yoshino%29%2C_Nagai_Botanical_Garden%2C_April_2026_-1488.jpg"
+    },
+    {
+      "scene": 11,
+      "provider": "wikimedia",
+      "query": "Ancient Japanese archaeological site",
+      "file": "0011.jpg",
+      "width": 2176,
+      "height": 3264,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Celebrating_World_Heritage_registration_in_Asuka_%E2%80%90Fujiwara_01.jpg"
+    },
+    {
+      "scene": 12,
+      "provider": "wikimedia",
+      "query": "jomon pottery",
+      "file": "0012.jpg",
+      "width": 3563,
+      "height": 4610,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Jarre_de_la_p%C3%A9riode_japonaise_J%C5%8Dmon_%28Guimet_%E2%80%93_MA_1680%29.jpg"
+    },
+    {
+      "scene": 13,
+      "provider": "wikimedia",
+      "query": "yamato court",
+      "file": "0013.jpg",
+      "width": 3001,
+      "height": 2108,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Unebi-yama.jpg"
+    },
+    {
+      "scene": 14,
+      "provider": "wikimedia",
+      "query": "Samurai armor Edo Castle",
+      "file": "0014.jpg",
+      "width": 3456,
+      "height": 2304,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/3/36/%C5%8Ctaki_Castle_Festival%2C_Chiba_Prefecture%3B_September_2010_%2801%29.jpg"
+    },
+    {
+      "scene": 15,
+      "provider": "wikimedia",
+      "query": "Edo period street traditional Japan",
+      "file": "0015.jpg",
+      "width": 3940,
+      "height": 2969,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/a/a0/PXL_20231218_155438181.MP_Victoria_and_Albert_Museum_Artefacts_15_traditional_Japanese_samurai_armor%2C_likely_from_the_Edo_period.jpg"
+    },
+    {
+      "scene": 16,
+      "provider": "wikimedia",
+      "query": "meiji restoration",
+      "file": "0016.jpg",
+      "width": 3024,
+      "height": 3780,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/4/46/Monument_of_Meijiishin_Fushimi_no_senseki.jpg"
+    },
+    {
+      "scene": 17,
+      "provider": "wikimedia",
+      "query": "postwar tokyo",
+      "file": "0017.jpg",
+      "width": 4936,
+      "height": 3473,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Postwar_Ryogoku%2C_1948.jpg"
+    },
+    {
+      "scene": 18,
+      "provider": "wikimedia",
+      "query": "National Diet Building Tokyo",
+      "file": "0018.jpg",
+      "width": 5472,
+      "height": 3648,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/1/12/National_Diet_Building_-_Tokyo%2C_Japan_-_DSC06736.JPG"
+    },
+    {
+      "scene": 19,
+      "provider": "wikimedia",
+      "query": "Tokyo Imperial Palace and National Diet",
+      "file": "0019.jpg",
+      "width": 2821,
+      "height": 914,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/1/12/Imperial_Palace_Tokyo_Panorama.jpg"
+    },
+    {
+      "scene": 20,
+      "provider": "wikimedia",
+      "query": "national diet",
+      "file": "0020.jpg",
+      "width": 4032,
+      "height": 3024,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/8/80/National_Diet_Library_20250212.jpg"
+    },
+    {
+      "scene": 21,
+      "provider": "wikimedia",
+      "query": "Japan prefectures map",
+      "file": "0021.jpg",
+      "width": 2590,
+      "height": 2720,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Japan_prefectures-ja.png"
+    },
+    {
+      "scene": 22,
+      "provider": "wikimedia",
+      "query": "Supreme Court of Japan building",
+      "file": "0022.jpg",
+      "width": 3648,
+      "height": 2736,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Supreme_court_-_panoramio.jpg"
+    },
+    {
+      "scene": 23,
+      "provider": "wikimedia",
+      "query": "Japan Self Defense Forces disaster relief",
+      "file": "0023.jpg",
+      "width": 6720,
+      "height": 4480,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Freedom_Banner_26-_Local_media_and_Japan_Ground_Self-Defense_Force_service_members_tour_humanitarian_assistance_and_disaster_relief_displays_%289779417%29.jpg"
+    },
+    {
+      "scene": 24,
+      "provider": "wikimedia",
+      "query": "Tokyo financial district skyline",
+      "file": "0024.jpg",
+      "width": 1365,
+      "height": 2048,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Izumi_Garden_%28240917305%29.jpeg"
+    },
+    {
+      "scene": 25,
+      "provider": "wikimedia",
+      "query": "japanese automobile",
+      "file": "0025.jpg",
+      "width": 6605,
+      "height": 3780,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/TOYOTA_PRIUS_%28XW50%29_HONG_KONG.jpg"
+    },
+    {
+      "scene": 26,
+      "provider": "wikimedia",
+      "query": "yokohama container",
+      "file": "0026.jpg",
+      "width": 5472,
+      "height": 3648,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/5/55/ZIM_Yokohama_ship_leaving_the_port_of_Haifa%2C_Israel_on_2023-02-04_%28DSC0479%29.jpg"
+    },
+    {
+      "scene": 27,
+      "provider": "wikimedia",
+      "query": "japanese precision",
+      "file": "0027.jpg",
+      "width": 5755,
+      "height": 3835,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Precision_%2853831260312%29.jpg"
+    },
+    {
+      "scene": 28,
+      "provider": "wikimedia",
+      "query": "Japan aging population demographic chart",
+      "file": "0028.jpg",
+      "width": 389,
+      "height": 318,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Household_population_of_Somaliland_by_age%2C_sex%2C_and_residence.jpg"
+    },
+    {
+      "scene": 29,
+      "provider": "wikimedia",
+      "query": "japan semiconductor",
+      "file": "0029.jpg",
+      "width": 4000,
+      "height": 6016,
+      "license": null,
+      "author": null,
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/4/41/Mitsubishi_Semiconductor_advertisement_in_Sotokanda_20170402.jpg"
+    }
+  ]
+}

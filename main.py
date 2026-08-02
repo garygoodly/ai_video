@@ -19,6 +19,7 @@ from kvf.steps.generate_storyboard_prompt_step import GenerateStoryboardPromptSt
 from kvf.steps.wait_for_storyboard_step import WaitForStoryboardStep
 from kvf.steps.validate_storyboard_step import ValidateStoryboardStep
 
+from kvf.steps.download_media_step import DownloadMediaStep
 
 settings = load_yaml("config/settings.yaml")
 
@@ -60,5 +61,7 @@ workflow.add_step(ValidateScriptStep())
 workflow.add_step(GenerateStoryboardPromptStep())
 workflow.add_step(WaitForStoryboardStep())
 workflow.add_step(ValidateStoryboardStep())
+
+workflow.add_step(DownloadMediaStep())
 
 workflow.run()

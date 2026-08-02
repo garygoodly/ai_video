@@ -27,6 +27,8 @@ from kvf.steps.generate_subtitle_step import GenerateSubtitleStep
 
 from kvf.steps.generate_timeline_step import GenerateTimelineStep
 
+from kvf.steps.generate_video_step import GenerateVideoStep
+
 settings = load_yaml("config/settings.yaml")
 
 topic_repository = TopicRepository(
@@ -72,4 +74,6 @@ workflow.add_step(DownloadMediaStep())
 workflow.add_step(GenerateVoiceStep())
 workflow.add_step(GenerateSubtitleStep())
 workflow.add_step(GenerateTimelineStep())
+workflow.add_step(GenerateVideoStep())
+
 workflow.run()

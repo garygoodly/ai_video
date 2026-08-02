@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated workspace
+workspace/*
+!workspace/.gitkeep
+
+# Logs
+*.log
+
+# Media
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+*.mp3
+*.wav
+*.mp4
+*.mov
+
+# Subtitle
+*.srt
+
+# Temporary files
+*.tmp
+*.bak
+
+# Python packaging
+build/
+dist/
+*.egg-info/
+
+# Test cache
+.pytest_cache/
+.mypy_cache/
+
+# Coverage
+.coverage
+htmlcov/

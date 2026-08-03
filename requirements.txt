@@ -1,3 +1,1 @@
-PyYAML
-pydantic
-jinja2
+pyyaml pydantic jinja2 requests edge-tts openai-whisper

@@ -10,54 +10,32 @@ class GenerateVideoStep(BaseStep):
         self,
         application: Application,
     ):
-
         workspace = application.project.workspace
 
-        output_dir = (
-            workspace
-            / "video"
-        )
-
+        output_dir = workspace / "video"
         output_dir.mkdir(
             parents=True,
             exist_ok=True,
         )
 
-        output = (
-            output_dir
-            / "video.mp4"
-        )
-
-        if output.exists():
-
-            print(
-                "Video already exists. [SKIP]"
-            )
-
-            return
+        output = output_dir / "video.mp4"
 
         timeline = TimelineRepository().load(
-
             workspace
-
             / "timeline"
-
             / "timeline.json"
-
         )
 
         provider = FFmpegProvider()
-
         provider.render(
-
-            workspace / "media",
-
-            workspace / "voice" / "narration.mp3",
-
-            output,
-
-            timeline.total_duration_seconds,
-
+            media_dir=workspace / "media",
+            audio=workspace / "voice" / "narration.mp3",
+            subtitle=workspace / "subtitle" / "subtitle.srt",
+            output=output,
+            timeline=timeline,
+            width=1920,
+            height=1080,
+            fps=30,
         )
 
         print(

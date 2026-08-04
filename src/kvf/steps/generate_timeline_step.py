@@ -1,168 +1,96 @@
-import re
+import subprocess
 
 from kvf.models.application import Application
-from kvf.models.timeline import Timeline
-from kvf.models.timeline import TimelineScene
+from kvf.models.timeline import Timeline, TimelineScene
 from kvf.repositories.storyboard_repository import StoryboardRepository
 from kvf.repositories.timeline_repository import TimelineRepository
 from kvf.steps.base_step import BaseStep
 
 
 class GenerateTimelineStep(BaseStep):
+    """Build one timeline entry for every storyboard scene.
 
-    def execute(
-        self,
-        application: Application,
-    ):
+    Scene timing is derived from the narration audio duration and distributed
+    according to each scene's estimated duration. This avoids losing scenes
+    when Whisper produces fewer subtitle segments than storyboard scenes.
+    """
 
+    def execute(self, application: Application) -> None:
         workspace = application.project.workspace
-
-        output = (
-            workspace
-            / "timeline"
-            / "timeline.json"
-        )
-
-        if output.exists():
-
-            print(
-                "Timeline already exists. [SKIP]"
-            )
-
-            return
+        output = workspace / "timeline" / "timeline.json"
 
         storyboard = StoryboardRepository().load(
-            workspace
-            / "storyboard"
-            / "storyboard.json"
+            workspace / "storyboard" / "storyboard.json"
         )
+        audio = workspace / "voice" / "narration.mp3"
+        total_audio_duration = self._probe_duration(audio)
 
-        subtitle = (
-            workspace
-            / "subtitle"
-            / "subtitle.srt"
-        )
-
-        timings = self._read_srt(
-            subtitle
-        )
+        estimates = [
+            max(float(scene.estimated_duration_seconds), 0.1)
+            for scene in storyboard.scenes
+        ]
+        estimate_total = sum(estimates)
+        if estimate_total <= 0:
+            raise ValueError("Storyboard has no usable scene durations.")
 
         scenes = []
-
-        total = 0.0
-
-        for scene, timing in zip(
-            storyboard.scenes,
-            timings,
+        cursor = 0.0
+        for index, (scene, estimate) in enumerate(
+            zip(storyboard.scenes, estimates)
         ):
+            if index == len(storyboard.scenes) - 1:
+                duration = max(total_audio_duration - cursor, 0.1)
+            else:
+                duration = total_audio_duration * estimate / estimate_total
 
-            duration = (
-                timing["end"]
-                - timing["start"]
-            )
-
-            total += duration
+            start = cursor
+            end = min(cursor + duration, total_audio_duration)
+            cursor = end
 
             scenes.append(
-
                 TimelineScene(
-
                     id=scene.id,
-
                     image=f"{scene.id:04d}.jpg",
-
                     narration=scene.narration,
-
-                    subtitle_start=timing["start"],
-
-                    subtitle_end=timing["end"],
-
-                    duration_seconds=duration,
-
+                    subtitle_start=start,
+                    subtitle_end=end,
+                    duration_seconds=max(end - start, 0.1),
                     camera_motion=scene.camera.motion,
-
                     transition=scene.transition.type,
                 )
-
             )
 
+        output.parent.mkdir(parents=True, exist_ok=True)
         TimelineRepository().save(
-
             Timeline(
-
-                total_duration_seconds=total,
-
+                total_duration_seconds=total_audio_duration,
                 scenes=scenes,
             ),
-
             output,
         )
-
         print(
-            f"Timeline generated: {output}"
+            f"Timeline generated with {len(scenes)} scenes: {output}"
         )
 
-    def _read_srt(
-        self,
-        path,
-    ):
-
-        text = path.read_text(
-            encoding="utf-8"
+    @staticmethod
+    def _probe_duration(audio) -> float:
+        command = [
+            "ffprobe",
+            "-v",
+            "error",
+            "-show_entries",
+            "format=duration",
+            "-of",
+            "default=noprint_wrappers=1:nokey=1",
+            str(audio),
+        ]
+        result = subprocess.run(
+            command,
+            check=True,
+            capture_output=True,
+            text=True,
         )
-
-        pattern = re.compile(
-
-            r"(\d+)\n"
-            r"(\d+:\d+:\d+,\d+)"
-            r" --> "
-            r"(\d+:\d+:\d+,\d+)",
-
-            re.MULTILINE,
-        )
-
-        segments = []
-
-        for match in pattern.finditer(
-            text
-        ):
-
-            start = self._seconds(
-                match.group(2)
-            )
-
-            end = self._seconds(
-                match.group(3)
-            )
-
-            segments.append(
-
-                {
-                    "start": start,
-                    "end": end,
-                }
-
-            )
-
-        return segments
-
-    def _seconds(
-        self,
-        timestamp,
-    ):
-
-        h, m, rest = timestamp.split(":")
-
-        s, ms = rest.split(",")
-
-        return (
-
-            int(h) * 3600
-
-            + int(m) * 60
-
-            + int(s)
-
-            + int(ms) / 1000
-
-        )
+        duration = float(result.stdout.strip())
+        if duration <= 0:
+            raise ValueError("Narration audio duration must be positive.")
+        return duration

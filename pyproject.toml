@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "finance-video-factory"
+version = "0.2.0"
+description = "Manual-ChatGPT daily finance-news video pipeline"
+requires-python = ">=3.11"
+dependencies = [
+  "PyYAML>=6.0",
+  "pydantic>=2.7",
+  "python-dotenv>=1.0",
+  "requests>=2.32",
+  "feedparser>=6.0",
+  "edge-tts>=7.0",
+  "openai-whisper>=20250625",
+  "Pillow>=10.4",
+  "matplotlib>=3.9",
+  "pandas>=2.2",
+  "yfinance>=0.2.54",
+  "google-api-python-client>=2.140",
+  "google-auth-oauthlib>=1.2",
+  "google-auth-httplib2>=0.2"
+]
+
+[project.scripts]
+finance-video = "finance_video_factory.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

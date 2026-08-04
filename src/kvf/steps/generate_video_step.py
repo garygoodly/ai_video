@@ -5,39 +5,27 @@ from kvf.steps.base_step import BaseStep
 
 
 class GenerateVideoStep(BaseStep):
-
-    def execute(
-        self,
-        application: Application,
-    ):
+    def execute(self, application: Application) -> None:
         workspace = application.project.workspace
-
         output_dir = workspace / "video"
-        output_dir.mkdir(
-            parents=True,
-            exist_ok=True,
-        )
-
+        output_dir.mkdir(parents=True, exist_ok=True)
         output = output_dir / "video.mp4"
 
         timeline = TimelineRepository().load(
-            workspace
-            / "timeline"
-            / "timeline.json"
+            workspace / "timeline" / "timeline.json"
         )
 
-        provider = FFmpegProvider()
-        provider.render(
+        # Always overwrite the final render. This ensures sessions created by
+        # older versions are repaired when resumed.
+        FFmpegProvider().render(
             media_dir=workspace / "media",
             audio=workspace / "voice" / "narration.mp3",
             subtitle=workspace / "subtitle" / "subtitle.srt",
             output=output,
             timeline=timeline,
-            width=1920,
-            height=1080,
-            fps=30,
         )
 
         print(
-            f"Video generated: {output}"
+            f"Video generated at 1920x1080 with {len(timeline.scenes)} "
+            f"scenes and burned-in subtitles: {output}"
         )

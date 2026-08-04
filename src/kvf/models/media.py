@@ -7,6 +7,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 class MediaProvider(str, Enum):
     WIKIMEDIA = "wikimedia"
+    OPENVERSE = "openverse"
     PEXELS = "pexels"
     PIXABAY = "pixabay"
     AI = "ai"

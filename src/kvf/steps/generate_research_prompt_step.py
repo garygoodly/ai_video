@@ -1,4 +1,5 @@
 import json
+from datetime import date, timedelta
 
 from kvf.models.application import Application
 from kvf.services.prompt_service import PromptService
@@ -27,9 +28,16 @@ class GenerateResearchPromptStep(BaseStep):
 
         service = PromptService()
 
+        metadata_path = project.workspace / "metadata.json"
+        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        reference_date = date.fromisoformat(
+            metadata.get("reference_date", date.today().isoformat())
+        )
+
         context = {
-            "topic": project.topic.name,
-            "category": project.topic.category,
+            "project_name": project.topic.name,
+            "reference_date": reference_date.isoformat(),
+            "previous_date": (reference_date - timedelta(days=1)).isoformat(),
             "blueprint": json.dumps(
                 project.blueprint.model_dump(),
                 indent=2,

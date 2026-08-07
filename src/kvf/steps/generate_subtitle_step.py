@@ -11,6 +11,7 @@ class GenerateSubtitleStep(BaseStep):
     def execute(self, application: Application):
         workspace = application.project.workspace
         voice = workspace / "voice" / "narration.mp3"
+        timing = workspace / "voice" / "cue_timing.json"
         subtitle_dir = workspace / "subtitle"
         srt = subtitle_dir / "subtitle.srt"
         metadata_path = subtitle_dir / "subtitle.json"
@@ -29,10 +30,11 @@ class GenerateSubtitleStep(BaseStep):
             max_words=settings.get("max_words", 10),
         )
         cues = service.generate(
-            [section.narration for section in script.sections], voice, srt
+            [section.narration for section in script.sections], voice, srt,
+            timing_file=timing,
         )
         SubtitleRepository().save(
-            Subtitle(provider="approved_script_exact", file="subtitle.srt"),
+            Subtitle(provider="approved_script_exact_tts_timing", file="subtitle.srt"),
             metadata_path,
         )
-        print(f"Exact-script subtitles generated with {len(cues)} cues: {srt}")
+        print(f"Exact-script subtitles generated with {len(cues)} synchronized cues: {srt}")

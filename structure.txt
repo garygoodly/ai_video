@@ -1,74 +1,30 @@
-knowledge-video-factory/
-
-├── main.py
-
-├── config/
-│   ├── settings.yaml
-│   └── blueprints/
-
-├── plugins/
-│   ├── countries/
-│   └── people/
-
-├── prompts/
-│   ├── research.md
-│   ├── script.md
-│   ├── storyboard.md
-│   ├── metadata.md
-│   └── thumbnail.md
-
-├── workspace/
-
-└── src/
-    └── kvf/
-
-        ├── core/
-        │   ├── workflow.py
-        │   └── application.py
-
-        ├── models/
-        │   ├── topic.py
-        │   ├── blueprint.py
-        │   ├── project.py
-        │   ├── research.py
-        │   ├── script.py
-        │   ├── storyboard.py
-        │   ├── scene.py
-        │   ├── subtitle.py
-        │   ├── voice.py
-        │   └── metadata.py
-
-        ├── repositories/
-        │   ├── topic_repository.py
-        │   ├── research_repository.py
-        │   ├── script_repository.py
-        │   ├── storyboard_repository.py
-        │   └── ...
-
-        ├── services/
-        │   ├── prompt_service.py
-        │   ├── workspace_service.py
-        │   ├── ffmpeg_service.py
-        │   ├── whisper_service.py
-        │   ├── image_service.py
-        │   └── tts_service.py
-
-        ├── steps/
-        │   ├── research/
-        │   ├── script/
-        │   ├── storyboard/
-        │   ├── media/
-        │   ├── voice/
-        │   ├── subtitle/
-        │   ├── video/
-        │   ├── thumbnail/
-        │   └── upload/
-
-        ├── providers/
-        │   ├── chatgpt/
-        │   ├── whisper/
-        │   ├── pexels/
-        │   ├── pixabay/
-        │   └── openrouter/
-
-        └── utils/
+workspace/<session>/
+├── metadata.json
+├── research/
+│   ├── prompt.md
+│   └── research.json
+├── script/
+│   ├── prompt.md
+│   └── script.json
+├── storyboard/
+│   ├── prompt.md
+│   └── storyboard.json
+├── assets/
+│   ├── source/
+│   ├── rendered/
+│   │   ├── 0001.jpg
+│   │   └── ...
+│   └── media.json
+├── voice/
+│   ├── narration.mp3
+│   ├── cue_timing.json
+│   └── voice.json
+├── subtitle/
+│   ├── subtitle.srt
+│   └── subtitle.json
+├── timeline/
+│   └── timeline.json
+├── video/
+│   └── video.mp4
+└── _preview/
+    └── voice_preview.mp3

@@ -91,12 +91,11 @@ class ResilientMediaProvider(MediaProvider):
                     errors.append(f"{source}/{query}: {exc}")
                     print(f"No usable {source.title()} image for '{query}'.")
 
-        print(
-            f"Warning: no online image found for scene {scene.id}; "
-            "creating a contextual 1920x1080 visual instead of an "
-            f"'unavailable' screen. Last error: {errors[-1] if errors else 'none'}"
+        detail = errors[-1] if errors else "no candidate source returned a usable image"
+        raise RuntimeError(
+            f"No precise real image was found for scene {scene.id} "
+            f"({scene.visual.query}). Last error: {detail}"
         )
-        return self._create_context_visual(scene, output_file)
 
     def normalize_existing(self, image_file: Path) -> bool:
         try:
@@ -406,11 +405,19 @@ class ResilientMediaProvider(MediaProvider):
             with Image.open(io.BytesIO(response.content)) as image:
                 image.load()
                 source_size = image.size
-                normalized = self._fit_to_full_hd(image)
+                original = ImageOps.exif_transpose(image).convert("RGB")
+                normalized = self._fit_to_full_hd(original)
         except (OSError, UnidentifiedImageError) as exc:
             raise ValueError("downloaded bytes are not a valid image") from exc
 
         output_file.parent.mkdir(parents=True, exist_ok=True)
+        # Keep a reviewable source copy before the 16:9 crop. New workspaces use
+        # assets/source and assets/rendered so it is obvious what was found vs.
+        # what FFmpeg will consume.
+        if output_file.parent.name == "rendered":
+            source_dir = output_file.parent.parent / "source"
+            source_dir.mkdir(parents=True, exist_ok=True)
+            self._save_jpeg(original, source_dir / output_file.name)
         self._save_jpeg(normalized, output_file)
         return source_size
 

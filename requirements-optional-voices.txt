@@ -1,0 +1,5 @@
+# Optional local/open-weight voice engine.
+# Install only if you want to use Kokoro from the GUI.
+kokoro>=0.9.4
+soundfile>=0.12
+numpy>=1.26

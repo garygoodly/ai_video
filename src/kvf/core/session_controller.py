@@ -105,6 +105,7 @@ class SessionController:
         workspace: Path,
         selected: set[str],
         voice: str | None = None,
+        voice_engine: str | None = None,
         subtitle_settings: dict | None = None,
         subtitle_style: dict | None = None,
         voice_rate: str | None = None,
@@ -115,12 +116,36 @@ class SessionController:
         from kvf.services.regeneration_service import RegenerationService
 
         rebuilt = RegenerationService.invalidate(
-            workspace, selected, voice, voice_rate, voice_pitch,
+            workspace, selected, voice, voice_engine, voice_rate, voice_pitch,
             subtitle_settings, subtitle_style, media_settings
         )
         self.sessions.touch(workspace)
         self.run_automatic(workspace, progress_callback)
         return rebuilt
+
+    def generate_voice_preview(
+        self,
+        workspace: Path,
+        *,
+        engine: str,
+        voice: str,
+        rate: str,
+        pitch: str,
+        text: str,
+    ) -> Path:
+        from kvf.services.voice_engine_service import VoiceEngineService
+
+        metadata = SessionService._read_metadata(workspace)
+        preview_dir = workspace / "_preview"
+        preview_dir.mkdir(parents=True, exist_ok=True)
+        output = preview_dir / "voice_preview.mp3"
+        output.unlink(missing_ok=True)
+        VoiceEngineService().generate(
+            engine=engine, voice=voice,
+            language_code=metadata.get("language_code", "en-US"),
+            text=text, output=output, rate=rate, pitch=pitch,
+        )
+        return output
 
     def run_automatic(
         self,

@@ -13,7 +13,7 @@ class SessionService:
 
     MANUAL_STAGES = ("research", "script", "storyboard")
     AUTOMATIC_OUTPUTS = (
-        ("media", "media/media.json"),
+        ("media", "assets/media.json"),
         ("voice", "voice/narration.mp3"),
         ("subtitle", "subtitle/subtitle.srt"),
         ("timeline", "timeline/timeline.json"),
@@ -59,6 +59,7 @@ class SessionService:
                 "language_code": profile.get("language_code", "en-US"),
                 "output_language": profile.get("output_language", "English"),
                 "whisper_language": profile.get("whisper_language", "en"),
+                "voice_engine": "edge",
                 "voice": profile.get("default_voice", "en-US-AndrewNeural"),
                 "voice_rate": "+0%",
                 "voice_pitch": "+0Hz",
@@ -77,6 +78,7 @@ class SessionService:
                 "media_settings": {
                     "visual_persistence": "topic",
                     "prefer_market_charts": True,
+                    "strict_precision": True,
                 },
             }
         )
@@ -145,7 +147,7 @@ class SessionService:
 
     @staticmethod
     def _has_old_media_placeholders(workspace: Path) -> bool:
-        media_json = workspace / "media" / "media.json"
+        media_json = workspace / "assets" / "media.json"
         if not media_json.exists():
             return False
         try:

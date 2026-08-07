@@ -1,6 +1,7 @@
 import os
 import sys
 import threading
+import subprocess
 from datetime import date
 import tkinter as tk
 from pathlib import Path
@@ -415,13 +416,40 @@ class VideoFactoryApp(tk.Tk):
         edition_profile = self.controller.editions.get(metadata.get("edition", "global"))
         voice_frame = ttk.LabelFrame(left, text="Voice", padding=12)
         voice_frame.pack(fill="x", pady=10)
-        voices = edition_profile.get("voices", [edition_profile.get("default_voice", "en-US-AndrewNeural")])
-        voice_var = tk.StringVar(value=metadata.get("voice", voices[0]))
-        ttk.Label(voice_frame, text="Speaker").grid(row=0, column=0, sticky="w")
-        ttk.Combobox(
-            voice_frame, textvariable=voice_var, values=voices,
-            width=34, state="readonly"
-        ).grid(row=1, column=0, columnspan=2, sticky="w", pady=(2, 8))
+
+        engine_profiles = edition_profile.get("voice_engines", {})
+        if not engine_profiles:
+            engine_profiles = {
+                "edge": {
+                    "label": "Microsoft Edge TTS",
+                    "voices": edition_profile.get("voices", [edition_profile.get("default_voice", "en-US-AndrewNeural")]),
+                }
+            }
+        engine_labels = {key: value.get("label", key) for key, value in engine_profiles.items()}
+        engine_by_label = {label: key for key, label in engine_labels.items()}
+        current_engine = metadata.get("voice_engine", "edge")
+        engine_var = tk.StringVar(value=engine_labels.get(current_engine, current_engine))
+        voice_var = tk.StringVar(value=metadata.get("voice", edition_profile.get("default_voice", "en-US-AndrewNeural")))
+
+        ttk.Label(voice_frame, text="Engine").grid(row=0, column=0, sticky="w")
+        ttk.Label(voice_frame, text="Speaker").grid(row=0, column=1, sticky="w", padx=(12, 0))
+        engine_box = ttk.Combobox(
+            voice_frame, textvariable=engine_var, values=list(engine_by_label),
+            width=24, state="readonly"
+        )
+        engine_box.grid(row=1, column=0, sticky="w", pady=(2, 8))
+        voice_box = ttk.Combobox(voice_frame, textvariable=voice_var, width=30, state="readonly")
+        voice_box.grid(row=1, column=1, sticky="w", padx=(12, 0), pady=(2, 8))
+
+        def refresh_voice_choices(event=None):
+            engine_key = engine_by_label.get(engine_var.get(), "edge")
+            choices = engine_profiles.get(engine_key, {}).get("voices", [])
+            voice_box.configure(values=choices)
+            if voice_var.get() not in choices and choices:
+                voice_var.set(choices[0])
+
+        engine_box.bind("<<ComboboxSelected>>", refresh_voice_choices)
+        refresh_voice_choices()
 
         rate_var = tk.StringVar(value=metadata.get("voice_rate", "+0%"))
         pitch_var = tk.StringVar(value=metadata.get("voice_pitch", "+0Hz"))
@@ -437,6 +465,43 @@ class VideoFactoryApp(tk.Tk):
             values=["-10Hz", "-5Hz", "+0Hz", "+5Hz", "+10Hz"],
             width=12, state="readonly"
         ).grid(row=3, column=1, sticky="w", padx=(12, 0))
+
+        preview_samples = {
+            "zh-TW": "今天台股受到美國科技股走勢影響，加權指數盤中震盪。",
+            "ja-JP": "本日の日経平均は米国市場の流れを受けて変動しました。",
+            "en-US": "Today, global markets are reacting to rates, earnings, and currency moves.",
+        }
+        voice_preview_status = tk.StringVar(value="Preview uses the selected engine, speaker, speed, and pitch.")
+        ttk.Label(voice_frame, textvariable=voice_preview_status, foreground="#555555", wraplength=470).grid(
+            row=4, column=0, columnspan=2, sticky="w", pady=(8, 4)
+        )
+
+        def play_voice_preview():
+            preview_button.configure(state="disabled")
+            voice_preview_status.set("Generating preview...")
+            engine_key = engine_by_label.get(engine_var.get(), "edge")
+            text = preview_samples.get(metadata.get("language_code", "en-US"), preview_samples["en-US"])
+
+            def worker():
+                try:
+                    path = self.controller.generate_voice_preview(
+                        self.workspace, engine=engine_key, voice=voice_var.get(),
+                        rate=rate_var.get(), pitch=pitch_var.get(), text=text,
+                    )
+                    subprocess.Popen(
+                        ["ffplay", "-nodisp", "-autoexit", "-loglevel", "quiet", str(path)],
+                        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                    )
+                    self.after(0, voice_preview_status.set, "Playing voice preview.")
+                except Exception as exc:
+                    self.after(0, voice_preview_status.set, f"Preview failed: {exc}")
+                finally:
+                    self.after(0, preview_button.configure, {"state": "normal"})
+
+            threading.Thread(target=worker, daemon=True).start()
+
+        preview_button = ttk.Button(voice_frame, text="▶ Play Voice Preview", command=play_voice_preview)
+        preview_button.grid(row=5, column=0, columnspan=2, sticky="w", pady=(3, 0))
 
         media_settings = metadata.get("media_settings", {})
         media_frame = ttk.LabelFrame(left, text="Visual behavior", padding=12)
@@ -548,7 +613,7 @@ class VideoFactoryApp(tk.Tk):
 
         ttk.Button(tools, text="Subtitle SRT", command=lambda: open_path(self.workspace / "subtitle" / "subtitle.srt")).pack(side="left", padx=(0, 6))
         ttk.Button(tools, text="Script JSON", command=lambda: open_path(self.workspace / "script" / "script.json")).pack(side="left", padx=6)
-        ttk.Button(tools, text="Media Folder", command=lambda: open_path(self.workspace / "media")).pack(side="left", padx=6)
+        ttk.Button(tools, text="Media Folder", command=lambda: open_path(self.workspace / "assets" / "rendered")).pack(side="left", padx=6)
 
         status_var = tk.StringVar(value="Ready.")
         ttk.Label(frame, textvariable=status_var, font=("Segoe UI", 10)).pack(anchor="w", pady=(10, 4))
@@ -568,8 +633,11 @@ class VideoFactoryApp(tk.Tk):
             requested_media = {
                 "visual_persistence": persistence_var.get(),
                 "prefer_market_charts": bool(prefer_charts_var.get()),
+                "strict_precision": True,
             }
+            selected_engine = engine_by_label.get(engine_var.get(), "edge")
             voice_changed = (
+                selected_engine != metadata.get("voice_engine", "edge") or
                 voice_var.get() != metadata.get("voice") or
                 rate_var.get() != metadata.get("voice_rate", "+0%") or
                 pitch_var.get() != metadata.get("voice_pitch", "+0Hz")
@@ -577,7 +645,9 @@ class VideoFactoryApp(tk.Tk):
             if voice_changed:
                 selected.add("voice")
             if requested_subtitle_settings != subtitle_settings:
-                selected.add("subtitle")
+                # Cue segmentation is shared by TTS and subtitles. Rebuild the
+                # voice so the new subtitle boundaries get exact audio timing.
+                selected.add("voice")
             if requested_style != subtitle_style:
                 selected.add("video")
             if requested_media != media_settings:
@@ -597,6 +667,7 @@ class VideoFactoryApp(tk.Tk):
                     self.controller.regenerate(
                         self.workspace, selected,
                         voice=voice_var.get(),
+                        voice_engine=selected_engine,
                         voice_rate=rate_var.get(),
                         voice_pitch=pitch_var.get(),
                         subtitle_settings=requested_subtitle_settings,

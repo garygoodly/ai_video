@@ -1,20 +1,18 @@
 from __future__ import annotations
 
+import json
 import re
 import subprocess
 from pathlib import Path
 
 
 class ExactSubtitleService:
-    """Create subtitles from the approved script text, never from ASR.
+    """Create deterministic subtitles from the approved script.
 
-    This guarantees that names, Chinese characters, and Arabic numerals exactly
-    match script.json. Timing is distributed over the narration duration using
-    reading-weight estimates. Traditional Chinese is segmented at ， and 。,
-    while the punctuation itself is not displayed.
+    Text never comes from ASR, so names, Chinese characters and Arabic numerals
+    remain exactly as approved. When cue timing produced during TTS exists, it
+    is used directly; this keeps subtitles aligned after any voice-speed change.
     """
-
-    CJK_LANGUAGES = {"zh-TW", "zh-CN", "ja-JP"}
 
     def __init__(
         self,
@@ -22,60 +20,57 @@ class ExactSubtitleService:
         max_characters: int = 18,
         min_characters: int = 6,
         max_words: int = 10,
-        min_duration: float = 0.8,
     ) -> None:
         self.language_code = language_code
-        self.is_cjk = language_code in self.CJK_LANGUAGES
-        self.max_characters = max(6, int(max_characters))
-        self.min_characters = max(1, min(int(min_characters), self.max_characters))
-        self.max_words = max(3, int(max_words))
-        self.min_duration = max(0.3, float(min_duration))
+        self.max_characters = int(max_characters)
+        self.min_characters = int(min_characters)
+        self.max_words = int(max_words)
+        self.is_cjk = language_code.startswith(("zh", "ja"))
 
-    def generate(self, narrations: list[str], audio: Path, output: Path) -> list[dict]:
-        chunks: list[str] = []
-        for narration in narrations:
-            chunks.extend(self._segment(narration))
-        chunks = [chunk for chunk in chunks if chunk.strip()]
-        if not chunks:
-            raise ValueError("The approved script contains no subtitle text.")
+    def segment_sections(self, sections: list[str]) -> list[str]:
+        cues: list[str] = []
+        for section in sections:
+            cues.extend(self._segment(section))
+        return [cue for cue in cues if cue.strip()]
 
-        total_duration = self._probe_duration(audio)
-        weights = [self._weight(text) for text in chunks]
-        total_weight = sum(weights) or float(len(chunks))
+    def generate(
+        self,
+        sections: list[str],
+        audio: Path,
+        output: Path,
+        timing_file: Path | None = None,
+    ) -> list[dict]:
+        if timing_file and timing_file.exists():
+            cues = json.loads(timing_file.read_text(encoding="utf-8"))
+            self._validate_timing_text(cues, self.segment_sections(sections))
+        else:
+            cues = self._proportional_timing(self.segment_sections(sections), audio)
+        self._write_srt(cues, output)
+        return cues
 
-        cues: list[dict] = []
+    def _validate_timing_text(self, cues: list[dict], expected: list[str]) -> None:
+        actual = [str(cue.get("text", "")) for cue in cues]
+        if actual != expected:
+            raise ValueError(
+                "Voice cue timing does not match the approved script. "
+                "Regenerate the narration voice before generating subtitles."
+            )
+
+    def _proportional_timing(self, segments: list[str], audio: Path) -> list[dict]:
+        duration = self._probe_duration(audio)
+        weights = [self._weight(text) for text in segments]
+        total = sum(weights) or 1.0
         cursor = 0.0
-        for index, (text, weight) in enumerate(zip(chunks, weights)):
-            if index == len(chunks) - 1:
-                end = total_duration
-            else:
-                raw = total_duration * weight / total_weight
-                end = min(total_duration, cursor + max(self.min_duration, raw))
-            cues.append({"start": cursor, "end": max(end, cursor + 0.1), "text": text})
+        cues = []
+        for index, (text, weight) in enumerate(zip(segments, weights)):
+            end = duration if index == len(segments) - 1 else cursor + duration * weight / total
+            cues.append({"text": text, "start": cursor, "end": end})
             cursor = end
-
-        # Renormalize in case minimum durations pushed the cursor too far.
-        scale = total_duration / cues[-1]["end"] if cues[-1]["end"] else 1.0
-        for cue in cues:
-            cue["start"] *= scale
-            cue["end"] *= scale
-
-        output.parent.mkdir(parents=True, exist_ok=True)
-        lines: list[str] = []
-        for index, cue in enumerate(cues, start=1):
-            lines.extend([
-                str(index),
-                f'{self._format(cue["start"])} --> {self._format(cue["end"])}',
-                cue["text"],
-                "",
-            ])
-        output.write_text("\n".join(lines), encoding="utf-8")
         return cues
 
     def _segment(self, text: str) -> list[str]:
         normalized = re.sub(r"\s+", "" if self.is_cjk else " ", text).strip()
         if self.language_code.startswith("zh"):
-            # The punctuation defines the boundary but is intentionally hidden.
             clauses = [part.strip() for part in re.split(r"[，。！？；：]+", normalized) if part.strip()]
             return self._balance_cjk(clauses)
         if self.language_code.startswith("ja"):
@@ -92,8 +87,6 @@ class ExactSubtitleService:
         return chunks
 
     def _balance_cjk(self, clauses: list[str]) -> list[str]:
-        # First split clauses that remain too long. Numeric values and Latin
-        # identifiers are atomic, so 43682 and 0.16 are never cut apart.
         pieces: list[str] = []
         for clause in clauses:
             atoms = re.findall(r"[A-Za-z]+(?:[._/-][A-Za-z0-9]+)*|\d+(?:[.,]\d+)*%?|.", clause)
@@ -107,7 +100,6 @@ class ExactSubtitleService:
             if current:
                 pieces.append(current)
 
-        # Then merge isolated one- or two-character fragments with a neighbor.
         balanced: list[str] = []
         pending = ""
         for piece in pieces:
@@ -128,10 +120,20 @@ class ExactSubtitleService:
                 balanced.append(pending)
         return balanced
 
+    def _write_srt(self, cues: list[dict], output: Path) -> None:
+        output.parent.mkdir(parents=True, exist_ok=True)
+        lines: list[str] = []
+        for index, cue in enumerate(cues, start=1):
+            lines.extend([
+                str(index),
+                f'{self._format(float(cue["start"]))} --> {self._format(float(cue["end"]))}',
+                str(cue["text"]),
+                "",
+            ])
+        output.write_text("\n".join(lines), encoding="utf-8")
+
     def _weight(self, text: str) -> float:
-        if self.is_cjk:
-            return max(1.0, len(text))
-        return max(1.0, len(text.split()))
+        return max(1.0, len(text) if self.is_cjk else len(text.split()))
 
     @staticmethod
     def _probe_duration(audio: Path) -> float:

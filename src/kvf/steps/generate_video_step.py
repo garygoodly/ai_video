@@ -15,7 +15,7 @@ class GenerateVideoStep(BaseStep):
         metadata = SessionService._read_metadata(workspace)
 
         FFmpegProvider().render(
-            media_dir=workspace / "media",
+            media_dir=workspace / "assets" / "rendered",
             audio=workspace / "voice" / "narration.mp3",
             subtitle=workspace / "subtitle" / "subtitle.srt",
             output=output,

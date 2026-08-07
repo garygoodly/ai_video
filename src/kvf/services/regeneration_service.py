@@ -10,8 +10,8 @@ class RegenerationService:
 
     ORDER = ("media", "voice", "subtitle", "timeline", "video")
     FILES = {
-        "media": ("media/media.json", "media/*.jpg"),
-        "voice": ("voice/narration.mp3", "voice/voice.json"),
+        "media": ("assets/media.json", "assets/rendered/*.jpg", "assets/source/*"),
+        "voice": ("voice/narration.mp3", "voice/voice.json", "voice/cue_timing.json"),
         "subtitle": ("subtitle/subtitle.srt", "subtitle/subtitle.json"),
         "timeline": ("timeline/timeline.json",),
         "video": ("video/video.mp4", "video/scene_list.ffconcat"),
@@ -30,6 +30,7 @@ class RegenerationService:
         workspace: Path,
         selected: set[str],
         voice: str | None = None,
+        voice_engine: str | None = None,
         voice_rate: str | None = None,
         voice_pitch: str | None = None,
         subtitle_settings: dict | None = None,
@@ -49,6 +50,8 @@ class RegenerationService:
                         path.unlink(missing_ok=True)
 
         metadata = SessionService._read_metadata(workspace)
+        if voice_engine:
+            metadata["voice_engine"] = voice_engine
         if voice:
             metadata["voice"] = voice
         if voice_rate is not None:

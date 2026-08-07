@@ -9,6 +9,7 @@ from kvf.models.script import Script
 from kvf.models.storyboard import Storyboard
 from kvf.models.topic import Topic
 from kvf.services.blueprint_service import BlueprintService
+from kvf.services.edition_service import EditionService
 from kvf.services.session_service import SessionService
 from kvf.steps.generate_research_prompt_step import GenerateResearchPromptStep
 from kvf.steps.generate_script_prompt_step import GenerateScriptPromptStep
@@ -25,9 +26,23 @@ class SessionController:
         self.settings = settings
         self.project_root = project_root
         self.sessions = SessionService(project_root / settings["workspace"]["root"])
+        self.editions = EditionService(project_root / "config" / "editions.yaml")
         self.blueprint = BlueprintService(
             str(project_root / "config" / "blueprints")
         ).load("country")
+
+
+    def create_session(self, name: str, edition: str) -> Path:
+        profile = self.editions.get(edition)
+        return self.sessions.create(
+            name,
+            edition=profile["key"],
+            edition_profile=profile,
+        )
+
+    def edition_for_workspace(self, workspace: Path) -> dict:
+        metadata = SessionService._read_metadata(workspace)
+        return self.editions.get(metadata.get("edition", "global"))
 
     def application_for(self, workspace: Path) -> Application:
         metadata = SessionService._read_metadata(workspace)
@@ -83,6 +98,29 @@ class SessionController:
         inspection = self.sessions.inspect(workspace)
         stage = inspection["current_stage"]
         return stage if stage in self.MANUAL_STAGES else None
+
+
+    def regenerate(
+        self,
+        workspace: Path,
+        selected: set[str],
+        voice: str | None = None,
+        subtitle_settings: dict | None = None,
+        subtitle_style: dict | None = None,
+        voice_rate: str | None = None,
+        voice_pitch: str | None = None,
+        media_settings: dict | None = None,
+        progress_callback: Callable[[str], None] | None = None,
+    ) -> set[str]:
+        from kvf.services.regeneration_service import RegenerationService
+
+        rebuilt = RegenerationService.invalidate(
+            workspace, selected, voice, voice_rate, voice_pitch,
+            subtitle_settings, subtitle_style, media_settings
+        )
+        self.sessions.touch(workspace)
+        self.run_automatic(workspace, progress_callback)
+        return rebuilt
 
     def run_automatic(
         self,

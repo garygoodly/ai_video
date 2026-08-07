@@ -6,7 +6,7 @@ import random
 import re
 import time
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urljoin, urlparse
 
 import requests
 from PIL import Image, ImageDraw, ImageFont, ImageOps, UnidentifiedImageError
@@ -47,16 +47,33 @@ class ResilientMediaProvider(MediaProvider):
         "letterhead", "certificate",
     }
 
-    def __init__(self) -> None:
+    def __init__(self, news_source_urls: list[str] | None = None) -> None:
         self.session = requests.Session()
         self.session.headers.update({"User-Agent": self.USER_AGENT})
         self._last_request_at: dict[str, float] = {}
         self._search_cache: dict[tuple[str, str], list[dict]] = {}
         self._blocked_until: dict[str, float] = {}
+        self.news_source_urls = list(dict.fromkeys(news_source_urls or []))
+        self._news_candidates: list[dict] | None = None
+        self._used_hashes: list[int] = []
+        self._used_source_urls: set[str] = set()
 
     def download(self, scene: StoryboardScene, output_file: Path) -> MediaAsset:
         queries = self._build_queries(scene.visual.query)[: self.MAX_QUERIES]
         errors: list[str] = []
+
+        # Current article hero images are preferred because they are usually
+        # closest to the newest news event described by the research sources.
+        try:
+            result = self._download_best_match(
+                source="news_article",
+                query=scene.visual.query,
+                scene=scene,
+                output_file=output_file,
+            )
+            return result
+        except Exception as exc:
+            errors.append(f"news_article/{scene.visual.query}: {exc}")
 
         # Openverse is intentionally first: it aggregates multiple open media
         # catalogs and avoids concentrating all requests on Wikimedia Commons.
@@ -94,8 +111,8 @@ class ResilientMediaProvider(MediaProvider):
     @staticmethod
     def is_generated_fallback(asset: MediaAsset) -> bool:
         return (
-            asset.source_url == "local://generated-placeholder"
-            or asset.author == "Local placeholder"
+            asset.source_url in {"local://generated-placeholder", "local://context-visual"}
+            or asset.author in {"Local placeholder", "Local contextual visual"}
         )
 
     def _download_best_match(
@@ -134,11 +151,15 @@ class ResilientMediaProvider(MediaProvider):
                     f"{source_width}x{source_height} for '{query}', "
                     "saved as 1920x1080."
                 )
-                provider = (
-                    MediaProviderType.OPENVERSE
-                    if source == "openverse"
-                    else MediaProviderType.WIKIMEDIA
-                )
+                if self._is_duplicate(output_file, candidate.get("source_url") or selected_url):
+                    output_file.unlink(missing_ok=True)
+                    failures.append("candidate duplicates an image already used in this video")
+                    continue
+                provider = {
+                    "news_article": MediaProviderType.NEWS_ARTICLE,
+                    "openverse": MediaProviderType.OPENVERSE,
+                    "wikimedia": MediaProviderType.WIKIMEDIA,
+                }[source]
                 return MediaAsset(
                     scene=scene.id,
                     provider=provider,
@@ -157,7 +178,9 @@ class ResilientMediaProvider(MediaProvider):
         if key in self._search_cache:
             return self._search_cache[key]
 
-        if source == "openverse":
+        if source == "news_article":
+            results = self._search_news_articles(query)
+        elif source == "openverse":
             results = self._search_openverse(query)
         elif source == "wikimedia":
             results = self._search_wikimedia(query)
@@ -166,6 +189,57 @@ class ResilientMediaProvider(MediaProvider):
 
         self._search_cache[key] = results
         return results
+
+    def _search_news_articles(self, query: str) -> list[dict]:
+        if self._news_candidates is None:
+            self._news_candidates = []
+            for source_url in self.news_source_urls[:30]:
+                try:
+                    response = self._request(source_url)
+                    content_type = response.headers.get("Content-Type", "").lower()
+                    if "html" not in content_type:
+                        continue
+                    html = response.text[:1_500_000]
+                    title = self._html_meta(html, "og:title") or self._html_title(html)
+                    image_url = (
+                        self._html_meta(html, "og:image")
+                        or self._html_meta(html, "twitter:image")
+                    )
+                    if not image_url:
+                        continue
+                    image_url = urljoin(source_url, image_url)
+                    self._news_candidates.append({
+                        "title": title,
+                        "mime": "image/jpeg",
+                        "width": 0,
+                        "height": 0,
+                        "download_url": image_url,
+                        "thumbnail_url": None,
+                        "license": "Publisher/source terms apply",
+                        "author": urlparse(source_url).netloc,
+                        "source_url": source_url,
+                    })
+                except Exception as exc:
+                    print(f"Could not inspect news source {source_url}: {exc}")
+        return list(self._news_candidates)
+
+    @staticmethod
+    def _html_meta(html: str, property_name: str) -> str | None:
+        escaped = re.escape(property_name)
+        patterns = [
+            rf'<meta[^>]+(?:property|name)=["\']{escaped}["\'][^>]+content=["\']([^"\']+)',
+            rf'<meta[^>]+content=["\']([^"\']+)["\'][^>]+(?:property|name)=["\']{escaped}["\']',
+        ]
+        for pattern in patterns:
+            match = re.search(pattern, html, re.IGNORECASE)
+            if match:
+                return match.group(1).replace("&amp;", "&").strip()
+        return None
+
+    @staticmethod
+    def _html_title(html: str) -> str:
+        match = re.search(r"<title[^>]*>(.*?)</title>", html, re.IGNORECASE | re.DOTALL)
+        return re.sub(r"<[^>]+>", "", match.group(1)).strip() if match else ""
 
     def _search_openverse(self, query: str) -> list[dict]:
         response = self._request(
@@ -340,6 +414,39 @@ class ResilientMediaProvider(MediaProvider):
         self._save_jpeg(normalized, output_file)
         return source_size
 
+    def register_existing(self, image_file: Path, source_url: str = "") -> bool:
+        """Register a cached image; return False when it duplicates prior media."""
+        try:
+            image_hash = self._average_hash(image_file)
+        except Exception:
+            return False
+        if source_url in self._used_source_urls or any(
+            self._hash_distance(image_hash, known) <= 5 for known in self._used_hashes
+        ):
+            return False
+        self._used_hashes.append(image_hash)
+        if source_url:
+            self._used_source_urls.add(source_url)
+        return True
+
+    def _is_duplicate(self, image_file: Path, source_url: str) -> bool:
+        return not self.register_existing(image_file, source_url)
+
+    @staticmethod
+    def _average_hash(image_file: Path) -> int:
+        with Image.open(image_file) as image:
+            grayscale = ImageOps.grayscale(image).resize((16, 16), Image.Resampling.LANCZOS)
+            pixels = list(grayscale.getdata())
+        average = sum(pixels) / len(pixels)
+        value = 0
+        for pixel in pixels:
+            value = (value << 1) | int(pixel >= average)
+        return value
+
+    @staticmethod
+    def _hash_distance(left: int, right: int) -> int:
+        return (left ^ right).bit_count()
+
     def _build_queries(self, original: str) -> list[str]:
         normalized = self._normalize_query(original)
         lower = normalized.lower()
@@ -384,33 +491,40 @@ class ResilientMediaProvider(MediaProvider):
         return "global finance business city"
 
     def _create_context_visual(self, scene: StoryboardScene, output_file: Path) -> MediaAsset:
+        """Create an honest non-chart fallback when no real image is available.
+
+        This visual intentionally contains no plotted line, axes, values, scene
+        number, or implied statistics. Data charts must come from a real source
+        or from structured data supplied by the project.
+        """
         width, height = self.TARGET_WIDTH, self.TARGET_HEIGHT
-        image = Image.new("RGB", (width, height), (18, 27, 43))
+        image = Image.new("RGB", (width, height), (17, 27, 44))
         draw = ImageDraw.Draw(image)
 
-        # Build a clean finance/news visual rather than showing an error label.
         for y in range(height):
-            shade = int(25 + 30 * y / height)
-            draw.line((0, y, width, y), fill=(15, shade, 55))
+            shade = int(22 + 34 * y / height)
+            draw.line((0, y, width, y), fill=(14, shade, 58))
 
         rng = random.Random(scene.id)
-        points = []
-        for index in range(12):
-            x = 140 + index * 145
-            y = 650 - rng.randint(-80, 180) - index * 10
-            points.append((x, y))
-        draw.line(points, fill=(70, 210, 170), width=12, joint="curve")
-        for x, y in points:
-            draw.ellipse((x - 10, y - 10, x + 10, y + 10), fill=(220, 255, 245))
+        for _ in range(18):
+            x = rng.randint(-120, width - 80)
+            y = rng.randint(-120, height - 80)
+            size = rng.randint(90, 260)
+            color = (24 + rng.randint(0, 18), 65 + rng.randint(0, 30), 88 + rng.randint(0, 30))
+            draw.rounded_rectangle((x, y, x + size, y + size), radius=30, fill=color)
 
-        draw.rounded_rectangle((110, 100, 1810, 400), radius=35, fill=(25, 39, 61), outline=(70, 110, 155), width=3)
-        title_font = self._font(48)
-        body_font = self._font(30)
-        label_font = self._font(24)
-        draw.text((150, 135), f"FINANCE DAILY  |  SCENE {scene.id}", font=label_font, fill=(110, 200, 255))
-        wrapped = self._wrap_text(scene.visual.query.strip(), 52)
-        draw.multiline_text((150, 205), wrapped, font=title_font, fill="white", spacing=12)
-        draw.text((150, 930), "Context visual generated locally", font=body_font, fill=(170, 185, 205))
+        panel = (120, 180, 1800, 820)
+        draw.rounded_rectangle(panel, radius=40, fill=(20, 34, 55), outline=(55, 100, 135), width=3)
+        title_font = self._font(54)
+        note_font = self._font(28)
+        wrapped = self._wrap_text(scene.visual.query.strip(), 48)
+        draw.multiline_text((170, 285), wrapped, font=title_font, fill="white", spacing=16)
+        draw.text(
+            (170, 720),
+            "Illustrative background — not a data chart",
+            font=note_font,
+            fill=(165, 185, 205),
+        )
 
         output_file.parent.mkdir(parents=True, exist_ok=True)
         self._save_jpeg(image, output_file)

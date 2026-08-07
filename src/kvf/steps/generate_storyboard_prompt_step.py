@@ -1,5 +1,7 @@
 import json
 
+from kvf.services.session_service import SessionService
+
 from kvf.models.application import Application
 from kvf.repositories.script_repository import ScriptRepository
 from kvf.services.prompt_service import PromptService
@@ -36,8 +38,12 @@ class GenerateStoryboardPromptStep(BaseStep):
             script_path
         )
 
+        metadata = SessionService._read_metadata(workspace)
+        profile = metadata.get("edition_profile", {})
         context = {
             "topic": script.topic,
+            "output_language": metadata.get("output_language", "English"),
+            "search_query_rule": profile.get("search_query_rule", "Write concise English visual search queries."),
             "script": json.dumps(
                 script.model_dump(),
                 indent=2,

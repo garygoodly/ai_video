@@ -34,10 +34,15 @@ class GenerateResearchPromptStep(BaseStep):
             metadata.get("reference_date", date.today().isoformat())
         )
 
+        profile = metadata.get("edition_profile", {})
         context = {
             "project_name": project.topic.name,
             "reference_date": reference_date.isoformat(),
             "previous_date": (reference_date - timedelta(days=1)).isoformat(),
+            "edition_label": metadata.get("edition_label", "Global"),
+            "output_language": metadata.get("output_language", "English"),
+            "audience_note": profile.get("audience_note", "International viewers"),
+            "research_focus": profile.get("research_focus", "Build a globally balanced briefing."),
             "blueprint": json.dumps(
                 project.blueprint.model_dump(),
                 indent=2,

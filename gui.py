@@ -21,8 +21,8 @@ class VideoFactoryApp(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Knowledge Video Factory")
-        self.geometry("1180x760")
-        self.minsize(980, 650)
+        self.geometry("1180x880")
+        self.minsize(980, 760)
 
         settings = load_yaml(str(PROJECT_ROOT / "config" / "settings.yaml"))
         self.controller = SessionController(settings, PROJECT_ROOT)
@@ -83,34 +83,68 @@ class VideoFactoryApp(tk.Tk):
         frame = ttk.Frame(self, padding=36)
         frame.pack(fill="both", expand=True)
         ttk.Button(frame, text="← Back", command=self.show_home).pack(anchor="w")
-        ttk.Label(frame, text="Start New Session", style="Title.TLabel").pack(pady=(85, 18))
+        ttk.Label(frame, text="Start New Session", style="Title.TLabel").pack(pady=(55, 12))
         ttk.Label(
             frame,
-            text=("ChatGPT will identify today’s biggest finance stories.\n"
-                  "The project name is only used to organize the workspace."),
-            font=("Segoe UI", 11),
-            justify="center",
-        ).pack(pady=(0, 28))
+            text=("Choose the audience edition first. The research prompt, writing language, "
+                  "narration voice, and subtitles will follow that regional profile."),
+            font=("Segoe UI", 11), wraplength=760, justify="center",
+        ).pack(pady=(0, 22))
 
         form = ttk.Frame(frame)
         form.pack()
+        editions = self.controller.editions.all()
+        labels_by_key = {key: profile["label"] for key, profile in editions.items()}
+        key_by_label = {label: key for key, label in labels_by_key.items()}
+
+        ttk.Label(form, text="Audience edition", style="Heading.TLabel").grid(
+            row=0, column=0, sticky="w", pady=(8, 5)
+        )
+        edition_var = tk.StringVar(value=labels_by_key.get("taiwan", "Taiwan"))
+        edition_box = ttk.Combobox(
+            form, textvariable=edition_var,
+            values=[labels_by_key[key] for key in ("taiwan", "japan", "global") if key in labels_by_key],
+            state="readonly", width=34, font=("Segoe UI", 11),
+        )
+        edition_box.grid(row=1, column=0, sticky="w", pady=(0, 8))
+
+        edition_description = tk.StringVar()
+        ttk.Label(
+            form, textvariable=edition_description, foreground="#555555",
+            wraplength=650, justify="left",
+        ).grid(row=2, column=0, sticky="w", pady=(0, 18))
+
         ttk.Label(form, text="Project name", style="Heading.TLabel").grid(
-            row=0, column=0, sticky="w", pady=8
+            row=3, column=0, sticky="w", pady=8
         )
         project_entry = ttk.Entry(form, width=58, font=("Segoe UI", 12))
-        project_entry.insert(0, f"{date.today().isoformat()} Finance Daily")
-        project_entry.grid(row=1, column=0, pady=(0, 10))
-        project_entry.select_range(0, "end")
+        project_entry.grid(row=4, column=0, pady=(0, 10))
+
+        def update_edition(event=None):
+            key = key_by_label.get(edition_var.get(), "global")
+            profile = self.controller.editions.get(key)
+            edition_description.set(
+                f'{profile["output_language"]} • Default voice: {profile["default_voice"]}\n'
+                f'{profile["audience_note"]}'
+            )
+            project_entry.delete(0, "end")
+            project_entry.insert(0, f'{date.today().isoformat()} {profile["default_project_suffix"]}')
+            project_entry.select_range(0, "end")
+
+        edition_box.bind("<<ComboboxSelected>>", update_edition)
+        update_edition()
         project_entry.focus_set()
+
         ttk.Label(
             form,
-            text="Example: 2026-08-03 Finance Daily",
+            text="The selected edition is saved with the session and can be resumed later.",
             foreground="#666666",
-        ).grid(row=2, column=0, sticky="w", pady=(0, 24))
+        ).grid(row=5, column=0, sticky="w", pady=(0, 24))
 
         def create_session():
             try:
-                self.workspace = self.controller.sessions.create(project_entry.get())
+                edition_key = key_by_label.get(edition_var.get(), "global")
+                self.workspace = self.controller.create_session(project_entry.get(), edition_key)
                 self.open_current_stage()
             except Exception as exc:
                 messagebox.showerror("Cannot create session", str(exc))
@@ -121,7 +155,7 @@ class VideoFactoryApp(tk.Tk):
             text="Create Project",
             style="Primary.TButton",
             command=create_session,
-        ).grid(row=3, column=0)
+        ).grid(row=6, column=0)
 
     def show_resume(self):
         self.clear()
@@ -130,13 +164,15 @@ class VideoFactoryApp(tk.Tk):
         ttk.Button(frame, text="← Back", command=self.show_home).pack(anchor="w")
         ttk.Label(frame, text="Resume Session", style="Title.TLabel").pack(anchor="w", pady=(22, 20))
 
-        columns = ("project", "stage", "progress", "updated")
+        columns = ("project", "edition", "stage", "progress", "updated")
         tree = ttk.Treeview(frame, columns=columns, show="headings", height=18)
         tree.heading("project", text="Project")
+        tree.heading("edition", text="Edition")
         tree.heading("stage", text="Continue From")
         tree.heading("progress", text="Progress")
         tree.heading("updated", text="Last Updated")
-        tree.column("project", width=420)
+        tree.column("project", width=350)
+        tree.column("edition", width=110, anchor="center")
         tree.column("stage", width=160)
         tree.column("progress", width=100, anchor="center")
         tree.column("updated", width=220)
@@ -154,6 +190,7 @@ class VideoFactoryApp(tk.Tk):
                 iid=item_id,
                 values=(
                     session.get("name", session.get("id", "Unknown")),
+                    session.get("edition_label", "Global"),
                     session["current_stage"].replace("_", " ").title(),
                     f'{session["progress_percent"]}%',
                     updated,
@@ -207,7 +244,10 @@ class VideoFactoryApp(tk.Tk):
         header.pack(fill="x")
         ttk.Button(header, text="Sessions", command=self.show_home).pack(side="left")
         ttk.Label(header, text=metadata["name"], style="Heading.TLabel").pack(side="left", padx=20)
-        ttk.Label(header, text=f"Step: {stage.title()}").pack(side="right")
+        ttk.Label(
+            header,
+            text=f'{metadata.get("edition_label", "Global")} • {metadata.get("output_language", "English")} • Step: {stage.title()}',
+        ).pack(side="right")
 
         pane = ttk.Panedwindow(self, orient="horizontal")
         pane.pack(fill="both", expand=True, padx=24, pady=(0, 12))
@@ -334,12 +374,264 @@ class VideoFactoryApp(tk.Tk):
 
         threading.Thread(target=worker, daemon=True).start()
 
+    def show_modify(self):
+        self.clear()
+        metadata = SessionService._read_metadata(self.workspace)
+        frame = ttk.Frame(self, padding=24)
+        frame.pack(fill="both", expand=True)
+        ttk.Button(frame, text="← Back", command=self.show_complete).pack(anchor="w")
+        ttk.Label(frame, text="Modify Existing Video", style="Title.TLabel").pack(anchor="w", pady=(14, 6))
+        ttk.Label(
+            frame,
+            text=("Change voice, subtitle appearance, segmentation, or media behavior. "
+                  "Only the required downstream stages are rebuilt."),
+            wraplength=1050, font=("Segoe UI", 10),
+        ).pack(anchor="w", pady=(0, 12))
+
+        body = ttk.Panedwindow(frame, orient="horizontal")
+        body.pack(fill="both", expand=True)
+        left = ttk.Frame(body, padding=12)
+        right = ttk.Frame(body, padding=12)
+        body.add(left, weight=1)
+        body.add(right, weight=1)
+
+        options = ttk.LabelFrame(left, text="Outputs to regenerate", padding=12)
+        options.pack(fill="x")
+        labels = {
+            "media": "Media images",
+            "voice": "Narration voice",
+            "subtitle": "Subtitles",
+            "timeline": "Timeline",
+            "video": "Final video only",
+        }
+        selected_vars = {}
+        for row, (key, label) in enumerate(labels.items()):
+            variable = tk.BooleanVar(value=False)
+            selected_vars[key] = variable
+            ttk.Checkbutton(options, text=label, variable=variable).grid(
+                row=row, column=0, sticky="w", pady=3
+            )
+
+        edition_profile = self.controller.editions.get(metadata.get("edition", "global"))
+        voice_frame = ttk.LabelFrame(left, text="Voice", padding=12)
+        voice_frame.pack(fill="x", pady=10)
+        voices = edition_profile.get("voices", [edition_profile.get("default_voice", "en-US-AndrewNeural")])
+        voice_var = tk.StringVar(value=metadata.get("voice", voices[0]))
+        ttk.Label(voice_frame, text="Speaker").grid(row=0, column=0, sticky="w")
+        ttk.Combobox(
+            voice_frame, textvariable=voice_var, values=voices,
+            width=34, state="readonly"
+        ).grid(row=1, column=0, columnspan=2, sticky="w", pady=(2, 8))
+
+        rate_var = tk.StringVar(value=metadata.get("voice_rate", "+0%"))
+        pitch_var = tk.StringVar(value=metadata.get("voice_pitch", "+0Hz"))
+        ttk.Label(voice_frame, text="Speed").grid(row=2, column=0, sticky="w")
+        ttk.Label(voice_frame, text="Pitch").grid(row=2, column=1, sticky="w", padx=(12, 0))
+        ttk.Combobox(
+            voice_frame, textvariable=rate_var,
+            values=["-20%", "-10%", "+0%", "+10%", "+20%"],
+            width=12, state="readonly"
+        ).grid(row=3, column=0, sticky="w")
+        ttk.Combobox(
+            voice_frame, textvariable=pitch_var,
+            values=["-10Hz", "-5Hz", "+0Hz", "+5Hz", "+10Hz"],
+            width=12, state="readonly"
+        ).grid(row=3, column=1, sticky="w", padx=(12, 0))
+
+        media_settings = metadata.get("media_settings", {})
+        media_frame = ttk.LabelFrame(left, text="Visual behavior", padding=12)
+        media_frame.pack(fill="x", pady=(0, 10))
+        persistence_var = tk.StringVar(
+            value=media_settings.get("visual_persistence", "topic")
+        )
+        ttk.Radiobutton(
+            media_frame, text="One precise visual per topic/section",
+            variable=persistence_var, value="topic"
+        ).pack(anchor="w")
+        ttk.Radiobutton(
+            media_frame, text="Change visual for every storyboard scene",
+            variable=persistence_var, value="scene"
+        ).pack(anchor="w")
+        prefer_charts_var = tk.BooleanVar(
+            value=bool(media_settings.get("prefer_market_charts", True))
+        )
+        ttk.Checkbutton(
+            media_frame,
+            text="Prefer current historical charts for recognized market indices",
+            variable=prefer_charts_var,
+        ).pack(anchor="w", pady=(6, 0))
+
+        subtitle_settings = metadata.get("subtitle_settings", {})
+        subtitle_style = metadata.get("subtitle_style", {})
+        subtitle_frame = ttk.LabelFrame(right, text="Subtitle format", padding=12)
+        subtitle_frame.pack(fill="x")
+
+        style_var = tk.StringVar(value=subtitle_style.get("preset", "Compact"))
+        font_var = tk.StringVar(
+            value=subtitle_style.get("font_name", edition_profile.get("default_subtitle_font", "Arial"))
+        )
+        ttk.Label(subtitle_frame, text="Size preset").grid(row=0, column=0, sticky="w")
+        ttk.Label(subtitle_frame, text="Font").grid(row=0, column=1, sticky="w", padx=(12, 0))
+        style_box = ttk.Combobox(
+            subtitle_frame, textvariable=style_var,
+            values=["Compact", "Standard", "Large"], width=14, state="readonly"
+        )
+        style_box.grid(row=1, column=0, sticky="w", pady=(2, 8))
+        fonts = edition_profile.get("subtitle_fonts", [
+            "Microsoft JhengHei", "Noto Sans CJK TC", "Yu Gothic", "Meiryo",
+            "Arial", "Segoe UI", "Tahoma", "Verdana", "Times New Roman"
+        ])
+        font_box = ttk.Combobox(
+            subtitle_frame, textvariable=font_var, values=fonts,
+            width=24, state="readonly"
+        )
+        font_box.grid(row=1, column=1, sticky="w", padx=(12, 0), pady=(2, 8))
+
+        is_cjk = metadata.get("language_code", "en-US") in {"zh-TW", "zh-CN", "ja-JP"}
+        max_chars_var = tk.IntVar(
+            value=int(subtitle_settings.get("max_characters", edition_profile.get("subtitle_max_characters", 18)))
+        )
+        min_chars_var = tk.IntVar(
+            value=int(subtitle_settings.get("min_characters", edition_profile.get("subtitle_min_characters", 6)))
+        )
+        max_words_var = tk.IntVar(value=int(subtitle_settings.get("max_words", 10)))
+        if is_cjk:
+            ttk.Label(subtitle_frame, text="Target maximum characters").grid(row=2, column=0, sticky="w")
+            ttk.Label(subtitle_frame, text="Minimum characters before merge").grid(row=2, column=1, sticky="w", padx=(12, 0))
+            ttk.Spinbox(subtitle_frame, from_=8, to=30, textvariable=max_chars_var, width=8).grid(row=3, column=0, sticky="w")
+            ttk.Spinbox(subtitle_frame, from_=2, to=15, textvariable=min_chars_var, width=8).grid(row=3, column=1, sticky="w", padx=(12, 0))
+        else:
+            ttk.Label(subtitle_frame, text="Maximum words per cue").grid(row=2, column=0, sticky="w")
+            ttk.Spinbox(subtitle_frame, from_=4, to=18, textvariable=max_words_var, width=8).grid(row=3, column=0, sticky="w")
+
+        preview = tk.Frame(right, bg="#182331", height=250)
+        preview.pack(fill="x", pady=12)
+        preview.pack_propagate(False)
+        preview_text = tk.Label(
+            preview, bg="#182331", fg="white", justify="center",
+            wraplength=520, bd=0
+        )
+        preview_text.pack(side="bottom", fill="x", padx=24, pady=28)
+        ttk.Label(right, text="Live subtitle preview (bottom-safe placement)").pack(anchor="w")
+
+        samples = {
+            "zh-TW": "台股今日上漲43682點，核心通膨為0.16%",
+            "ja-JP": "日経平均は上昇し、ドル円は157.25円となりました",
+            "en-US": "The S&P 500 rose 0.16% while yields moved lower",
+        }
+        preset_sizes = {"Compact": 22, "Standard": 28, "Large": 36}
+
+        def update_preview(event=None):
+            sample = samples.get(metadata.get("language_code", "en-US"), samples["en-US"])
+            preview_text.configure(
+                text=sample,
+                font=(font_var.get(), preset_sizes.get(style_var.get(), 22), "bold"),
+            )
+
+        style_box.bind("<<ComboboxSelected>>", update_preview)
+        font_box.bind("<<ComboboxSelected>>", update_preview)
+        update_preview()
+
+        tools = ttk.LabelFrame(right, text="Open generated files", padding=12)
+        tools.pack(fill="x", pady=(8, 0))
+
+        def open_path(path: Path):
+            if not path.exists():
+                messagebox.showinfo("File not found", str(path))
+                return
+            if sys.platform.startswith("win"):
+                os.startfile(path)  # type: ignore[attr-defined]
+            elif sys.platform == "darwin":
+                os.system(f'open "{path}"')
+            else:
+                os.system(f'xdg-open "{path}"')
+
+        ttk.Button(tools, text="Subtitle SRT", command=lambda: open_path(self.workspace / "subtitle" / "subtitle.srt")).pack(side="left", padx=(0, 6))
+        ttk.Button(tools, text="Script JSON", command=lambda: open_path(self.workspace / "script" / "script.json")).pack(side="left", padx=6)
+        ttk.Button(tools, text="Media Folder", command=lambda: open_path(self.workspace / "media")).pack(side="left", padx=6)
+
+        status_var = tk.StringVar(value="Ready.")
+        ttk.Label(frame, textvariable=status_var, font=("Segoe UI", 10)).pack(anchor="w", pady=(10, 4))
+        progress = ttk.Progressbar(frame, mode="indeterminate", length=560)
+        progress.pack(anchor="w")
+
+        def rebuild():
+            selected = {key for key, variable in selected_vars.items() if variable.get()}
+            requested_subtitle_settings = {
+                "max_words": int(max_words_var.get()),
+                "max_characters": int(max_chars_var.get()),
+                "min_characters": int(min_chars_var.get()),
+                "max_duration_seconds": 4.5,
+                "source": "approved_script_exact",
+            }
+            requested_style = {"preset": style_var.get(), "font_name": font_var.get()}
+            requested_media = {
+                "visual_persistence": persistence_var.get(),
+                "prefer_market_charts": bool(prefer_charts_var.get()),
+            }
+            voice_changed = (
+                voice_var.get() != metadata.get("voice") or
+                rate_var.get() != metadata.get("voice_rate", "+0%") or
+                pitch_var.get() != metadata.get("voice_pitch", "+0Hz")
+            )
+            if voice_changed:
+                selected.add("voice")
+            if requested_subtitle_settings != subtitle_settings:
+                selected.add("subtitle")
+            if requested_style != subtitle_style:
+                selected.add("video")
+            if requested_media != media_settings:
+                selected.add("media")
+            if not selected:
+                messagebox.showinfo("No changes selected", "Choose an output or change a setting.")
+                return
+
+            rebuild_button.configure(state="disabled")
+            progress.start(12)
+
+            def update_status(label):
+                self.after(0, status_var.set, label)
+
+            def worker():
+                try:
+                    self.controller.regenerate(
+                        self.workspace, selected,
+                        voice=voice_var.get(),
+                        voice_rate=rate_var.get(),
+                        voice_pitch=pitch_var.get(),
+                        subtitle_settings=requested_subtitle_settings,
+                        subtitle_style=requested_style,
+                        media_settings=requested_media,
+                        progress_callback=update_status,
+                    )
+                except Exception as exc:
+                    self.after(0, progress.stop)
+                    self.after(0, rebuild_button.configure, {"state": "normal"})
+                    self.after(0, messagebox.showerror, "Regeneration stopped", str(exc))
+                    return
+                self.after(0, progress.stop)
+                self.after(0, self.show_complete)
+
+            threading.Thread(target=worker, daemon=True).start()
+
+        rebuild_button = ttk.Button(
+            frame, text="Regenerate Selected Outputs",
+            style="Primary.TButton", command=rebuild,
+        )
+        rebuild_button.pack(anchor="w", pady=10)
+
     def show_complete(self):
         self.clear()
         video = self.workspace / "video" / "video.mp4"
         frame = ttk.Frame(self, padding=40)
         frame.pack(fill="both", expand=True)
-        ttk.Label(frame, text="Video Complete", style="Title.TLabel").pack(pady=(100, 18))
+        metadata = SessionService._read_metadata(self.workspace)
+        ttk.Label(frame, text="Video Complete", style="Title.TLabel").pack(pady=(100, 10))
+        ttk.Label(
+            frame,
+            text=f'{metadata.get("edition_label", "Global")} edition • {metadata.get("output_language", "English")}',
+            style="Heading.TLabel",
+        ).pack(pady=(0, 12))
         ttk.Label(frame, text=str(video), font=("Segoe UI", 11)).pack(pady=10)
 
         def open_folder():
@@ -351,8 +643,14 @@ class VideoFactoryApp(tk.Tk):
             else:
                 os.system(f'xdg-open "{folder}"')
 
-        ttk.Button(frame, text="Open Video Folder", style="Primary.TButton", command=open_folder).pack(pady=18)
-        ttk.Button(frame, text="Back to Sessions", command=self.show_home).pack()
+        ttk.Button(frame, text="Open Video Folder", style="Primary.TButton", command=open_folder).pack(pady=(18, 8))
+        ttk.Button(
+            frame,
+            text="Modify / Regenerate",
+            style="Primary.TButton",
+            command=self.show_modify,
+        ).pack(pady=8)
+        ttk.Button(frame, text="Back to Sessions", command=self.show_home).pack(pady=8)
 
 
 if __name__ == "__main__":

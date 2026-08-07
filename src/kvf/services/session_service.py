@@ -24,7 +24,13 @@ class SessionService:
         self.root = Path(root)
         self.root.mkdir(parents=True, exist_ok=True)
 
-    def create(self, name: str, category: str = "finance") -> Path:
+    def create(
+        self,
+        name: str,
+        category: str = "finance",
+        edition: str = "global",
+        edition_profile: dict[str, Any] | None = None,
+    ) -> Path:
         clean_name = name.strip()
         if not clean_name:
             raise ValueError("A project name is required.")
@@ -40,6 +46,7 @@ class SessionService:
         workspace = WorkspaceService(str(self.root)).create(topic)
         now = self._now()
         metadata = self._read_metadata(workspace)
+        profile = dict(edition_profile or {})
         metadata.update(
             {
                 "created_at": now,
@@ -47,6 +54,30 @@ class SessionService:
                 "status": "in_progress",
                 "current_stage": "research",
                 "reference_date": datetime.now().astimezone().date().isoformat(),
+                "edition": edition,
+                "edition_label": profile.get("label", edition.title()),
+                "language_code": profile.get("language_code", "en-US"),
+                "output_language": profile.get("output_language", "English"),
+                "whisper_language": profile.get("whisper_language", "en"),
+                "voice": profile.get("default_voice", "en-US-AndrewNeural"),
+                "voice_rate": "+0%",
+                "voice_pitch": "+0Hz",
+                "edition_profile": profile,
+                "subtitle_settings": {
+                    "max_words": profile.get("subtitle_max_words", 10),
+                    "max_characters": profile.get("subtitle_max_characters", 58),
+                    "max_duration_seconds": 4.5,
+                    "min_characters": profile.get("subtitle_min_characters", 6),
+                    "source": "approved_script_exact",
+                },
+                "subtitle_style": {
+                    "preset": "Compact",
+                    "font_name": profile.get("default_subtitle_font", "Arial"),
+                },
+                "media_settings": {
+                    "visual_persistence": "topic",
+                    "prefer_market_charts": True,
+                },
             }
         )
         self._write_metadata(workspace, metadata)

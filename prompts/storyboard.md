@@ -22,7 +22,7 @@ Do not include explanations.
 
 # Input
 
-Below is the complete script.
+Below is the complete {{ output_language }} script.
 
 {{script}}
 
@@ -56,6 +56,8 @@ Each scene must include a search query suitable for downloading media from sourc
 - Pixabay
 
 The query should describe exactly what should appear on screen.
+
+Search-language rule: {{ search_query_rule }}
 
 Good examples:
 
@@ -111,7 +113,7 @@ Historical location → photo
 
 Country overview → map
 
-Economic statistics → chart
+Economic statistics → chart only when the script provides exact values, period, units, and a named source
 
 Military strategy → diagram
 
@@ -207,7 +209,7 @@ Return EXACTLY this schema.
 
 2. Do not wrap the JSON in markdown.
 
-3. Do not invent narration.
+3. Do not invent or translate narration.
 
 4. Preserve the narration exactly as provided.
 
@@ -229,4 +231,8 @@ Return EXACTLY this schema.
 
 13. Transition duration should usually be 1 second.
 
-14. Return only the JSON object.
+14. Do not request a chart or graph unless the narration contains real numeric data, a time period, units, and a source. Otherwise use a relevant photo, map, or neutral illustration.
+
+15. For a real chart, visual.notes must identify the chart title, x-axis, y-axis, units, data period, and source.
+
+16. Return only the JSON object.

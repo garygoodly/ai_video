@@ -11,6 +11,8 @@ class MediaProvider(str, Enum):
     PEXELS = "pexels"
     PIXABAY = "pixabay"
     AI = "ai"
+    NEWS_ARTICLE = "news_article"
+    LOCAL = "local"
 
 
 class MediaAsset(BaseModel):

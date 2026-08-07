@@ -1,5 +1,7 @@
 import json
 
+from kvf.services.session_service import SessionService
+
 from kvf.models.application import Application
 from kvf.repositories.research_repository import ResearchRepository
 from kvf.services.prompt_service import PromptService
@@ -36,9 +38,15 @@ class GenerateScriptPromptStep(BaseStep):
             research_path
         )
 
+        metadata = SessionService._read_metadata(workspace)
+        profile = metadata.get("edition_profile", {})
         context = {
             "topic": research.topic,
             "summary": research.summary,
+            "edition_label": metadata.get("edition_label", "Global"),
+            "output_language": metadata.get("output_language", "English"),
+            "audience_note": profile.get("audience_note", "International viewers"),
+            "script_language_rule": profile.get("script_language_rule", "Write natural spoken English."),
             "research": json.dumps(
                 research.model_dump(),
                 indent=2,

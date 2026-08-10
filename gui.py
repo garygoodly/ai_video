@@ -18,12 +18,59 @@ from kvf.services.session_service import SessionService
 from kvf.utils.yaml_loader import load_yaml
 
 
+class ScrollableFrame(ttk.Frame):
+    """通用可滾動容器，解決表單過長擠壓底部按鈕的問題"""
+    def __init__(self, container, *args, **kwargs):
+        super().__init__(container, *args, **kwargs)
+        self.canvas = tk.Canvas(self, highlightthickness=0, borderwidth=0)
+        self.scrollbar = ttk.Scrollbar(self, orient="vertical", command=self.canvas.yview)
+        self.scrollable_content = ttk.Frame(self.canvas)
+
+        self.scrollable_content.bind(
+            "<Configure>",
+            lambda e: self.canvas.configure(scrollregion=self.canvas.bbox("all"))
+        )
+
+        self.canvas_window = self.canvas.create_window((0, 0), window=self.scrollable_content, anchor="nw")
+        self.canvas.bind(
+            "<Configure>",
+            lambda e: self.canvas.itemconfig(self.canvas_window, width=e.width)
+        )
+
+        self.canvas.configure(yscrollcommand=self.scrollbar.set)
+
+        self.canvas.pack(side="left", fill="both", expand=True)
+        self.scrollbar.pack(side="right", fill="y")
+
+        self.scrollable_content.bind("<Enter>", self._bind_mousewheel)
+        self.scrollable_content.bind("<Leave>", self._unbind_mousewheel)
+
+    def _bind_mousewheel(self, event):
+        self.canvas.bind_all("<MouseWheel>", self._on_mousewheel)
+
+    def _unbind_mousewheel(self, event):
+        self.canvas.unbind_all("<MouseWheel>")
+
+    def _on_mousewheel(self, event):
+        if self.canvas.winfo_exists():
+            self.canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
+
+
 class VideoFactoryApp(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Knowledge Video Factory")
         self.geometry("1180x880")
-        self.minsize(980, 760)
+        self.minsize(980, 720)
+
+        # 1. 啟動時自動最大化視窗 (跨平台支援)
+        try:
+            self.state("zoomed")
+        except tk.TclError:
+            try:
+                self.attributes("-zoomed", True)
+            except tk.TclError:
+                pass
 
         settings = load_yaml(str(PROJECT_ROOT / "config" / "settings.yaml"))
         self.controller = SessionController(settings, PROJECT_ROOT)
@@ -83,16 +130,22 @@ class VideoFactoryApp(tk.Tk):
         self.clear()
         frame = ttk.Frame(self, padding=36)
         frame.pack(fill="both", expand=True)
+
         ttk.Button(frame, text="← Back", command=self.show_home).pack(anchor="w")
-        ttk.Label(frame, text="Start New Session", style="Title.TLabel").pack(pady=(55, 12))
+
+        scroll_area = ScrollableFrame(frame)
+        scroll_area.pack(fill="both", expand=True, pady=10)
+        content = scroll_area.scrollable_content
+
+        ttk.Label(content, text="Start New Session", style="Title.TLabel").pack(pady=(20, 12))
         ttk.Label(
-            frame,
+            content,
             text=("Choose the audience edition first. The research prompt, writing language, "
                   "narration voice, and subtitles will follow that regional profile."),
             font=("Segoe UI", 11), wraplength=760, justify="center",
         ).pack(pady=(0, 22))
 
-        form = ttk.Frame(frame)
+        form = ttk.Frame(content)
         form.pack()
         editions = self.controller.editions.all()
         labels_by_key = {key: profile["label"] for key, profile in editions.items()}
@@ -156,17 +209,41 @@ class VideoFactoryApp(tk.Tk):
             text="Create Project",
             style="Primary.TButton",
             command=create_session,
-        ).grid(row=6, column=0)
+        ).grid(row=6, column=0, pady=(0, 20))
 
     def show_resume(self):
         self.clear()
         frame = ttk.Frame(self, padding=28)
         frame.pack(fill="both", expand=True)
-        ttk.Button(frame, text="← Back", command=self.show_home).pack(anchor="w")
-        ttk.Label(frame, text="Resume Session", style="Title.TLabel").pack(anchor="w", pady=(22, 20))
+
+        header = ttk.Frame(frame)
+        header.pack(side="top", fill="x")
+        ttk.Button(header, text="← Back", command=self.show_home).pack(anchor="w")
+        ttk.Label(header, text="Resume Session", style="Title.TLabel").pack(anchor="w", pady=(12, 16))
+
+        footer = ttk.Frame(frame, padding=(0, 12, 0, 0))
+        footer.pack(side="bottom", fill="x")
+
+        def resume_selected(event=None):
+            selection = tree.selection()
+            if not selection:
+                messagebox.showinfo("Select a session", "Choose a session to continue.")
+                return
+            self.workspace = workspace_by_id[selection[0]]
+            self.open_current_stage()
+
+        ttk.Button(
+            footer,
+            text="Continue Selected Session",
+            style="Primary.TButton",
+            command=resume_selected,
+        ).pack(anchor="center")
+
+        tree_frame = ttk.Frame(frame)
+        tree_frame.pack(side="top", fill="both", expand=True)
 
         columns = ("project", "edition", "stage", "progress", "updated")
-        tree = ttk.Treeview(frame, columns=columns, show="headings", height=18)
+        tree = ttk.Treeview(tree_frame, columns=columns, show="headings")
         tree.heading("project", text="Project")
         tree.heading("edition", text="Edition")
         tree.heading("stage", text="Continue From")
@@ -177,7 +254,11 @@ class VideoFactoryApp(tk.Tk):
         tree.column("stage", width=160)
         tree.column("progress", width=100, anchor="center")
         tree.column("updated", width=220)
-        tree.pack(fill="both", expand=True)
+
+        scrollbar = ttk.Scrollbar(tree_frame, orient="vertical", command=tree.yview)
+        tree.configure(yscrollcommand=scrollbar.set)
+        tree.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
 
         sessions = self.controller.sessions.list_sessions()
         workspace_by_id = {}
@@ -198,21 +279,7 @@ class VideoFactoryApp(tk.Tk):
                 ),
             )
 
-        def resume_selected(event=None):
-            selection = tree.selection()
-            if not selection:
-                messagebox.showinfo("Select a session", "Choose a session to continue.")
-                return
-            self.workspace = workspace_by_id[selection[0]]
-            self.open_current_stage()
-
         tree.bind("<Double-1>", resume_selected)
-        ttk.Button(
-            frame,
-            text="Continue Selected Session",
-            style="Primary.TButton",
-            command=resume_selected,
-        ).pack(pady=18)
 
         if not sessions:
             ttk.Label(frame, text="No saved sessions were found.").pack(pady=16)
@@ -241,8 +308,9 @@ class VideoFactoryApp(tk.Tk):
             return
 
         metadata = SessionService._read_metadata(self.workspace)
-        header = ttk.Frame(self, padding=(24, 18))
-        header.pack(fill="x")
+
+        header = ttk.Frame(self, padding=(24, 14, 24, 10))
+        header.pack(side="top", fill="x")
         ttk.Button(header, text="Sessions", command=self.show_home).pack(side="left")
         ttk.Label(header, text=metadata["name"], style="Heading.TLabel").pack(side="left", padx=20)
         ttk.Label(
@@ -250,10 +318,27 @@ class VideoFactoryApp(tk.Tk):
             text=f'{metadata.get("edition_label", "Global")} • {metadata.get("output_language", "English")} • Step: {stage.title()}',
         ).pack(side="right")
 
+        # 固定底部按鈕列
+        footer = ttk.Frame(self, padding=(24, 8, 24, 14))
+        footer.pack(side="bottom", fill="x")
+
+        status_var = tk.StringVar(value="Waiting for JSON. It will be checked and saved automatically.")
+        status_label = ttk.Label(footer, textvariable=status_var)
+        status_label.pack(side="left", fill="x", expand=True)
+
+        next_button = ttk.Button(
+            footer,
+            text="Next →",
+            style="Primary.TButton",
+            state="disabled",
+        )
+        next_button.pack(side="right")
+
+        # 中間工作區
         pane = ttk.Panedwindow(self, orient="horizontal")
-        pane.pack(fill="both", expand=True, padx=24, pady=(0, 12))
-        left = ttk.Frame(pane, padding=14)
-        right = ttk.Frame(pane, padding=14)
+        pane.pack(side="top", fill="both", expand=True, padx=24, pady=(0, 6))
+        left = ttk.Frame(pane, padding=10)
+        right = ttk.Frame(pane, padding=10)
         pane.add(left, weight=1)
         pane.add(right, weight=1)
 
@@ -282,19 +367,6 @@ class VideoFactoryApp(tk.Tk):
             result_text.insert("1.0", existing.read_text(encoding="utf-8"))
         result_text.pack(fill="both", expand=True)
 
-        status_var = tk.StringVar(value="Waiting for JSON. It will be checked and saved automatically.")
-        status_label = ttk.Label(self, textvariable=status_var, padding=(24, 4))
-        status_label.pack(fill="x")
-        footer = ttk.Frame(self, padding=(24, 10, 24, 18))
-        footer.pack(fill="x")
-
-        next_button = ttk.Button(
-            footer,
-            text="Next →",
-            style="Primary.TButton",
-            state="disabled",
-        )
-        next_button.pack(side="right")
         validation_job = None
         last_saved = {"content": None}
 
@@ -378,21 +450,45 @@ class VideoFactoryApp(tk.Tk):
     def show_modify(self):
         self.clear()
         metadata = SessionService._read_metadata(self.workspace)
-        frame = ttk.Frame(self, padding=24)
+        frame = ttk.Frame(self, padding=20)
         frame.pack(fill="both", expand=True)
-        ttk.Button(frame, text="← Back", command=self.show_complete).pack(anchor="w")
-        ttk.Label(frame, text="Modify Existing Video", style="Title.TLabel").pack(anchor="w", pady=(14, 6))
+
+        # 1. 頂部標題與說明
+        header = ttk.Frame(frame)
+        header.pack(side="top", fill="x")
+        ttk.Button(header, text="← Back", command=self.show_complete).pack(anchor="w")
+        ttk.Label(header, text="Modify Existing Video", style="Title.TLabel").pack(anchor="w", pady=(10, 4))
         ttk.Label(
-            frame,
+            header,
             text=("Change voice, subtitle appearance, segmentation, or media behavior. "
                   "Only the required downstream stages are rebuilt."),
             wraplength=1050, font=("Segoe UI", 10),
-        ).pack(anchor="w", pady=(0, 12))
+        ).pack(anchor="w", pady=(0, 8))
 
-        body = ttk.Panedwindow(frame, orient="horizontal")
+        # 2. 底部固定動作列 (Fixed Footer) - 優先 Pack，確保永不被擠壓
+        footer = ttk.Frame(frame, padding=(0, 10, 0, 0))
+        footer.pack(side="bottom", fill="x")
+
+        status_var = tk.StringVar(value="Ready.")
+        ttk.Label(footer, textvariable=status_var, font=("Segoe UI", 10)).pack(anchor="w", pady=(2, 2))
+        progress = ttk.Progressbar(footer, mode="indeterminate")
+        progress.pack(anchor="w", fill="x", pady=(0, 6))
+
+        rebuild_button = ttk.Button(
+            footer, text="Regenerate Selected Outputs",
+            style="Primary.TButton",
+        )
+        rebuild_button.pack(anchor="w")
+
+        # 3. 中間滾動區域 (Scrollable Content)
+        scroll_container = ScrollableFrame(frame)
+        scroll_container.pack(side="top", fill="both", expand=True, pady=6)
+        scroll_content = scroll_container.scrollable_content
+
+        body = ttk.Panedwindow(scroll_content, orient="horizontal")
         body.pack(fill="both", expand=True)
-        left = ttk.Frame(body, padding=12)
-        right = ttk.Frame(body, padding=12)
+        left = ttk.Frame(body, padding=8)
+        right = ttk.Frame(body, padding=8)
         body.add(left, weight=1)
         body.add(right, weight=1)
 
@@ -569,7 +665,7 @@ class VideoFactoryApp(tk.Tk):
             ttk.Label(subtitle_frame, text="Maximum words per cue").grid(row=2, column=0, sticky="w")
             ttk.Spinbox(subtitle_frame, from_=4, to=18, textvariable=max_words_var, width=8).grid(row=3, column=0, sticky="w")
 
-        preview = tk.Frame(right, bg="#182331", height=250)
+        preview = tk.Frame(right, bg="#182331", height=200)
         preview.pack(fill="x", pady=12)
         preview.pack_propagate(False)
         preview_text = tk.Label(
@@ -615,11 +711,6 @@ class VideoFactoryApp(tk.Tk):
         ttk.Button(tools, text="Script JSON", command=lambda: open_path(self.workspace / "script" / "script.json")).pack(side="left", padx=6)
         ttk.Button(tools, text="Media Folder", command=lambda: open_path(self.workspace / "assets" / "rendered")).pack(side="left", padx=6)
 
-        status_var = tk.StringVar(value="Ready.")
-        ttk.Label(frame, textvariable=status_var, font=("Segoe UI", 10)).pack(anchor="w", pady=(10, 4))
-        progress = ttk.Progressbar(frame, mode="indeterminate", length=560)
-        progress.pack(anchor="w")
-
         def rebuild():
             selected = {key for key, variable in selected_vars.items() if variable.get()}
             requested_subtitle_settings = {
@@ -645,8 +736,6 @@ class VideoFactoryApp(tk.Tk):
             if voice_changed:
                 selected.add("voice")
             if requested_subtitle_settings != subtitle_settings:
-                # Cue segmentation is shared by TTS and subtitles. Rebuild the
-                # voice so the new subtitle boundaries get exact audio timing.
                 selected.add("voice")
             if requested_style != subtitle_style:
                 selected.add("video")
@@ -685,11 +774,7 @@ class VideoFactoryApp(tk.Tk):
 
             threading.Thread(target=worker, daemon=True).start()
 
-        rebuild_button = ttk.Button(
-            frame, text="Regenerate Selected Outputs",
-            style="Primary.TButton", command=rebuild,
-        )
-        rebuild_button.pack(anchor="w", pady=10)
+        rebuild_button.configure(command=rebuild)
 
     def show_complete(self):
         self.clear()
@@ -715,14 +800,10 @@ class VideoFactoryApp(tk.Tk):
                 os.system(f'xdg-open "{folder}"')
 
         ttk.Button(frame, text="Open Video Folder", style="Primary.TButton", command=open_folder).pack(pady=(18, 8))
-        ttk.Button(
-            frame,
-            text="Modify / Regenerate",
-            style="Primary.TButton",
-            command=self.show_modify,
-        ).pack(pady=8)
-        ttk.Button(frame, text="Back to Sessions", command=self.show_home).pack(pady=8)
+        ttk.Button(frame, text="Modify Video Settings", command=self.show_modify).pack(pady=4)
+        ttk.Button(frame, text="Back to Home", command=self.show_home).pack(pady=4)
 
 
 if __name__ == "__main__":
-    VideoFactoryApp().mainloop()
+    app = VideoFactoryApp()
+    app.mainloop()

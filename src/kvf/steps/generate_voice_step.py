@@ -1,10 +1,8 @@
 from __future__ import annotations
 
-import array
 import json
 import subprocess
 import tempfile
-import wave
 from pathlib import Path
 
 from kvf.models.application import Application
@@ -18,24 +16,15 @@ from kvf.steps.base_step import BaseStep
 
 
 class GenerateVoiceStep(BaseStep):
-    """Generate narration with semantic rather than subtitle-driven pauses.
+    """Generate narration in either natural continuous or cue-synced mode.
 
-    Subtitle-only splits inside one sentence receive no inserted pause. A real
-    sentence boundary receives a short pause. TTS-generated leading/trailing
-    silence is trimmed from each cue first, preventing every subtitle chunk
-    from sounding like an independent sentence.
+    Continuous mode deliberately decouples TTS from subtitle segmentation. The
+    complete approved article is sent to the selected TTS engine as one text,
+    allowing the engine to control phrasing and sentence pauses naturally.
+
+    Cue-synced mode remains available when exact subtitle/audio boundaries are
+    more important than maximum narration naturalness.
     """
-
-    # These values are deliberately small. They can become GUI settings later
-    # without changing the cue-timing format.
-    INTRA_SENTENCE_PAUSE_SECONDS = 0.0
-    SENTENCE_PAUSE_SECONDS = 0.14
-
-    # Trim only silence at the *edges* of generated clips. This avoids the
-    # aggressive behavior of ffmpeg silenceremove on natural internal pauses.
-    SILENCE_THRESHOLD_DBFS = -45.0
-    EDGE_PADDING_SECONDS = 0.015
-    ANALYSIS_WINDOW_SECONDS = 0.010
 
     def execute(self, application: Application) -> None:
         workspace = application.project.workspace
@@ -45,12 +34,59 @@ class GenerateVoiceStep(BaseStep):
         timing_path = output_dir / "cue_timing.json"
         metadata_path = output_dir / "voice.json"
 
-        if audio_path.exists() and timing_path.exists():
-            print("Voice and cue timing already exist. [SKIP]")
+        if audio_path.exists():
+            print("Voice already exists. [SKIP]")
             return
 
         script = ScriptRepository().load(workspace / "script" / "script.json")
         metadata = SessionService._read_metadata(workspace)
+        mode = metadata.get("narration_mode", "continuous")
+        if mode == "continuous":
+            self._generate_continuous(script, metadata, audio_path, timing_path)
+        else:
+            self._generate_cue_synced(script, metadata, audio_path, timing_path)
+
+        VoiceRepository().save(
+            Voice(
+                provider=metadata.get("voice_engine", "edge"),
+                voice=metadata.get("voice", "en-US-AndrewNeural"),
+                file=audio_path.name,
+            ),
+            metadata_path,
+        )
+        print(f"Voice generated in {mode} narration mode: {audio_path}")
+
+    def _generate_continuous(self, script, metadata, audio_path: Path, timing_path: Path) -> None:
+        # Preserve the approved article's punctuation. Do NOT split at subtitle
+        # boundaries: this is the key to natural cross-clause prosody.
+        article = "\n\n".join(
+            section.narration.strip() for section in script.sections
+            if section.narration.strip()
+        )
+        if not article:
+            raise ValueError("The approved script contains no narration text.")
+
+        engine = VoiceEngineService()
+        engine.generate(
+            engine=metadata.get("voice_engine", "edge"),
+            voice=metadata.get("voice", "en-US-AndrewNeural"),
+            language_code=metadata.get("language_code", "en-US"),
+            text=article,
+            output=audio_path,
+            rate=metadata.get("voice_rate", "+0%"),
+            pitch=metadata.get("voice_pitch", "+0Hz"),
+        )
+        duration = self._probe_duration(audio_path)
+        timing_path.write_text(
+            json.dumps({
+                "mode": "continuous",
+                "duration_seconds": duration,
+                "note": "Narration synthesized independently from subtitle segmentation."
+            }, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+
+    def _generate_cue_synced(self, script, metadata, audio_path: Path, timing_path: Path) -> None:
         settings = metadata.get("subtitle_settings", {})
         segmenter = ExactSubtitleService(
             language_code=metadata.get("language_code", "en-US"),
@@ -58,164 +94,44 @@ class GenerateVoiceStep(BaseStep):
             min_characters=settings.get("min_characters", 6),
             max_words=settings.get("max_words", 10),
         )
-        units = segmenter.segment_units([section.narration for section in script.sections])
-        if not units:
+        texts = segmenter.segment_sections([section.narration for section in script.sections])
+        if not texts:
             raise ValueError("The approved script produced no narration cues.")
 
-        voice_engine = metadata.get("voice_engine", "edge")
-        voice_name = metadata.get("voice", "en-US-AndrewNeural")
-        voice_rate = metadata.get("voice_rate", "+0%")
-        voice_pitch = metadata.get("voice_pitch", "+0Hz")
-        language_code = metadata.get("language_code", "en-US")
         engine = VoiceEngineService()
-
+        voice_engine = metadata.get("voice_engine", "edge")
         with tempfile.TemporaryDirectory(prefix="kvf-voice-") as tmp_name:
             tmp = Path(tmp_name)
-            normalized_files: list[Path] = []
-            cues: list[dict] = []
+            files = []
+            cues = []
             cursor = 0.0
-
-            for index, unit in enumerate(units, start=1):
-                text = str(unit["text"])
-                boundary_after = str(unit.get("boundary_after", "intra"))
-                raw_ext = ".mp3" if voice_engine == "edge" else ".wav"
-                raw = tmp / f"raw_{index:04d}{raw_ext}"
+            for index, text in enumerate(texts, start=1):
+                raw = tmp / f"raw_{index:04d}{'.mp3' if voice_engine == 'edge' else '.wav'}"
                 wav = tmp / f"cue_{index:04d}.wav"
                 engine.generate(
-                    engine=voice_engine,
-                    voice=voice_name,
-                    language_code=language_code,
-                    text=text,
-                    output=raw,
-                    rate=voice_rate,
-                    pitch=voice_pitch,
+                    engine=voice_engine, voice=metadata.get("voice", "en-US-AndrewNeural"),
+                    language_code=metadata.get("language_code", "en-US"), text=text, output=raw,
+                    rate=metadata.get("voice_rate", "+0%"), pitch=metadata.get("voice_pitch", "+0Hz"),
                 )
-                subprocess.run(
-                    ["ffmpeg", "-y", "-loglevel", "error", "-i", str(raw),
-                     "-ar", "48000", "-ac", "1", "-c:a", "pcm_s16le", str(wav)],
-                    check=True,
-                )
-
-                self._trim_edge_silence(wav)
+                subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(raw),
+                                "-ar", "48000", "-ac", "1", "-c:a", "pcm_s16le", str(wav)], check=True)
                 duration = self._probe_duration(wav)
-                pause_after = self._pause_for_boundary(boundary_after, is_last=index == len(units))
-                cues.append({
-                    "text": text,
-                    "start": cursor,
-                    "end": cursor + duration,
-                    "boundary_after": boundary_after,
-                    "pause_after_seconds": pause_after,
-                })
-                cursor += duration + pause_after
-                normalized_files.append(wav)
-                print(
-                    f"Voice cue {index}/{len(units)} generated: {duration:.2f}s, "
-                    f"pause {pause_after:.2f}s ({boundary_after})"
-                )
+                cues.append({"text": text, "start": cursor, "end": cursor + duration})
+                cursor += duration
+                files.append(wav)
 
-            combined_wav = tmp / "narration.wav"
-            self._combine_with_semantic_pauses(normalized_files, cues, combined_wav)
-            subprocess.run(
-                ["ffmpeg", "-y", "-loglevel", "error", "-i", str(combined_wav),
-                 "-c:a", "libmp3lame", "-b:a", "128k", str(audio_path)],
-                check=True,
-            )
-
+            concat = tmp / "cues.ffconcat"
+            lines = ["ffconcat version 1.0"]
+            for wav in files:
+                escaped = str(wav.resolve()).replace("'", "'\\''")
+                lines.append(f"file '{escaped}'")
+            concat.write_text("\n".join(lines) + "\n", encoding="utf-8")
+            combined = tmp / "narration.wav"
+            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0",
+                            "-i", str(concat), "-c:a", "pcm_s16le", str(combined)], check=True)
+            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(combined),
+                            "-c:a", "libmp3lame", "-b:a", "128k", str(audio_path)], check=True)
         timing_path.write_text(json.dumps(cues, ensure_ascii=False, indent=2), encoding="utf-8")
-        VoiceRepository().save(
-            Voice(provider=voice_engine, voice=voice_name, file=audio_path.name),
-            metadata_path,
-        )
-        print(
-            f"Voice generated with {voice_engine}/{voice_name}, rate {voice_rate}, "
-            f"pitch {voice_pitch}; semantic cue timing saved to {timing_path}"
-        )
-
-    def _pause_for_boundary(self, boundary_after: str, *, is_last: bool) -> float:
-        if is_last:
-            return 0.0
-        if boundary_after == "sentence":
-            return self.SENTENCE_PAUSE_SECONDS
-        return self.INTRA_SENTENCE_PAUSE_SECONDS
-
-    def _trim_edge_silence(self, wav_path: Path) -> None:
-        """Trim only leading/trailing low-level PCM silence from a mono WAV."""
-        with wave.open(str(wav_path), "rb") as reader:
-            channels = reader.getnchannels()
-            sample_width = reader.getsampwidth()
-            frame_rate = reader.getframerate()
-            frames = reader.readframes(reader.getnframes())
-
-        if channels != 1 or sample_width != 2 or not frames:
-            return
-
-        samples = array.array("h")
-        samples.frombytes(frames)
-        if not samples:
-            return
-
-        # 16-bit PCM amplitude corresponding to the configured dBFS threshold.
-        threshold = 32767.0 * (10.0 ** (self.SILENCE_THRESHOLD_DBFS / 20.0))
-        window = max(1, int(frame_rate * self.ANALYSIS_WINDOW_SECONDS))
-        padding = max(0, int(frame_rate * self.EDGE_PADDING_SECONDS))
-
-        first_active = None
-        for start in range(0, len(samples), window):
-            block = samples[start:start + window]
-            if block and max(abs(value) for value in block) >= threshold:
-                first_active = start
-                break
-
-        last_active = None
-        for end in range(len(samples), 0, -window):
-            start = max(0, end - window)
-            block = samples[start:end]
-            if block and max(abs(value) for value in block) >= threshold:
-                last_active = end
-                break
-
-        if first_active is None or last_active is None or first_active >= last_active:
-            return
-
-        trim_start = max(0, first_active - padding)
-        trim_end = min(len(samples), last_active + padding)
-        trimmed = samples[trim_start:trim_end]
-
-        with wave.open(str(wav_path), "wb") as writer:
-            writer.setnchannels(1)
-            writer.setsampwidth(2)
-            writer.setframerate(frame_rate)
-            writer.writeframes(trimmed.tobytes())
-
-    @staticmethod
-    def _combine_with_semantic_pauses(
-        wav_files: list[Path],
-        cues: list[dict],
-        output: Path,
-    ) -> None:
-        if len(wav_files) != len(cues):
-            raise ValueError("Voice cue file count does not match timing cue count.")
-
-        frame_rate = 48000
-        with wave.open(str(output), "wb") as writer:
-            writer.setnchannels(1)
-            writer.setsampwidth(2)
-            writer.setframerate(frame_rate)
-
-            for wav_path, cue in zip(wav_files, cues):
-                with wave.open(str(wav_path), "rb") as reader:
-                    if (
-                        reader.getnchannels() != 1
-                        or reader.getsampwidth() != 2
-                        or reader.getframerate() != frame_rate
-                    ):
-                        raise ValueError(f"Unexpected voice cue WAV format: {wav_path}")
-                    writer.writeframes(reader.readframes(reader.getnframes()))
-
-                pause_seconds = max(0.0, float(cue.get("pause_after_seconds", 0.0)))
-                pause_frames = round(frame_rate * pause_seconds)
-                if pause_frames:
-                    writer.writeframes(b"\x00\x00" * pause_frames)
 
     @staticmethod
     def _probe_duration(audio: Path) -> float:

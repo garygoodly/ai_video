@@ -36,6 +36,8 @@ class RegenerationService:
         subtitle_settings: dict | None = None,
         subtitle_style: dict | None = None,
         media_settings: dict | None = None,
+        narration_mode: str | None = None,
+        subtitles_enabled: bool | None = None,
     ) -> set[str]:
         expanded: set[str] = set()
         for stage in selected:
@@ -64,5 +66,9 @@ class RegenerationService:
             metadata["subtitle_style"] = subtitle_style
         if media_settings is not None:
             metadata["media_settings"] = media_settings
+        if narration_mode is not None:
+            metadata["narration_mode"] = narration_mode
+        if subtitles_enabled is not None:
+            metadata["subtitles_enabled"] = subtitles_enabled
         SessionService._write_metadata(workspace, metadata)
         return expanded

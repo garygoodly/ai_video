@@ -599,6 +599,31 @@ class VideoFactoryApp(tk.Tk):
         preview_button = ttk.Button(voice_frame, text="▶ Play Voice Preview", command=play_voice_preview)
         preview_button.grid(row=5, column=0, columnspan=2, sticky="w", pady=(3, 0))
 
+        narration_frame = ttk.LabelFrame(left, text="Narration & subtitles", padding=12)
+        narration_frame.pack(fill="x", pady=(0, 10))
+        narration_mode_var = tk.StringVar(value=metadata.get("narration_mode", "continuous"))
+        subtitles_enabled_var = tk.BooleanVar(value=bool(metadata.get("subtitles_enabled", False)))
+        ttk.Radiobutton(
+            narration_frame,
+            text="Continuous narration — speak the approved article naturally",
+            variable=narration_mode_var, value="continuous",
+        ).pack(anchor="w")
+        ttk.Radiobutton(
+            narration_frame,
+            text="Cue-synced narration — exact subtitle timing (legacy mode)",
+            variable=narration_mode_var, value="cue_synced",
+        ).pack(anchor="w", pady=(3, 0))
+        ttk.Checkbutton(
+            narration_frame, text="Enable burned-in subtitles",
+            variable=subtitles_enabled_var,
+        ).pack(anchor="w", pady=(8, 0))
+        ttk.Label(
+            narration_frame,
+            text=("For the most natural speech, use Continuous narration with subtitles off. "
+                  "If subtitles are enabled, choose Cue-synced narration for exact alignment."),
+            foreground="#555555", wraplength=470,
+        ).pack(anchor="w", pady=(5, 0))
+
         media_settings = metadata.get("media_settings", {})
         media_frame = ttk.LabelFrame(left, text="Visual behavior", padding=12)
         media_frame.pack(fill="x", pady=(0, 10))
@@ -733,9 +758,20 @@ class VideoFactoryApp(tk.Tk):
                 rate_var.get() != metadata.get("voice_rate", "+0%") or
                 pitch_var.get() != metadata.get("voice_pitch", "+0Hz")
             )
-            if voice_changed:
+            narration_changed = narration_mode_var.get() != metadata.get("narration_mode", "continuous")
+            subtitles_changed = bool(subtitles_enabled_var.get()) != bool(metadata.get("subtitles_enabled", False))
+            if subtitles_enabled_var.get() and narration_mode_var.get() == "continuous":
+                messagebox.showwarning(
+                    "Choose narration mode",
+                    "Continuous narration is intentionally independent of subtitle chunks. "
+                    "Turn subtitles off, or select Cue-synced narration for exact subtitle alignment.",
+                )
+                return
+            if voice_changed or narration_changed:
                 selected.add("voice")
-            if requested_subtitle_settings != subtitle_settings:
+            if subtitles_changed:
+                selected.add("subtitle")
+            if requested_subtitle_settings != subtitle_settings and subtitles_enabled_var.get():
                 selected.add("voice")
             if requested_style != subtitle_style:
                 selected.add("video")
@@ -762,6 +798,8 @@ class VideoFactoryApp(tk.Tk):
                         subtitle_settings=requested_subtitle_settings,
                         subtitle_style=requested_style,
                         media_settings=requested_media,
+                        narration_mode=narration_mode_var.get(),
+                        subtitles_enabled=bool(subtitles_enabled_var.get()),
                         progress_callback=update_status,
                     )
                 except Exception as exc:

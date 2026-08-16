@@ -10,9 +10,8 @@ class ExactSubtitleService:
     """Create deterministic subtitles from the approved script.
 
     Text never comes from ASR, so names, Chinese characters and Arabic numerals
-    remain exactly as approved. Segmentation also preserves whether a cue break
-    is inside a sentence or at a real sentence boundary. The voice step uses
-    that information to avoid unnatural pauses between subtitle-only chunks.
+    remain exactly as approved. When cue timing produced during TTS exists, it
+    is used directly; this keeps subtitles aligned after any voice-speed change.
     """
 
     def __init__(
@@ -29,23 +28,10 @@ class ExactSubtitleService:
         self.is_cjk = language_code.startswith(("zh", "ja"))
 
     def segment_sections(self, sections: list[str]) -> list[str]:
-        return [unit["text"] for unit in self.segment_units(sections)]
-
-    def segment_units(self, sections: list[str]) -> list[dict]:
-        """Return subtitle/TTS units with semantic pause information.
-
-        ``boundary_after`` is:
-        - ``intra``: the next cue is still part of the same written sentence.
-          This includes comma splits and length-only subtitle splits.
-        - ``sentence``: the written sentence really ended (period, !, ?, etc.).
-
-        Punctuation used as a boundary is intentionally omitted from the cue
-        text for CJK editions, matching the subtitle-display policy.
-        """
-        units: list[dict] = []
+        cues: list[str] = []
         for section in sections:
-            units.extend(self._segment_units(section))
-        return [unit for unit in units if str(unit.get("text", "")).strip()]
+            cues.extend(self._segment(section))
+        return [cue for cue in cues if cue.strip()]
 
     def generate(
         self,
@@ -82,76 +68,23 @@ class ExactSubtitleService:
             cursor = end
         return cues
 
-    def _segment_units(self, text: str) -> list[dict]:
+    def _segment(self, text: str) -> list[str]:
         normalized = re.sub(r"\s+", "" if self.is_cjk else " ", text).strip()
-        if not normalized:
-            return []
-
         if self.language_code.startswith("zh"):
-            return self._segment_cjk_with_boundaries(normalized, comma_chars="，；：", sentence_chars="。！？")
+            clauses = [part.strip() for part in re.split(r"[，。！？；：]+", normalized) if part.strip()]
+            return self._balance_cjk(clauses)
         if self.language_code.startswith("ja"):
-            return self._segment_cjk_with_boundaries(normalized, comma_chars="、，；：", sentence_chars="。！？")
-        return self._segment_latin_with_boundaries(normalized)
+            clauses = [part.strip() for part in re.split(r"[、。！？；：]+", normalized) if part.strip()]
+            return self._balance_cjk(clauses)
 
-    def _segment_cjk_with_boundaries(
-        self,
-        text: str,
-        *,
-        comma_chars: str,
-        sentence_chars: str,
-    ) -> list[dict]:
-        boundary_chars = re.escape(comma_chars + sentence_chars)
-        parts = re.split(f"([{boundary_chars}])", text)
-        units: list[dict] = []
-
-        index = 0
-        while index < len(parts):
-            clause = parts[index].strip()
-            delimiter = parts[index + 1] if index + 1 < len(parts) else ""
-            index += 2
-            if not clause:
-                continue
-
-            pieces = self._balance_cjk([clause])
-            for piece_index, piece in enumerate(pieces):
-                is_last_piece = piece_index == len(pieces) - 1
-                if not is_last_piece:
-                    boundary_after = "intra"
-                elif delimiter and delimiter in sentence_chars:
-                    boundary_after = "sentence"
-                else:
-                    # Comma-like punctuation or a section ending without a
-                    # sentence mark should not create a large audible pause.
-                    boundary_after = "intra"
-                units.append({"text": piece, "boundary_after": boundary_after})
-
-        if units:
-            # A section boundary is a real narration boundary unless the source
-            # explicitly continues into the next section. Keep it short, but
-            # don't run sections together with zero separation.
-            units[-1]["boundary_after"] = "sentence"
-        return units
-
-    def _segment_latin_with_boundaries(self, text: str) -> list[dict]:
-        sentence_matches = list(re.finditer(r".*?(?:[.!?]+(?=\s|$)|$)", text))
-        units: list[dict] = []
-        for match in sentence_matches:
-            sentence = match.group(0).strip()
-            if not sentence:
-                continue
+        sentences = [part.strip() for part in re.split(r"(?<=[.!?])\s+", normalized) if part.strip()]
+        chunks: list[str] = []
+        for sentence in sentences:
             words = sentence.rstrip(".!?").split()
-            sentence_chunks: list[str] = []
             while words:
-                sentence_chunks.append(" ".join(words[: self.max_words]))
+                chunks.append(" ".join(words[: self.max_words]))
                 words = words[self.max_words :]
-            for index, chunk in enumerate(sentence_chunks):
-                units.append({
-                    "text": chunk,
-                    "boundary_after": "sentence" if index == len(sentence_chunks) - 1 else "intra",
-                })
-        if units:
-            units[-1]["boundary_after"] = "sentence"
-        return units
+        return chunks
 
     def _balance_cjk(self, clauses: list[str]) -> list[str]:
         pieces: list[str] = []

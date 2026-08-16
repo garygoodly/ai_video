@@ -111,13 +111,16 @@ class SessionController:
         voice_rate: str | None = None,
         voice_pitch: str | None = None,
         media_settings: dict | None = None,
+        narration_mode: str | None = None,
+        subtitles_enabled: bool | None = None,
         progress_callback: Callable[[str], None] | None = None,
     ) -> set[str]:
         from kvf.services.regeneration_service import RegenerationService
 
         rebuilt = RegenerationService.invalidate(
             workspace, selected, voice, voice_engine, voice_rate, voice_pitch,
-            subtitle_settings, subtitle_style, media_settings
+            subtitle_settings, subtitle_style, media_settings,
+            narration_mode, subtitles_enabled
         )
         self.sessions.touch(workspace)
         self.run_automatic(workspace, progress_callback)

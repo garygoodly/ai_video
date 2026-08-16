@@ -117,3 +117,15 @@ Open the completed project and choose **Modify / Regenerate**. You can change
 voice engine, speaker, speed, pitch, subtitle style, segmentation, or media.
 Only dependent stages are invalidated and rebuilt; you do not need to manually
 delete workspace files.
+
+## Narration experiment: continuous speech and optional subtitles
+
+The Modify Existing Video screen now separates narration from subtitles.
+
+- **Continuous narration** sends the complete approved article to the selected TTS engine. This is the recommended mode when natural phrasing and pauses are the priority.
+- **Cue-synced narration** keeps the previous subtitle-cue-based TTS behavior for exact subtitle timing.
+- **Enable burned-in subtitles** is independent. For this version, exact subtitles require Cue-synced narration; Continuous narration is intended to be tested with subtitles disabled.
+- Taiwan projects can select either Taiwan Mandarin (`zh-TW-*`) or Mainland Mandarin (`zh-CN-*`) Edge voices while keeping the script itself in Traditional Chinese.
+- Voice Preview uses the currently selected engine, voice, speed, and pitch before regeneration.
+
+Changing narration mode, voice, speed, or pitch invalidates narration and its downstream outputs so the final video is rebuilt consistently.

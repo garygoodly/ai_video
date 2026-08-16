@@ -19,6 +19,10 @@ editions:
       - zh-TW-HsiaoChenNeural
       - zh-TW-YunJheNeural
       - zh-TW-HsiaoYuNeural
+      - zh-CN-XiaoxiaoNeural
+      - zh-CN-YunxiNeural
+      - zh-CN-YunjianNeural
+      - zh-CN-XiaoyiNeural
     voice_engines:
       edge:
         label: Microsoft Edge TTS
@@ -26,6 +30,10 @@ editions:
           - zh-TW-HsiaoChenNeural
           - zh-TW-YunJheNeural
           - zh-TW-HsiaoYuNeural
+          - zh-CN-XiaoxiaoNeural
+          - zh-CN-YunxiNeural
+          - zh-CN-YunjianNeural
+          - zh-CN-XiaoyiNeural
       kokoro:
         label: Kokoro (local, optional)
         voices:

@@ -10,17 +10,34 @@ from kvf.steps.base_step import BaseStep
 class GenerateSubtitleStep(BaseStep):
     def execute(self, application: Application):
         workspace = application.project.workspace
-        voice = workspace / "voice" / "narration.mp3"
-        timing = workspace / "voice" / "cue_timing.json"
         subtitle_dir = workspace / "subtitle"
+        subtitle_dir.mkdir(parents=True, exist_ok=True)
         srt = subtitle_dir / "subtitle.srt"
         metadata_path = subtitle_dir / "subtitle.json"
+        session_metadata = SessionService._read_metadata(workspace)
+
+        if not session_metadata.get("subtitles_enabled", True):
+            # Keep an empty SRT as an explicit artifact so session progress and
+            # regeneration remain deterministic while FFmpeg omits the filter.
+            srt.write_text("", encoding="utf-8")
+            SubtitleRepository().save(
+                Subtitle(provider="disabled", file="subtitle.srt"), metadata_path
+            )
+            print("Subtitles disabled for this session.")
+            return
 
         if srt.exists() and metadata_path.exists():
             print("Subtitle already exists. [SKIP]")
             return
 
-        session_metadata = SessionService._read_metadata(workspace)
+        if session_metadata.get("narration_mode", "continuous") == "continuous":
+            raise RuntimeError(
+                "Continuous narration is intentionally independent of subtitle chunks. "
+                "Turn subtitles off, or choose Cue-synced narration for exact subtitles."
+            )
+
+        voice = workspace / "voice" / "narration.mp3"
+        timing = workspace / "voice" / "cue_timing.json"
         settings = session_metadata.get("subtitle_settings", {})
         script = ScriptRepository().load(workspace / "script" / "script.json")
         service = ExactSubtitleService(
@@ -30,11 +47,9 @@ class GenerateSubtitleStep(BaseStep):
             max_words=settings.get("max_words", 10),
         )
         cues = service.generate(
-            [section.narration for section in script.sections], voice, srt,
-            timing_file=timing,
+            [section.narration for section in script.sections], voice, srt, timing_file=timing
         )
         SubtitleRepository().save(
-            Subtitle(provider="approved_script_exact_tts_timing", file="subtitle.srt"),
-            metadata_path,
+            Subtitle(provider="approved_script_exact_tts_timing", file="subtitle.srt"), metadata_path
         )
         print(f"Exact-script subtitles generated with {len(cues)} synchronized cues: {srt}")

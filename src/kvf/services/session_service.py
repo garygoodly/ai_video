@@ -63,6 +63,11 @@ class SessionService:
                 "voice": profile.get("default_voice", "en-US-AndrewNeural"),
                 "voice_rate": "+0%",
                 "voice_pitch": "+0Hz",
+                # Narration mode is independent of subtitle segmentation.
+                # continuous = synthesize the approved article as continuous speech.
+                # cue_synced = legacy exact-cue TTS used for subtitle-perfect timing.
+                "narration_mode": "continuous",
+                "subtitles_enabled": False,
                 "edition_profile": profile,
                 "subtitle_settings": {
                     "max_words": profile.get("subtitle_max_words", 10),

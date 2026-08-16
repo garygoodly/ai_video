@@ -22,7 +22,8 @@ class GenerateVideoStep(BaseStep):
             timeline=timeline,
             subtitle_style=metadata.get("subtitle_style", {}),
         )
+        subtitle_state = "with subtitles" if metadata.get("subtitles_enabled", True) else "without subtitles"
         print(
-            f"Video generated at 1920x1080 with {len(timeline.scenes)} "
-            f"scenes and burned-in subtitles: {output}"
+            f"Video generated at 1920x1080 with {len(timeline.scenes)} scenes "
+            f"{subtitle_state}: {output}"
         )

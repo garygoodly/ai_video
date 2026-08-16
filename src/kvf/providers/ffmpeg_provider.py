@@ -26,8 +26,7 @@ class FFmpegProvider:
             raise ValueError("Timeline contains no scenes.")
         if not audio.exists():
             raise FileNotFoundError(f"Narration audio not found: {audio}")
-        if not subtitle.exists():
-            raise FileNotFoundError(f"Subtitle file not found: {subtitle}")
+        # Subtitle burning is optional. An absent/empty SRT means narration-only video.
 
         output.parent.mkdir(parents=True, exist_ok=True)
         concat_file = output.parent / "scene_list.ffconcat"
@@ -41,23 +40,24 @@ class FFmpegProvider:
         margin_v = int(style.get("margin_v", preset["margin_v"]))
         outline = int(style.get("outline", preset["outline"]))
 
-        subtitle_filter_path = self._escape_filter_path(subtitle.resolve())
-        force_style = (
-            f"FontName={font_name},FontSize={font_size},"
-            "PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,"
-            f"BorderStyle=1,Outline={outline},Shadow=0,"
-            # Alignment=2 is bottom-center. MarginV keeps the subtitle inside
-            # the title-safe lower area without floating over the center.
-            f"Alignment=2,MarginV={margin_v}"
-        )
-        video_filter = (
-            f"scale={self.WIDTH}:{self.HEIGHT}:"
-            "force_original_aspect_ratio=increase,"
-            f"crop={self.WIDTH}:{self.HEIGHT},"
-            "setsar=1,"
-            f"fps={self.FPS},"
-            f"subtitles='{subtitle_filter_path}':force_style='{force_style}'"
-        )
+        filters = [
+            f"scale={self.WIDTH}:{self.HEIGHT}:force_original_aspect_ratio=increase",
+            f"crop={self.WIDTH}:{self.HEIGHT}",
+            "setsar=1",
+            f"fps={self.FPS}",
+        ]
+        if subtitle.exists() and subtitle.stat().st_size > 0:
+            subtitle_filter_path = self._escape_filter_path(subtitle.resolve())
+            force_style = (
+                f"FontName={font_name},FontSize={font_size},"
+                "PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,"
+                f"BorderStyle=1,Outline={outline},Shadow=0,"
+                f"Alignment=2,MarginV={margin_v}"
+            )
+            filters.append(
+                f"subtitles='{subtitle_filter_path}':force_style='{force_style}'"
+            )
+        video_filter = ",".join(filters)
 
         command = [
             "ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", str(concat_file),

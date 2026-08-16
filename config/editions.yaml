@@ -50,6 +50,17 @@ editions:
       United States, China, Japan, the Japanese yen, global rates, oil, shipping,
       AI demand, and semiconductor demand. Do not force a Taiwan angle onto an
       event with no meaningful Taiwan transmission channel.
+    editorial_structure: |
+      Use this Taiwan daily rundown:
+      1. 今日焦點 — the 2-4 most consequential stories of the day.
+      2. 美股盤勢 — S&P 500, Nasdaq, Dow Jones, and SOX are mandatory anchors; explain material moves and the driver.
+      3. 全球股市 — Japan first, then China/Hong Kong, Europe, or other markets only when relevant.
+      4. 台股焦點 — TAIEX, TSMC, major electronics/AI sectors, foreign flows, and important Taiwan-specific developments.
+      5. 匯率與利率 — USD/TWD, USD/JPY, DXY and major bond yields when relevant; emphasize transmission into Taiwan assets.
+      6. 商品市場 — oil, gold, copper, or other commodities only when the move is material.
+      7. 產業與公司焦點 — major earnings, AI/semiconductor demand, capex, or company-specific developments only when important.
+      8. 今日市場結論 — summarize the causal chain and the 2-4 variables Taiwan viewers should watch next.
+      Keep sections 1, 2, 4, and 8 as anchors. Sections 3, 5, 6, and 7 are depth-adjustable; omit or compress immaterial items.
     audience_note: Taiwan-based viewers; use Taiwan market terminology and Traditional Chinese.
     script_language_rule: Write all narration in natural Traditional Chinese used in Taiwan. Avoid Simplified Chinese vocabulary. Explain foreign-market terms clearly when first introduced.
     search_query_rule: Keep visual search queries in concise English whenever possible because international media catalogs retrieve better results in English.
@@ -96,6 +107,17 @@ editions:
       and domestic policy. Include global events when they materially affect
       Japan, especially United States rates, China demand, energy prices,
       semiconductors, shipping, and foreign-exchange moves.
+    editorial_structure: |
+      Use this Japan daily rundown:
+      1. 今日の焦点 — the 2-4 most consequential stories.
+      2. 米国市場 — S&P 500, Nasdaq, Dow Jones, and SOX as core external anchors.
+      3. 日本株 — Nikkei 225, TOPIX, exporters, technology, trading houses, and major domestic sectors.
+      4. 世界株式 — China/Hong Kong, Europe, and other markets only when relevant.
+      5. 為替・金利 — USD/JPY, DXY, JGB and U.S. Treasury yields, with BOJ/Fed transmission explained.
+      6. コモディティ — oil, gold and other commodities only when material.
+      7. 企業・産業 — important earnings, autos, semiconductors, AI, and company developments.
+      8. 今日のまとめ — causal chain and the 2-4 variables Japan viewers should watch next.
+      Keep sections 1, 2, 3, and 8 as anchors; compress or omit immaterial conditional sections.
     audience_note: Japan-based viewers; use standard financial Japanese.
     script_language_rule: Write all narration in natural, broadcast-quality Japanese. Define specialist English terms briefly when needed.
     search_query_rule: Keep visual search queries in concise English whenever possible; use Japanese proper nouns only when they improve retrieval.
@@ -150,6 +172,16 @@ editions:
       Cover the United States, Europe, China, Japan, major emerging markets,
       commodities, currencies, rates, global technology, and geopolitics without
       over-weighting one country unless the market impact justifies it.
+    editorial_structure: |
+      Use this Global daily rundown:
+      1. Top Stories — the 2-4 developments with the broadest market consequences.
+      2. U.S. Equities — S&P 500, Nasdaq, Dow Jones, and SOX as core anchors.
+      3. Global Equities — Japan, China/Hong Kong, Europe, and major emerging markets according to materiality.
+      4. Rates & FX — U.S. Treasuries, DXY, USD/JPY, EUR/USD and other major crosses when relevant.
+      5. Commodities & Crypto — oil, gold, copper, Bitcoin, etc. only when material.
+      6. Companies & Industries — earnings, AI/semiconductors, capex, banking, autos, or other major corporate themes.
+      7. Market Takeaway — connect the causal chain and identify the 2-4 variables to watch next.
+      Keep Top Stories, U.S. Equities, and Market Takeaway as anchors; scale all other sections by materiality.
     audience_note: International viewers; use clear global financial English.
     script_language_rule: Write all narration in natural spoken English suitable for an international audience.
     search_query_rule: Write concise English visual search queries.

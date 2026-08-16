@@ -43,6 +43,7 @@ class GenerateResearchPromptStep(BaseStep):
             "output_language": metadata.get("output_language", "English"),
             "audience_note": profile.get("audience_note", "International viewers"),
             "research_focus": profile.get("research_focus", "Build a globally balanced briefing."),
+            "editorial_structure": profile.get("editorial_structure", "Use a clear headline-to-markets-to-conclusion structure."),
             "blueprint": json.dumps(
                 project.blueprint.model_dump(),
                 indent=2,

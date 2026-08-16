@@ -43,6 +43,11 @@ class GenerateScriptPromptStep(BaseStep):
         context = {
             "topic": research.topic,
             "summary": research.summary,
+            "editorial_plan": json.dumps(
+                research.editorial_plan.model_dump(),
+                ensure_ascii=False,
+                indent=2,
+            ),
             "edition_label": metadata.get("edition_label", "Global"),
             "output_language": metadata.get("output_language", "English"),
             "audience_note": profile.get("audience_note", "International viewers"),

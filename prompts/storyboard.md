@@ -171,19 +171,33 @@ fade
 
 ---
 
+
+# Timing Policy
+
+Do NOT spend effort making duration estimates add up exactly.
+
+- `total_estimated_duration_seconds` may be `null`.
+- Scene `estimated_duration_seconds` may be `null`.
+- Camera `duration_seconds` may be `null`.
+- If you provide estimates, they are approximate editorial hints only.
+- The application measures the real TTS narration duration and builds the final timeline from that audio.
+- Content quality and correct scene/topic boundaries are more important than estimated seconds.
+
+---
+
 # Output Schema
 
 Return EXACTLY this schema.
 
 {
   "topic": "string",
-  "total_estimated_duration_seconds": 0,
+  "total_estimated_duration_seconds": null,
   "scenes": [
     {
       "id": 1,
       "section": "Introduction",
       "narration": "string",
-      "estimated_duration_seconds": 8,
+      "estimated_duration_seconds": null,
       "visual": {
         "asset_type": "photo",
         "query": "Mount Fuji sunrise",
@@ -191,7 +205,7 @@ Return EXACTLY this schema.
       },
       "camera": {
         "motion": "ken_burns",
-        "duration_seconds": 8
+        "duration_seconds": null
       },
       "transition": {
         "type": "fade",
@@ -217,7 +231,7 @@ Return EXACTLY this schema.
 
 6. Scene IDs must start at 1 and increase sequentially.
 
-7. total_estimated_duration_seconds must equal the sum of all scene durations.
+7. Duration estimates are optional advisory metadata. Missing, approximate, or mismatched duration estimates are acceptable.
 
 8. Use realistic visual search queries.
 
@@ -227,7 +241,7 @@ Return EXACTLY this schema.
 
 11. Prefer photo assets whenever appropriate.
 
-12. Camera duration_seconds should equal estimated_duration_seconds.
+12. Camera duration_seconds is optional. Final timing will be calculated from the rendered narration audio, not from GPT estimates.
 
 13. Transition duration should usually be 1 second.
 

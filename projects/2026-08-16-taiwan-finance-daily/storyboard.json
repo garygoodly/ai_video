@@ -1,0 +1,1507 @@
+{
+  "topic": "週末台股休市但風險重新升溫：荷莫茲油輪再遭攻擊、美國消費轉弱與高殖利率牽動週一台股",
+  "total_estimated_duration_seconds": null,
+  "scenes": [
+    {
+      "id": 1,
+      "section": "今日焦點｜中東風險、消費降溫與高利率，同時改寫週一台股定價",
+      "narration": "2026年8月15日至16日適逢週末，台股、美股與主要亞洲現貨市場沒有新的正常交易收盤，所以今天真正重要的，不是追逐指數漲跌，而是判斷週末新增資訊會怎麼改變8月17日星期一的風險定價。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "Taiwan stock market trading screens Taipei financial district",
+        "notes": "以台灣金融市場與休市中的交易螢幕建立週末市場背景。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 2,
+      "section": "今日焦點｜中東風險、消費降溫與高利率，同時改寫週一台股定價",
+      "narration": "第一個變數來自中東。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "map",
+        "query": "Middle East Persian Gulf Strait of Hormuz map",
+        "notes": "標示波斯灣、阿拉伯聯合大公國、伊朗與荷莫茲海峽。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 3,
+      "section": "今日焦點｜中東風險、消費降溫與高利率，同時改寫週一台股定價",
+      "narration": "8月15日，阿拉伯聯合大公國指控伊朗再次攻擊一艘由ADNOC相關企業營運的油輪，讓荷莫茲海峽的商船安全問題重新升溫。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "oil tanker Strait of Hormuz Persian Gulf",
+        "notes": "以大型油輪通過狹窄海域的畫面呈現航運安全風險。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 4,
+      "section": "今日焦點｜中東風險、消費降溫與高利率，同時改寫週一台股定價",
+      "narration": "這件事目前還沒有證明能源供給立即減少，但它提高了油輪保險、航程延誤與原油風險溢價重新上升的可能性。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "oil tanker insurance shipping delay crude oil risk premium diagram",
+        "notes": "以油輪事件傳導至保險成本、航程延誤與原油風險溢價的流程圖呈現。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 5,
+      "section": "今日焦點｜中東風險、消費降溫與高利率，同時改寫週一台股定價",
+      "narration": "對高度依賴能源進口與海運的台灣來說，這會直接牽動油價、輸入性通膨、運輸成本與企業毛利。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "Taiwan container port oil terminal cargo ships",
+        "notes": "呈現台灣港口、油輪與貨櫃運輸，連結能源進口與企業成本。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 6,
+      "section": "今日焦點｜中東風險、消費降溫與高利率，同時改寫週一台股定價",
+      "narration": "第二個變數來自美國消費。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "United States retail shopping mall consumers",
+        "notes": "轉入美國消費與零售市場。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 7,
+      "section": "今日焦點｜中東風險、消費降溫與高利率，同時改寫週一台股定價",
+      "narration": "美國商務部8月14日公布，7月零售銷售月減0.6%，是2025年5月以來最大跌幅，汽車與零件銷售月減1.8%，線上銷售月減2.2%，控制組也下降0.4%。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "chart",
+        "query": "US retail sales July 2026 chart",
+        "notes": "圖表標題：美國2026年7月零售銷售；x軸：零售銷售分類；y軸：月增減率；單位：%；資料期間：2026年7月；資料來源：U.S. Department of Commerce；標示整體-0.6%、汽車與零件-1.8%、線上銷售-2.2%、控制組-0.4%。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 8,
+      "section": "今日焦點｜中東風險、消費降溫與高利率，同時改寫週一台股定價",
+      "narration": "這代表美國消費動能有所降溫，但要注意，一般消費電子需求與企業AI、雲端、資料中心資本支出不是同一條需求鏈。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "consumer electronics versus AI cloud data center demand diagram",
+        "notes": "將消費電子與企業AI資料中心兩條需求鏈分開呈現。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 9,
+      "section": "今日焦點｜中東風險、消費降溫與高利率，同時改寫週一台股定價",
+      "narration": "第三個變數則是利率。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "United States Treasury bonds financial market",
+        "notes": "轉入美國公債與長端利率。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 10,
+      "section": "今日焦點｜中東風險、消費降溫與高利率，同時改寫週一台股定價",
+      "narration": "即使消費轉弱，美國10年期公債殖利率8月14日仍在約4.66%至4.70%，30年期約5.23%。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "US Treasury 10 year 30 year yields financial illustration",
+        "notes": "以10年期與30年期美債殖利率數值卡呈現4.66%至4.70%與5.23%；原稿未提供單一具名資料來源，因此不製作真實歷史走勢圖。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 11,
+      "section": "今日焦點｜中東風險、消費降溫與高利率，同時改寫週一台股定價",
+      "narration": "也就是說，成長降溫並沒有立刻換來更低的長端利率。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "slower growth high long term interest rates diagram",
+        "notes": "以成長動能下降但長端利率維持高檔的反向關係呈現市場矛盾。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 12,
+      "section": "今日焦點｜中東風險、消費降溫與高利率，同時改寫週一台股定價",
+      "narration": "對台灣科技股而言，這形成一個不太舒服的組合：終端需求可能放慢，但折現率仍高，企業必須用更扎實的營收與獲利來支撐估值。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "Taiwan technology stocks earnings valuation pressure",
+        "notes": "呈現科技公司在需求放慢與高折現率之間承受估值壓力。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 13,
+      "section": "美股盤勢｜三大指數自高檔拉回，半導體好消息也未必能推升股價",
+      "narration": "8月15日至16日是週末，因此美股最新完整交易基準仍是8月14日星期五。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "Wall Street New York stock exchange closing bell",
+        "notes": "建立8月14日為最新完整美股交易日的背景。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 14,
+      "section": "美股盤勢｜三大指數自高檔拉回，半導體好消息也未必能推升股價",
+      "narration": "S&P 500下跌13.23點，跌幅0.2%，收在7,785.76點；Dow Jones Industrial Average下跌107.58點，同樣約0.2%，收53,732.41點；Nasdaq Composite下跌73.86點，跌幅0.3%，收26,729.16點。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "S&P 500 Dow Jones Nasdaq market index dashboard",
+        "notes": "以三大指數數值卡呈現S&P 500、Dow Jones Industrial Average與Nasdaq Composite的8月14日收盤變化；原稿未提供單一具名官方來源，因此不繪製歷史價格走勢圖。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 15,
+      "section": "美股盤勢｜三大指數自高檔拉回，半導體好消息也未必能推升股價",
+      "narration": "三大指數都只是從前一日的紀錄高檔小幅回落，沒有出現全面性恐慌，但盤中由漲轉跌，反映兩股力量同時存在。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "Wall Street stock market intraday reversal trading screens",
+        "notes": "呈現高檔震盪與盤中由漲轉跌，而非全面恐慌。"
+      },
+      "camera": {
+        "motion": "pan_down",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 16,
+      "section": "美股盤勢｜三大指數自高檔拉回，半導體好消息也未必能推升股價",
+      "narration": "零售銷售轉弱，本來可能增加市場對Fed停止升息甚至未來寬鬆的期待；但另一方面，如果消費減速進一步壓低企業營收與獲利成長，股市就失去另一項支撐。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "weak retail sales Fed easing corporate earnings tradeoff diagram",
+        "notes": "呈現弱消費同時帶來政策寬鬆期待與企業獲利下修風險。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 17,
+      "section": "美股盤勢｜三大指數自高檔拉回，半導體好消息也未必能推升股價",
+      "narration": "同一天布蘭特原油又反彈約1.7%至88.52美元附近，使能源通膨疑慮重新升溫。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "Brent crude oil trading screen oil barrels",
+        "notes": "以原油交易與油桶畫面呈現能源價格反彈；不製作未提供具名資料來源的真實價格圖。"
+      },
+      "camera": {
+        "motion": "pan_up",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 18,
+      "section": "美股盤勢｜三大指數自高檔拉回，半導體好消息也未必能推升股價",
+      "narration": "因此，美股沒有走出典型的『經濟數據弱、殖利率下跌、科技股上漲』模式。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "economic data bond yields technology stocks relationship diagram",
+        "notes": "以數據、殖利率與科技股三者沒有形成典型傳導的示意圖呈現。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 19,
+      "section": "美股盤勢｜三大指數自高檔拉回，半導體好消息也未必能推升股價",
+      "narration": "對台灣最重要的另一個錨點是費城半導體指數SOX。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "semiconductor wafer microchips manufacturing",
+        "notes": "轉入費城半導體指數與晶片產業。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 20,
+      "section": "美股盤勢｜三大指數自高檔拉回，半導體好消息也未必能推升股價",
+      "narration": "本次可交叉驗證的資料確認，SOX在8月13日曾上漲約1.8%至12,621點附近，但沒有取得足以確認8月14日正式收盤的可靠數值，所以不填入未確認數字。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "Philadelphia Semiconductor Index SOX market dashboard",
+        "notes": "只呈現已確認的8月13日約+1.8%、12,621點附近，並標示8月14日收盤數值未確認；不繪製推測走勢。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 21,
+      "section": "美股盤勢｜三大指數自高檔拉回，半導體好消息也未必能推升股價",
+      "narration": "更值得注意的是Applied Materials，即使公布季度營收年增約25%、獲利優於市場預期，8月14日股價仍下跌約5%。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Applied Materials semiconductor equipment factory logo",
+        "notes": "呈現Applied Materials與半導體設備，搭配營收成長但股價下跌的資訊卡。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 22,
+      "section": "美股盤勢｜三大指數自高檔拉回，半導體好消息也未必能推升股價",
+      "narration": "這說明半導體市場目前不是只問『需求好不好』，而是開始要求更高的訂單能見度、毛利率與後續成長指引。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "semiconductor orders gross margin growth guidance diagram",
+        "notes": "以訂單能見度、毛利率與成長指引三項基本面要求呈現市場門檻提高。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 23,
+      "section": "全球股市｜日股維持強勢，全球資金並未全面轉向避險",
+      "narration": "接著看全球市場，先從日本開始。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "Tokyo financial district stock market Japan",
+        "notes": "由美股轉入日本與亞洲市場。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 24,
+      "section": "全球股市｜日股維持強勢，全球資金並未全面轉向避險",
+      "narration": "8月14日日經225上漲1.8%，收在69,523.56點，科技與電子相關股票提供主要支撐，其中SoftBank上漲約5.3%，Panasonic約上漲4.5%。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "Nikkei 225 SoftBank Panasonic Japan stocks dashboard",
+        "notes": "以日經225、SoftBank與Panasonic的8月14日漲幅資訊卡呈現；原稿未提供單一具名來源，因此不繪製真實歷史走勢圖。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 25,
+      "section": "全球股市｜日股維持強勢，全球資金並未全面轉向避險",
+      "narration": "這個訊號對台灣有參考價值，因為日本與台灣在半導體材料、設備、電子零組件與精密製造上高度連動。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "Japan Taiwan semiconductor supply chain materials equipment components",
+        "notes": "呈現日本材料設備與台灣晶片製造、電子零組件之間的供應鏈連結。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 26,
+      "section": "全球股市｜日股維持強勢，全球資金並未全面轉向避險",
+      "narration": "日股科技族群仍然偏強，代表亞洲市場對AI與電子供應鏈的風險偏好還沒有全面崩解。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "Japan semiconductor electronics factory AI technology",
+        "notes": "呈現日本科技、半導體與電子製造活動。"
+      },
+      "camera": {
+        "motion": "pan_left",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 27,
+      "section": "全球股市｜日股維持強勢，全球資金並未全面轉向避險",
+      "narration": "再看歐洲，8月14日STOXX 600約上漲0.04%，德國DAX上漲約0.6%，英國FTSE 100則小跌約0.06%。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "STOXX 600 DAX FTSE 100 Europe stocks dashboard",
+        "notes": "以STOXX 600、DAX與FTSE 100的8月14日變化資訊卡呈現；不繪製未提供單一具名來源的真實走勢圖。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 28,
+      "section": "全球股市｜日股維持強勢，全球資金並未全面轉向避險",
+      "narration": "整體變化不大，科技股提供支撐，但礦業股受到金價與金屬價格回落影響。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "European technology stocks mining stocks gold metals",
+        "notes": "以科技股與礦業股相反表現呈現歐洲產業分化。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 29,
+      "section": "全球股市｜日股維持強勢，全球資金並未全面轉向避險",
+      "narration": "把日本、美國與歐洲放在一起看，目前全球資金更像是在高估值、能源風險與成長放緩之間做產業輪動，而不是進入全面risk-off，也就是全面降低風險部位的狀態。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "global sector rotation valuation energy risk slower growth diagram",
+        "notes": "呈現全球資金在科技、能源與防禦型產業間輪動，而非全面撤出風險資產。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 30,
+      "section": "全球股市｜日股維持強勢，全球資金並未全面轉向避險",
+      "narration": "本次研究沒有找到足以交叉驗證、同時又具有重大台灣傳導意義的8月14日中國與香港市場新事件，因此不刻意加入未確認數據。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "map",
+        "query": "East Asia financial markets map China Hong Kong Taiwan Japan",
+        "notes": "以中性亞洲市場地圖呈現資料未確認，不加入推測市場數字。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 31,
+      "section": "台股焦點｜週末沒有新成交，週一要檢驗台積電與AI供應鏈的抗壓力",
+      "narration": "回到台灣，8月15日與16日是星期六、星期日，臺灣證券交易所沒有正常交易，因此這個coverage window內沒有新的TAIEX收盤價、台積電現貨價格，也沒有新的三大法人買賣超。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Taiwan Stock Exchange building Taipei weekend",
+        "notes": "以臺灣證券交易所外觀呈現週末休市。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 32,
+      "section": "台股焦點｜週末沒有新成交，週一要檢驗台積電與AI供應鏈的抗壓力",
+      "narration": "這一點必須先講清楚，因為週末真正有價值的工作不是假裝描述不存在的盤勢，而是建立週一開盤前的風險框架。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "financial risk framework market analysis checklist",
+        "notes": "呈現週一開盤前的風險評估框架，而非虛構休市行情。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 33,
+      "section": "台股焦點｜週末沒有新成交，週一要檢驗台積電與AI供應鏈的抗壓力",
+      "narration": "第一條壓力來自油價。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "crude oil barrels refinery Taiwan",
+        "notes": "第一條外部壓力：能源成本。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 34,
+      "section": "台股焦點｜週末沒有新成交，週一要檢驗台積電與AI供應鏈的抗壓力",
+      "narration": "如果荷莫茲海峽事件使原油重新上漲，台灣航空、運輸、塑化與製造業的成本預期可能惡化。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "airplane cargo trucks petrochemical factory Taiwan",
+        "notes": "呈現航空、運輸、塑化與製造業受到油價上升影響。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 35,
+      "section": "台股焦點｜週末沒有新成交，週一要檢驗台積電與AI供應鏈的抗壓力",
+      "narration": "第二條壓力是利率。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "US Treasury bonds interest rates trading",
+        "notes": "第二條外部壓力：長端美債殖利率。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 36,
+      "section": "台股焦點｜週末沒有新成交，週一要檢驗台積電與AI供應鏈的抗壓力",
+      "narration": "如果美國10年期公債殖利率維持在4.6%至4.7%的高檔，長久期科技股的本益比擴張空間就會受到限制。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "high bond yields technology stock valuation diagram",
+        "notes": "呈現高殖利率提高折現率並限制科技股本益比擴張。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 37,
+      "section": "台股焦點｜週末沒有新成交，週一要檢驗台積電與AI供應鏈的抗壓力",
+      "narration": "第三條壓力是需求。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "consumer electronics retail store smartphones laptops",
+        "notes": "第三條外部壓力：消費電子終端需求。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 38,
+      "section": "台股焦點｜週末沒有新成交，週一要檢驗台積電與AI供應鏈的抗壓力",
+      "narration": "美國零售銷售轉弱，會讓市場重新評估消費電子的終端需求。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "electronics store consumers smartphones computers United States",
+        "notes": "呈現消費電子產品與美國終端需求。"
+      },
+      "camera": {
+        "motion": "pan_left",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 39,
+      "section": "台股焦點｜週末沒有新成交，週一要檢驗台積電與AI供應鏈的抗壓力",
+      "narration": "但這三條壓力不代表AI伺服器需求同步下滑，因為企業雲端與資料中心資本支出屬於另一條需求來源。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "AI data center servers cloud computing racks",
+        "notes": "呈現AI伺服器與資料中心資本支出作為獨立需求來源。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 40,
+      "section": "台股焦點｜週末沒有新成交，週一要檢驗台積電與AI供應鏈的抗壓力",
+      "narration": "因此週一一個很重要的盤面訊號，就是台積電、AI伺服器與相關供應鏈，是否能和一般消費電子股走出不同方向。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "TSMC AI servers versus consumer electronics stocks diagram",
+        "notes": "以AI供應鏈與一般消費電子兩條可能分化的市場路徑呈現。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 41,
+      "section": "台股焦點｜週末沒有新成交，週一要檢驗台積電與AI供應鏈的抗壓力",
+      "narration": "外資流向也需要等到週一現貨市場開盤才能確認。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "institutional investors Taiwan stock market trading desk",
+        "notes": "轉入外資資金流與週一現貨交易。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 42,
+      "section": "台股焦點｜週末沒有新成交，週一要檢驗台積電與AI供應鏈的抗壓力",
+      "narration": "如果美元與油價同時走高，新台幣可能承受壓力，外資在台股的風險預算也可能變得更保守；反之，如果油價沒有跳升、美債殖利率下降，美國科技股期貨又保持穩定，AI權值股就可能提供支撐。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "US dollar oil bond yields Taiwan stocks scenario diagram",
+        "notes": "以兩種情境呈現美元、油價、美債殖利率與台灣AI權值股之間的傳導。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 43,
+      "section": "匯率與利率｜美元暫時不強，但真正的估值壓力在長天期美債",
+      "narration": "匯率與利率要分開看。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "currency market and bond market split screen",
+        "notes": "以匯率市場與債券市場並列，強調兩者需要分開解讀。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 44,
+      "section": "匯率與利率｜美元暫時不強，但真正的估值壓力在長天期美債",
+      "narration": "8月14日美元指數DXY約下跌0.1%至99.854附近，顯示疲弱的零售銷售降低了市場對Fed進一步升息的預期。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "US Dollar Index DXY Federal Reserve market dashboard",
+        "notes": "呈現DXY約99.854、下跌約0.1%的資訊卡，並連結Fed政策預期；不繪製未提供具名來源的歷史走勢圖。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 45,
+      "section": "匯率與利率｜美元暫時不強，但真正的估值壓力在長天期美債",
+      "narration": "美元並沒有因為油價反彈而出現明顯避險升值，對亞洲貨幣原本是相對中性的訊號。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "US dollar Japanese yen Taiwan dollar Asian currencies",
+        "notes": "呈現美元與亞洲主要貨幣，強調美元沒有明顯避險急升。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 46,
+      "section": "匯率與利率｜美元暫時不強，但真正的估值壓力在長天期美債",
+      "narration": "不過，8月15日至16日台北外匯市場休市，本次研究沒有新的USD/TWD銀行間成交價，因此不把較舊的匯率當成週末新行情。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "New Taiwan dollar US dollar foreign exchange desk",
+        "notes": "以新台幣與美元呈現台北匯市週末休市，避免顯示未確認即時報價。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 47,
+      "section": "匯率與利率｜美元暫時不強，但真正的估值壓力在長天期美債",
+      "narration": "真正需要注意的是美國殖利率曲線。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "US Treasury yield curve financial illustration",
+        "notes": "轉入美國殖利率曲線與長端利率。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 48,
+      "section": "匯率與利率｜美元暫時不強，但真正的估值壓力在長天期美債",
+      "narration": "8月14日10年期美債殖利率大約在4.66%至4.70%，30年期約5.23%，而近期30年期公債標售殖利率甚至處在2001年以來高檔。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "US 10 year 30 year Treasury yields dashboard",
+        "notes": "以10年期4.66%至4.70%、30年期約5.23%與30年期標售處於2001年以來高檔的資訊卡呈現；原稿未提供單一具名來源，因此不製作真實時間序列圖。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 49,
+      "section": "匯率與利率｜美元暫時不強，但真正的估值壓力在長天期美債",
+      "narration": "這代表長端利率不只是反映Fed政策，還同時包含財政赤字、債券供給、通膨風險與期限溢酬。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "long term bond yields fiscal deficit supply inflation term premium diagram",
+        "notes": "拆解長端殖利率的四個主要驅動因素。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 50,
+      "section": "匯率與利率｜美元暫時不強，但真正的估值壓力在長天期美債",
+      "narration": "對台股來說，這非常重要。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Taiwan stock market technology shares trading board",
+        "notes": "將長端美債利率重新連結到台股科技股估值。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 51,
+      "section": "匯率與利率｜美元暫時不強，但真正的估值壓力在長天期美債",
+      "narration": "就算市場認為Fed不會再升息，只要長端殖利率維持高檔，高本益比科技股的折現率壓力仍然存在。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "high Treasury yields discount rate technology valuation diagram",
+        "notes": "呈現高長端殖利率如何透過折現率壓低高本益比科技股估值。"
+      },
+      "camera": {
+        "motion": "pan_down",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 52,
+      "section": "匯率與利率｜美元暫時不強，但真正的估值壓力在長天期美債",
+      "narration": "USD/JPY也值得追蹤，因為日圓會影響日本出口股、亞洲資金配置，以及部分台日半導體供應鏈的相對成本。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Japanese yen US dollar semiconductor factory Japan Taiwan",
+        "notes": "呈現日圓、美元與台日半導體供應鏈。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 53,
+      "section": "匯率與利率｜美元暫時不強，但真正的估值壓力在長天期美債",
+      "narration": "但本次coverage window內沒有取得可由可靠來源交叉驗證的最新USD/JPY精確收盤價，所以不填入推測數字。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "USD JPY exchange rate data verification concept",
+        "notes": "使用中性資料驗證畫面，不顯示任何未確認USD/JPY數值。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 54,
+      "section": "匯率與利率｜美元暫時不強，但真正的估值壓力在長天期美債",
+      "narration": "週一最值得看的是，如果美元轉強、新台幣與日圓同步走弱，通常代表亞洲資產的風險偏好正在下降；如果美元偏弱但長端美債殖利率仍高，則更可能是債券供給與通膨風險在主導市場。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "dollar Taiwan dollar yen bond yields Asia risk sentiment diagram",
+        "notes": "以兩種匯率與利率情境比較亞洲風險偏好與長端債券壓力。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 55,
+      "section": "商品市場｜油價是台灣週一最直接的成本風險變數",
+      "narration": "再回到這次週末事件最直接的市場傳導：原油。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "crude oil tanker refinery oil barrels",
+        "notes": "重新聚焦原油與能源市場。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 56,
+      "section": "商品市場｜油價是台灣週一最直接的成本風險變數",
+      "narration": "8月14日布蘭特原油上漲約1.7%至每桶88.52美元附近，西德州中級原油也走高，背景是美國與伊朗關係以及荷莫茲海峽通行問題仍未完全解決。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "Brent WTI crude oil trading tanker Strait of Hormuz",
+        "notes": "呈現布蘭特、WTI與荷莫茲海峽油輪；不製作未提供單一具名來源的真實價格走勢圖。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 57,
+      "section": "商品市場｜油價是台灣週一最直接的成本風險變數",
+      "narration": "到了8月15日，又傳出ADNOC相關油輪遭攻擊，使8月17日能源市場重新開盤時面臨新的風險溢價。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "ADNOC oil tanker Persian Gulf shipping",
+        "notes": "以ADNOC相關油輪與波斯灣航運呈現週末新增風險。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 58,
+      "section": "商品市場｜油價是台灣週一最直接的成本風險變數",
+      "narration": "因為週末沒有正式原油期貨結算，所以現在不能預先宣告油價會跳升多少；能確認的是供應與航運風險提高。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "oil market closed weekend supply shipping risk concept",
+        "notes": "強調週末沒有正式期貨結算，只能確認事件風險而不能預測跳空幅度。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 59,
+      "section": "商品市場｜油價是台灣週一最直接的成本風險變數",
+      "narration": "對台灣而言，油價傳導非常直接。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Taiwan oil terminal refinery industrial port",
+        "notes": "從國際原油重新連結到台灣能源進口。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 60,
+      "section": "商品市場｜油價是台灣週一最直接的成本風險變數",
+      "narration": "原油上漲會提高航空、海運、陸運、塑化與製造業成本，也可能透過電力、物流與進口商品增加輸入性通膨。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "airline cargo ship trucks petrochemical factory logistics",
+        "notes": "以航空、海運、陸運、塑化、製造與物流呈現油價成本傳導。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 61,
+      "section": "商品市場｜油價是台灣週一最直接的成本風險變數",
+      "narration": "更重要的是，即使實際原油供給量沒有立刻下降，只要戰爭保險費上升、船舶繞航時間拉長，台灣進出口企業就可能先面臨運費與交期壓力。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "map",
+        "query": "Middle East shipping detour routes Strait of Hormuz Red Sea map",
+        "notes": "呈現油輪與貨輪可能的繞航路徑，以及對運費與交期的影響。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 62,
+      "section": "商品市場｜油價是台灣週一最直接的成本風險變數",
+      "narration": "所以週一不能只看布蘭特與WTI價格，還要看荷莫茲海峽的油輪通行是否再次受到實質影響。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "satellite",
+        "query": "Strait of Hormuz tanker traffic satellite view",
+        "notes": "以荷莫茲海峽衛星視角呈現實際油輪通行狀況的重要性。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 63,
+      "section": "產業與公司焦點｜AI需求仍在，但高估值市場要求更嚴格的基本面",
+      "narration": "產業面最值得台灣供應鏈注意的訊號，不是AI需求突然消失，而是市場對好消息的要求變高。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "AI semiconductor data center server supply chain",
+        "notes": "由總體市場轉入AI與半導體產業基本面。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 64,
+      "section": "產業與公司焦點｜AI需求仍在，但高估值市場要求更嚴格的基本面",
+      "narration": "Applied Materials公布的季度營收年增約25%，獲利也優於市場預期，但8月14日股價仍下跌約5%。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Applied Materials semiconductor manufacturing equipment",
+        "notes": "以Applied Materials設備與企業識別呈現財報強勁但股價下跌的反差。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 65,
+      "section": "產業與公司焦點｜AI需求仍在，但高估值市場要求更嚴格的基本面",
+      "narration": "這類反應代表，投資人已經把相當高的晶圓廠設備需求、先進製程投資與AI資本支出預期反映在估值裡，所以單純超越市場預期，可能已不足以繼續推高股價。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "semiconductor capex expectations valuation priced in diagram",
+        "notes": "呈現晶圓設備、先進製程與AI資本支出預期已部分反映在估值中的概念。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 66,
+      "section": "產業與公司焦點｜AI需求仍在，但高估值市場要求更嚴格的基本面",
+      "narration": "對台灣來說，這個訊號很直接。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Taiwan semiconductor factory Hsinchu science park",
+        "notes": "轉回台灣半導體與AI供應鏈。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 67,
+      "section": "產業與公司焦點｜AI需求仍在，但高估值市場要求更嚴格的基本面",
+      "narration": "台積電先進製程、先進封裝，以及設備、材料、伺服器、散熱、電源與光通訊供應鏈，仍然受到AI資料中心投資支撐；但未來個股表現會逐漸從『有AI題材』轉向『能不能把AI需求轉成營收、毛利率與自由現金流』。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "Taiwan AI semiconductor server cooling power optical supply chain diagram",
+        "notes": "呈現台積電先進製程與封裝，以及設備、材料、伺服器、散熱、電源、光通訊供應鏈，最終連結營收、毛利率與自由現金流。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 68,
+      "section": "產業與公司焦點｜AI需求仍在，但高估值市場要求更嚴格的基本面",
+      "narration": "SOX從7月底低點明顯反彈，顯示半導體風險偏好已經修復一部分，但美債殖利率仍高，代表高本益比公司需要更強的獲利成長，才能維持現在的估值。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "semiconductor recovery high bond yields valuation pressure",
+        "notes": "以半導體風險偏好修復與高美債殖利率的兩股力量呈現估值拉鋸；不繪製未提供完整來源數據的SOX歷史圖。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 69,
+      "section": "產業與公司焦點｜AI需求仍在，但高估值市場要求更嚴格的基本面",
+      "narration": "換句話說，AI的方向沒有消失，但市場正進入更重視訂單、量產與獲利驗證的階段。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "AI orders mass production profits verification",
+        "notes": "以訂單、量產與獲利三階段呈現AI題材轉向基本面驗證。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 70,
+      "section": "今日市場結論｜週一台股要看油價、長債殖利率、AI與新台幣四個變數",
+      "narration": "把這個週末的資訊串起來，因果鏈其實很清楚。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "global market causal chain oil rates demand AI Taiwan",
+        "notes": "以油價、利率、需求、AI與台灣市場的因果鏈開啟總結。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 71,
+      "section": "今日市場結論｜週一台股要看油價、長債殖利率、AI與新台幣四個變數",
+      "narration": "荷莫茲海峽再傳油輪遭攻擊，代表能源與航運風險沒有真正解除；如果油價重新上升，會提高通膨與企業成本，也可能讓美國長端殖利率更難下降。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "Strait of Hormuz oil inflation corporate costs bond yields diagram",
+        "notes": "呈現荷莫茲風險經由油價、通膨與企業成本傳導至長端殖利率。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 72,
+      "section": "今日市場結論｜週一台股要看油價、長債殖利率、AI與新台幣四個變數",
+      "narration": "另一方面，美國7月零售銷售月減0.6%，透露終端消費正在放慢。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "United States retail store consumers shopping",
+        "notes": "回顧美國消費動能降溫。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 73,
+      "section": "今日市場結論｜週一台股要看油價、長債殖利率、AI與新台幣四個變數",
+      "narration": "於是市場面臨的組合是，需求成長可能降溫，但能源與長端利率未必同步下降。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "slower demand high energy prices high bond yields diagram",
+        "notes": "呈現需求降溫與能源、長端利率仍高的市場矛盾。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 74,
+      "section": "今日市場結論｜週一台股要看油價、長債殖利率、AI與新台幣四個變數",
+      "narration": "對台灣觀眾來說，8月17日最值得追蹤四個變數。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "Taiwan market four key indicators dashboard",
+        "notes": "建立四項週一市場觀察變數的總覽。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 75,
+      "section": "今日市場結論｜週一台股要看油價、長債殖利率、AI與新台幣四個變數",
+      "narration": "第一，布蘭特原油是否因週末油輪事件明顯跳升，以及荷莫茲海峽船舶通行是否再受影響。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "Brent crude oil tanker Strait of Hormuz shipping",
+        "notes": "第一項觀察：布蘭特原油與荷莫茲海峽實際船舶通行。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 76,
+      "section": "今日市場結論｜週一台股要看油價、長債殖利率、AI與新台幣四個變數",
+      "narration": "第二，美國10年期公債殖利率能不能從約4.7%的高檔下降。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "US 10 year Treasury yield 4.7 percent financial dashboard",
+        "notes": "第二項觀察：10年期美債殖利率約4.7%的高檔區；不繪製未提供具名來源的歷史走勢圖。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 77,
+      "section": "今日市場結論｜週一台股要看油價、長債殖利率、AI與新台幣四個變數",
+      "narration": "第三，台積電與AI供應鏈能不能維持相對強勢，證明企業AI資本支出足以抵銷一般消費放慢。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "TSMC semiconductor fab AI server data center",
+        "notes": "第三項觀察：台積電、AI伺服器與資料中心供應鏈的相對強弱。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 78,
+      "section": "今日市場結論｜週一台股要看油價、長債殖利率、AI與新台幣四個變數",
+      "narration": "第四，新台幣與外資流向是否出現明顯避險反應。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "New Taiwan dollar foreign institutional investors trading",
+        "notes": "第四項觀察：新台幣與外資流向。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 79,
+      "section": "今日市場結論｜週一台股要看油價、長債殖利率、AI與新台幣四個變數",
+      "narration": "如果油價、長端利率與美元同時向不利方向移動，台股估值壓力就會增加；如果這些風險降溫，市場注意力才更有機會重新回到企業基本面。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "oil bond yields dollar Taiwan stocks fundamentals scenario diagram",
+        "notes": "以兩種情境收尾：油價、長端利率、美元同步惡化時估值承壓；風險降溫時市場重新聚焦企業基本面。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    }
+  ]
+}

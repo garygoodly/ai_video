@@ -11,9 +11,7 @@ class WaitForScriptStep(BaseStep):
     ) -> None:
 
         path = (
-            application.project.workspace
-            / "script"
-            / "script.json"
+            application.project.source_dir / "script.json"
         )
 
         if file_exists(path):

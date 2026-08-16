@@ -1,4 +1,5 @@
 import json
+import shutil
 from pathlib import Path
 from typing import Callable
 
@@ -10,6 +11,7 @@ from kvf.models.storyboard import Storyboard
 from kvf.models.topic import Topic
 from kvf.services.blueprint_service import BlueprintService
 from kvf.services.edition_service import EditionService
+from kvf.services.project_source_service import ProjectSourceService
 from kvf.services.session_service import SessionService
 from kvf.steps.generate_research_prompt_step import GenerateResearchPromptStep
 from kvf.steps.generate_script_prompt_step import GenerateScriptPromptStep
@@ -25,20 +27,15 @@ class SessionController:
     def __init__(self, settings: dict, project_root: Path):
         self.settings = settings
         self.project_root = project_root
-        self.sessions = SessionService(project_root / settings["workspace"]["root"])
+        workspace_root = project_root / settings["workspace"]["root"]
+        projects_root = project_root / settings.get("projects", {}).get("root", "projects")
+        self.sessions = SessionService(workspace_root, projects_root)
         self.editions = EditionService(project_root / "config" / "editions.yaml")
-        self.blueprint = BlueprintService(
-            str(project_root / "config" / "blueprints")
-        ).load("country")
-
+        self.blueprint = BlueprintService(str(project_root / "config" / "blueprints")).load("country")
 
     def create_session(self, name: str, edition: str) -> Path:
         profile = self.editions.get(edition)
-        return self.sessions.create(
-            name,
-            edition=profile["key"],
-            edition_profile=profile,
-        )
+        return self.sessions.create(name, edition=profile["key"], edition_profile=profile)
 
     def edition_for_workspace(self, workspace: Path) -> dict:
         metadata = SessionService._read_metadata(workspace)
@@ -51,7 +48,13 @@ class SessionController:
             name=metadata["name"],
             category=metadata.get("category", "finance"),
         )
-        project = Project(topic=topic, blueprint=self.blueprint, workspace=workspace)
+        source_dir = self.sessions.project_dir_for(workspace)
+        project = Project(
+            topic=topic,
+            blueprint=self.blueprint,
+            workspace=workspace,
+            source_dir=source_dir,
+        )
         return Application(settings=self.settings, project=project)
 
     def prepare_stage(self, workspace: Path, stage: str) -> Path:
@@ -64,16 +67,12 @@ class SessionController:
         if stage not in generators:
             raise ValueError(f"Unsupported manual stage: {stage}")
         generators[stage]().execute(application)
-        return workspace / stage / "prompt.md"
+        return ProjectSourceService.prompt(application.project.source_dir, stage)
 
     def normalize_and_validate(self, stage: str, text: str) -> str:
         normalized = self.sessions.extract_json(text)
         payload = json.loads(normalized)
-        models = {
-            "research": Research,
-            "script": Script,
-            "storyboard": Storyboard,
-        }
+        models = {"research": Research, "script": Script, "storyboard": Storyboard}
         if stage not in models:
             raise ValueError(f"Unsupported manual stage: {stage}")
         models[stage].model_validate(payload)
@@ -81,11 +80,11 @@ class SessionController:
 
     def save_and_validate(self, workspace: Path, stage: str, text: str) -> None:
         normalized = self.normalize_and_validate(stage, text)
-        output = workspace / stage / f"{stage}.json"
+        application = self.application_for(workspace)
+        output = ProjectSourceService.artifact(application.project.source_dir, stage)
         output.parent.mkdir(parents=True, exist_ok=True)
         output.write_text(normalized, encoding="utf-8")
 
-        application = self.application_for(workspace)
         validators = {
             "research": ValidateResearchStep,
             "script": ValidateScriptStep,
@@ -98,7 +97,6 @@ class SessionController:
         inspection = self.sessions.inspect(workspace)
         stage = inspection["current_stage"]
         return stage if stage in self.MANUAL_STAGES else None
-
 
     def regenerate(
         self,

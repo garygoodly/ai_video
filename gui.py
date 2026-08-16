@@ -390,7 +390,14 @@ class VideoFactoryApp(tk.Tk):
             try:
                 normalized = self.controller.normalize_and_validate(stage, content)
             except Exception as exc:
-                summary = str(exc).splitlines()[0] if str(exc) else "Invalid JSON or schema"
+                details = str(exc).strip() or "Invalid JSON or schema"
+                lines = [line.strip() for line in details.splitlines() if line.strip()]
+                if len(lines) > 1:
+                    summary = " | ".join(lines[:4])
+                    if len(lines) > 4:
+                        summary += " | ..."
+                else:
+                    summary = lines[0] if lines else "Invalid JSON or schema"
                 status_var.set(f"Not valid yet: {summary}")
                 next_button.configure(state="disabled")
                 return
@@ -732,8 +739,8 @@ class VideoFactoryApp(tk.Tk):
             else:
                 os.system(f'xdg-open "{path}"')
 
-        ttk.Button(tools, text="Subtitle SRT", command=lambda: open_path(self.workspace / "subtitle" / "subtitle.srt")).pack(side="left", padx=(0, 6))
-        ttk.Button(tools, text="Script JSON", command=lambda: open_path(self.workspace / "script" / "script.json")).pack(side="left", padx=6)
+        ttk.Button(tools, text="Subtitle SRT", command=lambda: open_path(self.controller.sessions.project_dir_for(self.workspace) / "subtitle.srt")).pack(side="left", padx=(0, 6))
+        ttk.Button(tools, text="Script JSON", command=lambda: open_path(self.controller.sessions.project_dir_for(self.workspace) / "script.json")).pack(side="left", padx=6)
         ttk.Button(tools, text="Media Folder", command=lambda: open_path(self.workspace / "assets" / "rendered")).pack(side="left", padx=6)
 
         def rebuild():

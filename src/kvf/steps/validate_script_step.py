@@ -11,9 +11,7 @@ class ValidateScriptStep(BaseStep):
     ) -> None:
 
         path = (
-            application.project.workspace
-            / "script"
-            / "script.json"
+            application.project.source_dir / "script.json"
         )
         if not path.exists():
             raise FileNotFoundError(path)

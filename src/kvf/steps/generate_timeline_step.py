@@ -23,7 +23,7 @@ class GenerateTimelineStep(BaseStep):
         output = workspace / "timeline" / "timeline.json"
 
         storyboard = StoryboardRepository().load(
-            workspace / "storyboard" / "storyboard.json"
+            application.project.source_dir / "storyboard.json"
         )
         audio = workspace / "voice" / "narration.mp3"
         total_audio_duration = self._probe_duration(audio)

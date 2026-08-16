@@ -89,7 +89,7 @@ class StoryboardScene(BaseModel):
 
     id: int = Field(gt=0)
     section: str = Field(min_length=1)
-    narration: str = Field(min_length=10)
+    narration: str = Field(min_length=1, description="Narration may be a short transition, but must not be empty.")
     estimated_duration_seconds: float | None = Field(default=None)
     visual: VisualSpec
     camera: CameraSpec

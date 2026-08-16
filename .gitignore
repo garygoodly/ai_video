@@ -1,56 +1,22 @@
-# Python
+# Python/runtime caches
 __pycache__/
 *.py[cod]
-*.pyo
-*.pyd
-
-# Virtual environment
+.pytest_cache/
 .venv/
 venv/
-env/
 
-# IDE
-.vscode/
+# Local secrets / IDE state
+.env
 .idea/
 
-# OS
-.DS_Store
-Thumbs.db
+# Generated build output. Everything here can be regenerated from projects/.
+workspace/
 
-# Generated workspace
-workspace/*
-!workspace/.gitkeep
+# Track authored project sources.
+!projects/
+!projects/**
 
-# Logs
-*.log
-
-# Media
-*.jpg
-*.jpeg
-*.png
-*.gif
-*.webp
-*.mp3
-*.wav
+# Common generated media if accidentally created elsewhere
 *.mp4
-*.mov
-
-# Subtitle
-*.srt
-
-# Temporary files
-*.tmp
-*.bak
-
-# Python packaging
-build/
-dist/
-*.egg-info/
-
-# Test cache
-.pytest_cache/
-.mypy_cache/
-
-# Coverage
-.coverage
-htmlcov/
+*.wav
+*.mp3

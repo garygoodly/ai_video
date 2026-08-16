@@ -8,9 +8,7 @@ class ValidateResearchStep(BaseStep):
     def execute(self, application: Application) -> None:
 
         path = (
-            application.project.workspace
-            / "research"
-            / "research.json"
+            application.project.source_dir / "research.json"
         )
 
         repository = ResearchRepository()

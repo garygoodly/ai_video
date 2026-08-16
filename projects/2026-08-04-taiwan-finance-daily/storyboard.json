@@ -1,0 +1,975 @@
+{
+  "topic": "台股高檔震盪、台積電壓盤，AI光通訊接棒與油價急跌重塑資金方向",
+  "total_estimated_duration_seconds": 438,
+  "scenes": [
+    {
+      "id": 1,
+      "section": "台股守住四萬三，但真正的主角已經換人",
+      "narration": "2026年8月3日至8月4日，台股最值得注意的，不是指數單純上漲或下跌，而是市場主導權正在快速轉移。",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "video",
+        "query": "Taiwan stock exchange trading screens Taipei",
+        "notes": "呈現台股高檔震盪與資金快速輪動的市場氛圍。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 2,
+      "section": "台股守住四萬三，但真正的主角已經換人",
+      "narration": "8月3日，加權指數開低走高，終場上漲266.66點，收在43,386.41點，漲幅0.62%，成交值約新台幣8,445億元。",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Taiwan stock market green trading board",
+        "notes": "以台灣證券市場上漲畫面呈現8月3日開低走高。"
+      },
+      "camera": {
+        "motion": "pan_up",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 3,
+      "section": "台股守住四萬三，但真正的主角已經換人",
+      "narration": "到了8月4日，指數早盤一度跌到42,895.81點，盤中又翻揚逼近44,000點，最後收在43,360.66點，只小跌25.75點，跌幅0.06%。",
+      "estimated_duration_seconds": 10,
+      "visual": {
+        "asset_type": "video",
+        "query": "volatile stock market intraday reversal trading screen",
+        "notes": "呈現指數先急跌、再翻紅、尾盤收斂的劇烈震盪。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": 10
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 4,
+      "section": "台股守住四萬三，但真正的主角已經換人",
+      "narration": "但這一天成交值放大到新台幣1兆362.81億元，顯示市場不是平靜整理，而是多空雙方在高檔激烈換手。",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "video",
+        "query": "high volume stock trading floor rapid orders",
+        "notes": "以大量成交、快速下單與紅綠跳動畫面強調激烈換手。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "cut",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 5,
+      "section": "台股守住四萬三，但真正的主角已經換人",
+      "narration": "真正的關鍵，是台積電連續兩天走弱，卻沒有把大盤直接拖垮。",
+      "estimated_duration_seconds": 6,
+      "visual": {
+        "asset_type": "photo",
+        "query": "TSMC headquarters Hsinchu Taiwan",
+        "notes": "以台積電總部或企業識別畫面帶出權值股壓盤。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 6
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 6,
+      "section": "台股守住四萬三，但真正的主角已經換人",
+      "narration": "這代表支撐市場的力量，正從單一權值核心，轉向更多AI供應鏈、光通訊與高價電子股。",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "Taiwan AI supply chain optical communication electronics",
+        "notes": "呈現資金由單一大型權值股擴散至AI、光通訊與高價電子股。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 7,
+      "section": "台積電壓盤，聯發科、日月光與光通訊接棒",
+      "narration": "8月3日，台積電下跌2.27%，收在2,370元；8月4日再跌50元，以2,320元作收，跌幅2.11%，連續成為加權指數最大的壓力來源。",
+      "estimated_duration_seconds": 10,
+      "visual": {
+        "asset_type": "photo",
+        "query": "TSMC logo semiconductor factory Taiwan",
+        "notes": "以台積電晶圓廠與企業識別呈現連續兩日股價走弱。"
+      },
+      "camera": {
+        "motion": "pan_down",
+        "duration_seconds": 10
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 8,
+      "section": "台積電壓盤，聯發科、日月光與光通訊接棒",
+      "narration": "鴻海也在8月4日下跌1.19%至250元，但台達電逆勢上漲2.53%至1,620元。",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "Foxconn Delta Electronics logos Taiwan stocks",
+        "notes": "以兩家公司識別與相反方向箭頭呈現分化。"
+      },
+      "camera": {
+        "motion": "pan_left",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 9,
+      "section": "台積電壓盤，聯發科、日月光與光通訊接棒",
+      "narration": "更重要的是，聯發科與日月光投控在8月3日攻上漲停，伺服器、記憶體、被動元件、機器人與PCB上游材料也獲得買盤。",
+      "estimated_duration_seconds": 10,
+      "visual": {
+        "asset_type": "video",
+        "query": "semiconductor packaging servers memory chips PCB factory",
+        "notes": "以聯發科、封裝測試、伺服器與PCB供應鏈畫面呈現族群輪動。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": 10
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 10,
+      "section": "台積電壓盤，聯發科、日月光與光通訊接棒",
+      "narration": "這個結構透露出一個明確訊號：市場並沒有離開AI，而是從最核心的晶圓代工，向運算周邊、高速傳輸、先進封裝、電源與散熱擴散。",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "AI hardware supply chain wafer packaging power cooling network diagram",
+        "notes": "以流程式供應鏈圖呈現AI資金由晶圓代工向封裝、傳輸、電源與散熱擴散。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 11,
+      "section": "台積電壓盤，聯發科、日月光與光通訊接棒",
+      "narration": "台股雖然守住43,000點，但如果台積電無法止穩，其他族群就必須持續提供足夠漲點，否則月線約43,785點、季線約44,142點，以及45,000點以上的套牢區，都可能形成反覆震盪的壓力。",
+      "estimated_duration_seconds": 10,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "Taiwan stock index resistance levels market pressure",
+        "notes": "以抽象阻力區與價格關卡視覺呈現43,785點、44,142點與45,000點上方壓力；不繪製真實歷史走勢圖。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 10
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 12,
+      "section": "CPO與磷化銦成為新焦點，AI需求從晶片延伸到光",
+      "narration": "這一波資金輪動中，最明顯的主題是CPO，也就是共同封裝光學，以及磷化銦相關供應鏈。",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "co-packaged optics CPO silicon photonics diagram",
+        "notes": "以共同封裝光學結構圖介紹CPO與光電整合概念。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 13,
+      "section": "CPO與磷化銦成為新焦點，AI需求從晶片延伸到光",
+      "narration": "光寶科在第二季獲利創高後走強，並宣布以3,430萬美元、約新台幣11億元，投資新加坡磷化銦光通訊元件廠DenseLight Semiconductors，強化AI光互連與光學元件布局。",
+      "estimated_duration_seconds": 10,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Lite-On Technology headquarters Taiwan optical components",
+        "notes": "以光寶科企業畫面與光通訊元件特寫呈現投資布局。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": 10
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 14,
+      "section": "CPO與磷化銦成為新焦點，AI需求從晶片延伸到光",
+      "narration": "大立光也證實取得首張光纖陣列量產訂單，規劃第三季底試產，最快2027年中量產。",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "photo",
+        "query": "fiber optic array precision optical components factory",
+        "notes": "呈現光纖陣列與精密光學零組件。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 15,
+      "section": "CPO與磷化銦成為新焦點，AI需求從晶片延伸到光",
+      "narration": "聯亞、全新、環宇-KY與光寶科等個股因而受到關注。",
+      "estimated_duration_seconds": 6,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "Taiwan photonics semiconductor companies optical network",
+        "notes": "以台灣光通訊與化合物半導體產業群聚示意。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": 6
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 16,
+      "section": "CPO與磷化銦成為新焦點，AI需求從晶片延伸到光",
+      "narration": "磷化銦是AI資料中心高速雷射元件的重要材料，當運算速度提升，資料中心內部的傳輸瓶頸也會越來越明顯。",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "indium phosphide laser AI data center optical transmission diagram",
+        "notes": "呈現磷化銦雷射元件在AI資料中心高速光傳輸中的角色。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "dissolve",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 17,
+      "section": "CPO與磷化銦成為新焦點，AI需求從晶片延伸到光",
+      "narration": "這使AI投資焦點從晶片本身，進一步延伸到光模組、雷射、封裝與資料傳輸。",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "video",
+        "query": "optical transceiver laser module semiconductor packaging data center",
+        "notes": "以光模組、雷射、先進封裝與高速傳輸畫面呈現投資焦點擴散。"
+      },
+      "camera": {
+        "motion": "pan_left",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 18,
+      "section": "CPO與磷化銦成為新焦點，AI需求從晶片延伸到光",
+      "narration": "不過，短期股價漲幅能否轉化為長期基本面，仍要看量產時程、客戶認證、訂單規模與毛利率。",
+      "estimated_duration_seconds": 10,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "technology investment checklist production orders margins",
+        "notes": "以量產、客戶認證、訂單與毛利率四項驗證條件呈現基本面風險。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 10
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 19,
+      "section": "低軌衛星與國防概念升溫，但題材必須接受出貨驗證",
+      "narration": "除了光通訊，低軌衛星與無人機概念股也快速升溫。",
+      "estimated_duration_seconds": 7,
+      "visual": {
+        "asset_type": "video",
+        "query": "low earth orbit satellites and military drones",
+        "notes": "以低軌衛星與無人機飛行畫面帶出新題材。"
+      },
+      "camera": {
+        "motion": "pan_up",
+        "duration_seconds": 7
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 20,
+      "section": "低軌衛星與國防概念升溫，但題材必須接受出貨驗證",
+      "narration": "8月4日，昇達科漲停至1,170元，華通上漲7.01%至198.5元，雷虎上漲3.48%，中光電則以82.7元漲停作收。",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "Taiwan satellite drone electronics stocks rising",
+        "notes": "以相關產業公司與上漲箭頭呈現盤面強勢，不繪製未提供來源的真實股價圖。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 21,
+      "section": "低軌衛星與國防概念升溫，但題材必須接受出貨驗證",
+      "narration": "這些公司同時連結高速通訊、國防、衛星與AI應用，因此容易成為市場尋找新成長故事時的焦點。",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "satellite defense AI communication technology ecosystem",
+        "notes": "以高速通訊、國防、衛星與AI四大應用交集圖呈現成長故事。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 22,
+      "section": "低軌衛星與國防概念升溫，但題材必須接受出貨驗證",
+      "narration": "對台灣供應鏈來說，這些領域確實有中長期需求，但短線交易風險也更高。",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "Taiwan technology supply chain opportunity and risk balance",
+        "notes": "以成長機會與短線風險並存的平衡概念呈現。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 23,
+      "section": "低軌衛星與國防概念升溫，但題材必須接受出貨驗證",
+      "narration": "若市場主要根據供應吃緊、政策題材或未來應用想像推升股價，而實際營收與獲利尚未跟上，波動就可能迅速放大。接下來真正需要驗證的，不只是概念是否成立，而是產品是否通過認證、客戶是否正式下單、產能是否能準時開出，以及新增營收能否帶來合理的毛利率。",
+      "estimated_duration_seconds": 10,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "technology product certification orders production margins process",
+        "notes": "以產品認證、正式訂單、產能開出與毛利率的驗證流程呈現題材落地條件。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": 10
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 24,
+      "section": "外資賣、投信買，新台幣偏弱透露籌碼仍有分歧",
+      "narration": "8月4日，三大法人合計買超台股只有新台幣1.09億元，看似接近平衡，但內部差異非常大。",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "photo",
+        "query": "institutional investors Taiwan stock market trading",
+        "notes": "以法人交易與資金流向畫面呈現表面平衡、內部分歧。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 25,
+      "section": "外資賣、投信買，新台幣偏弱透露籌碼仍有分歧",
+      "narration": "外資及陸資賣超57.32億元，自營商賣超194.29億元，投信則大幅買超252.7億元。",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "foreign investors sell local funds buy Taiwan stocks",
+        "notes": "以外資、自營商與投信三股資金方向分歧示意。"
+      },
+      "camera": {
+        "motion": "pan_left",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 26,
+      "section": "外資賣、投信買，新台幣偏弱透露籌碼仍有分歧",
+      "narration": "投信買盤抵銷外資與自營商賣壓，是大盤在台積電下跌時仍能收斂跌幅的重要原因。",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "institutional buying offsets foreign selling stock market",
+        "notes": "呈現投信買盤支撐大盤、抵銷外資賣壓。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 27,
+      "section": "外資賣、投信買，新台幣偏弱透露籌碼仍有分歧",
+      "narration": "這也顯示，本土資金與外資對市場的判斷並不一致。匯市同樣透露出這種保留態度。",
+      "estimated_duration_seconds": 6,
+      "visual": {
+        "asset_type": "photo",
+        "query": "currency trading desk Taiwan dollar market",
+        "notes": "由股市籌碼分歧轉入外匯市場。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": 6
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 28,
+      "section": "外資賣、投信買，新台幣偏弱透露籌碼仍有分歧",
+      "narration": "新台幣對美元銀行間收盤匯率，8月3日為32.438元，8月4日再小幅貶至32.447元。",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "photo",
+        "query": "New Taiwan dollar and US dollar banknotes exchange rate",
+        "notes": "以新台幣與美元紙鈔、匯率報價螢幕呈現台幣偏弱。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 29,
+      "section": "外資賣、投信買，新台幣偏弱透露籌碼仍有分歧",
+      "narration": "新台幣偏弱，對出口商與部分電子代工廠的美元營收換算可能有利，但同時也會提高原油、天然氣、設備與進口原料的台幣成本。",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "weak Taiwan dollar exporters benefit import costs rise diagram",
+        "notes": "以出口換算利益與進口成本上升的雙向傳導呈現匯率影響。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 30,
+      "section": "外資賣、投信買，新台幣偏弱透露籌碼仍有分歧",
+      "narration": "後續若外資現貨賣超擴大、期貨空單居高不下，而新台幣持續偏弱，台股上攻空間就可能受到限制。",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "foreign selling futures short positions weak currency stock pressure",
+        "notes": "呈現外資賣超、期貨空單與弱勢匯率共同壓抑大盤。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 31,
+      "section": "油價急跌帶來成本利多，但荷莫茲海峽仍是最大變數",
+      "narration": "海外市場在8月3日出現重大轉折。",
+      "estimated_duration_seconds": 6,
+      "visual": {
+        "asset_type": "map",
+        "query": "Middle East Strait of Hormuz map",
+        "notes": "以中東與荷莫茲海峽位置圖開啟國際市場段落。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 6
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 32,
+      "section": "油價急跌帶來成本利多，但荷莫茲海峽仍是最大變數",
+      "narration": "美國總統Donald Trump暫緩對伊朗發動新一輪軍事攻擊，並表示希望透過談判處理伊朗核問題與荷莫茲海峽重新開放事宜。",
+      "estimated_duration_seconds": 10,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Donald Trump White House Iran policy speech",
+        "notes": "以Donald Trump公開發言與中東政策場合呈現軍事行動暫緩。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": 10
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 33,
+      "section": "油價急跌帶來成本利多，但荷莫茲海峽仍是最大變數",
+      "narration": "布蘭特原油一度大跌超過7%，最後結算價約每桶83.47美元，單日下跌約5%；西德州中級原油也跌超過5%，來到每桶79.47美元附近。",
+      "estimated_duration_seconds": 10,
+      "visual": {
+        "asset_type": "video",
+        "query": "crude oil prices falling trading screen Brent WTI",
+        "notes": "呈現布蘭特與西德州原油同步急跌的市場畫面；不繪製未提供具名來源的真實走勢圖。"
+      },
+      "camera": {
+        "motion": "pan_down",
+        "duration_seconds": 10
+      },
+      "transition": {
+        "type": "cut",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 34,
+      "section": "油價急跌帶來成本利多，但荷莫茲海峽仍是最大變數",
+      "narration": "對台灣而言，這不只是國際新聞，而是直接影響成本結構。",
+      "estimated_duration_seconds": 7,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Taiwan oil import terminal refinery",
+        "notes": "以台灣能源進口與煉油設施強調國際油價的在地傳導。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 7
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 35,
+      "section": "油價急跌帶來成本利多，但荷莫茲海峽仍是最大變數",
+      "narration": "台灣高度依賴能源進口，若油價維持較低水準，航空、航運、陸運、塑化、製造與零售物流的燃料成本都可能下降，也有助於減輕輸入性通膨。",
+      "estimated_duration_seconds": 10,
+      "visual": {
+        "asset_type": "video",
+        "query": "airplane cargo ship trucks factory retail logistics Taiwan",
+        "notes": "以航空、航運、陸運、製造與物流多產業畫面呈現成本下降的受益面。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": 10
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 36,
+      "section": "油價急跌帶來成本利多，但荷莫茲海峽仍是最大變數",
+      "narration": "不過，伊朗否認與美國進行直接談判，荷莫茲海峽與紅海部分航線流量也仍低於正常水準。只要戰爭保險費、繞航成本與船期尚未恢復，這波油價下跌就不能被視為風險完全解除。",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "satellite",
+        "query": "Strait of Hormuz tanker traffic satellite view",
+        "notes": "呈現油輪航線、海峽交通與航運風險仍未正常化。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 37,
+      "section": "美國AI與製造業支撐台灣出口，但利率風險仍在",
+      "narration": "美國科技股與經濟數據，則為台灣提供另一股外部支撐。",
+      "estimated_duration_seconds": 7,
+      "visual": {
+        "asset_type": "video",
+        "query": "US technology stocks and economic data screens",
+        "notes": "由中東風險轉入美國科技與經濟數據。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": 7
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 38,
+      "section": "美國AI與製造業支撐台灣出口，但利率風險仍在",
+      "narration": "8月3日，Amazon股價上漲約5%至285.01美元附近，市值首度突破3兆美元。",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Amazon headquarters logo cloud computing",
+        "notes": "以Amazon總部與企業識別呈現市值突破3兆美元。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 39,
+      "section": "美國AI與製造業支撐台灣出口，但利率風險仍在",
+      "narration": "Amazon Web Services公布逾四年來最強勁的成長表現，Microsoft、Meta Platforms、Alphabet與Oracle也同步上漲，顯示AI與雲端投資需求仍然旺盛。",
+      "estimated_duration_seconds": 10,
+      "visual": {
+        "asset_type": "video",
+        "query": "hyperscale cloud data center servers AI infrastructure",
+        "notes": "以雲端資料中心、伺服器與大型科技公司AI基礎設施呈現需求旺盛。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": 10
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 40,
+      "section": "美國AI與製造業支撐台灣出口，但利率風險仍在",
+      "narration": "Palantir在美股收盤後公布第二季營收19.35億美元，年增93%，並將2026年全年營收展望上調至81.50億至81.58億美元。",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Palantir Technologies headquarters logo artificial intelligence",
+        "notes": "以Palantir企業畫面與AI軟體介面呈現高速成長與上調展望。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 41,
+      "section": "美國AI與製造業支撐台灣出口，但利率風險仍在",
+      "narration": "對台灣而言，這些需求可望傳導至先進製程、封裝、伺服器、散熱、電源、網通、PCB與光通訊。",
+      "estimated_duration_seconds": 10,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "Taiwan AI semiconductor server supply chain diagram",
+        "notes": "以先進製程、封裝、伺服器、散熱、電源、網通、PCB與光通訊的傳導鏈呈現台灣受益管道。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": 10
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 42,
+      "section": "美國AI與製造業支撐台灣出口，但利率風險仍在",
+      "narration": "不過，美國7月ISM製造業PMI升至55.6，雖然顯示需求與生產動能強勁，但價格指數仍高達71.1。",
+      "estimated_duration_seconds": 10,
+      "visual": {
+        "asset_type": "chart",
+        "query": "ISM Manufacturing PMI July 2026 chart",
+        "notes": "圖表標題：美國ISM製造業PMI與價格指數；x軸：2026年7月；y軸：指數點；單位：指數；資料期間：2026年7月；資料來源：Institute for Supply Management；標示PMI 55.6與價格指數71.1。"
+      },
+      "camera": {
+        "motion": "pan_up",
+        "duration_seconds": 10
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 43,
+      "section": "美國AI與製造業支撐台灣出口，但利率風險仍在",
+      "narration": "美國經濟韌性有利台灣出口，卻也可能讓Fed延後寬鬆，推高美債殖利率，進而壓抑科技股估值。",
+      "estimated_duration_seconds": 10,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "strong US economy delays Fed easing raises bond yields technology valuation",
+        "notes": "以美國經濟韌性、Fed延後寬鬆、美債殖利率與科技股估值的傳導關係呈現雙面影響。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": 10
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 44,
+      "section": "下一步看台積電、匯率、外資與AI訂單是否同步確認",
+      "narration": "接下來幾個交易日，市場需要的是驗證，而不是更多想像。",
+      "estimated_duration_seconds": 6,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "financial analyst verifying market evidence",
+        "notes": "以查核數據與等待確認的市場氛圍開啟結尾段落。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 6
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 45,
+      "section": "下一步看台積電、匯率、外資與AI訂單是否同步確認",
+      "narration": "第一，台積電能否守住2,300元附近，並重新帶動大型權值股。",
+      "estimated_duration_seconds": 7,
+      "visual": {
+        "asset_type": "photo",
+        "query": "TSMC semiconductor factory Taiwan close up",
+        "notes": "以台積電廠區與晶圓製程畫面呈現2,300元附近的市場關注。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 7
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 46,
+      "section": "下一步看台積電、匯率、外資與AI訂單是否同步確認",
+      "narration": "第二，加權指數能否站回月線與季線，而不是只靠中小型題材股支撐。",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "Taiwan stock index moving average resistance concept",
+        "notes": "以月線、季線與中小型股支撐的抽象市場結構呈現。"
+      },
+      "camera": {
+        "motion": "pan_up",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 47,
+      "section": "下一步看台積電、匯率、外資與AI訂單是否同步確認",
+      "narration": "第三，外資期貨空方部位是否下降，新台幣是否停止貶值，這將決定外資是否重新回補台股。",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "foreign futures short positions Taiwan dollar stock inflows",
+        "notes": "呈現期貨空單、新台幣與外資回補台股之間的關聯。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 48,
+      "section": "下一步看台積電、匯率、外資與AI訂單是否同步確認",
+      "narration": "第四，CPO、磷化銦、AI伺服器與低軌衛星供應鏈，能否以實際訂單、量產與獲利支撐股價。",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "video",
+        "query": "optical communication AI servers satellite components factory",
+        "notes": "以光通訊、AI伺服器與衛星零組件生產畫面呈現題材必須接受訂單與量產驗證。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 49,
+      "section": "下一步看台積電、匯率、外資與AI訂單是否同步確認",
+      "narration": "第五，荷莫茲海峽航運是否真正恢復，以及油價下跌是否能持續降低台灣企業成本。",
+      "estimated_duration_seconds": 10,
+      "visual": {
+        "asset_type": "video",
+        "query": "oil tankers safely crossing Strait of Hormuz",
+        "notes": "以正常通行的商船與油輪呈現航運恢復是否具持續性。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": 10
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 50,
+      "section": "下一步看台積電、匯率、外資與AI訂單是否同步確認",
+      "narration": "最後，美國就業、薪資、通膨與AI企業財報，也會同步影響美元、美債殖利率與台灣科技股估值。",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "US jobs wages inflation AI earnings dollar bond yields Taiwan tech",
+        "notes": "以美國就業、薪資、通膨與AI財報傳導至美元、美債殖利率及台灣科技股估值。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 51,
+      "section": "下一步看台積電、匯率、外資與AI訂單是否同步確認",
+      "narration": "現在的市場不是缺乏題材，而是等待這些題材被基本面逐一確認。",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "market themes confirmed by earnings and orders",
+        "notes": "以題材逐項轉化為訂單、營收與獲利的畫面收尾。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    }
+  ]
+}

@@ -10,6 +10,9 @@ video:
 workspace:
   root: workspace
 
+projects:
+  root: projects
+
 plugin:
   active: countries
 

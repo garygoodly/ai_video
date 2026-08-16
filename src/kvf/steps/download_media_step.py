@@ -29,9 +29,9 @@ class DownloadMediaStep(BaseStep):
 
     def execute(self, application: Application) -> None:
         workspace = application.project.workspace
-        storyboard = StoryboardRepository().load(workspace / "storyboard" / "storyboard.json")
+        storyboard = StoryboardRepository().load(application.project.source_dir / "storyboard.json")
         research_sources = []
-        research_path = workspace / "research" / "research.json"
+        research_path = application.project.source_dir / "research.json"
         if research_path.exists():
             research_sources = ResearchRepository().load(research_path).sources
 

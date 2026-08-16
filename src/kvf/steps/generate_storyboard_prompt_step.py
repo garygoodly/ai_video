@@ -17,11 +17,10 @@ class GenerateStoryboardPromptStep(BaseStep):
     ) -> None:
 
         workspace = application.project.workspace
+        source_dir = application.project.source_dir
 
         prompt_path = (
-            workspace
-            / "storyboard"
-            / "prompt.md"
+            source_dir / "storyboard_prompt.md"
         )
 
         if file_exists(prompt_path):
@@ -29,9 +28,7 @@ class GenerateStoryboardPromptStep(BaseStep):
             return
 
         script_path = (
-            workspace
-            / "script"
-            / "script.json"
+            source_dir / "script.json"
         )
 
         script = ScriptRepository().load(

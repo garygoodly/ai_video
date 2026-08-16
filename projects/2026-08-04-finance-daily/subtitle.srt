@@ -1,0 +1,612 @@
+1
+00:00:00,000 --> 00:00:04,130
+On August 3, 2026, the market's central story began not.
+
+2
+00:00:04,160 --> 00:00:06,710
+on Wall Street, but in the waters surrounding the Strait.
+
+3
+00:00:06,740 --> 00:00:07,400
+of Hormas.
+
+4
+00:00:08,460 --> 00:00:11,190
+President Donald Trump postponed a planned escalation of U.
+
+5
+00:00:11,220 --> 00:00:11,620
+.S.
+
+6
+00:00:11,400 --> 00:00:14,290
+military strikes against Iran and instead promoted a renewed.
+
+7
+00:00:14,320 --> 00:00:17,470
+diplomatic effort focused on reopening the vital shipping route.
+
+8
+00:00:17,500 --> 00:00:19,540
+and addressing Iran's nuclear program.
+
+9
+00:00:20,440 --> 00:00:23,450
+Iran, however, denied that direct talks with Washington were.
+
+10
+00:00:23,480 --> 00:00:26,710
+taking place, saying its discussions concern maritime arrangements.
+
+11
+00:00:26,740 --> 00:00:27,440
+with Elman.
+
+12
+00:00:28,260 --> 00:00:29,880
+That contradiction mattered.
+
+13
+00:00:31,020 --> 00:00:33,880
+Markets were responding to the possibility of de -escalation.
+
+14
+00:00:34,160 --> 00:00:35,520
+not to a completed agreement.
+
+15
+00:00:36,600 --> 00:00:39,100
+The geopolitical risk premium began to retreat.
+
+16
+00:00:39,440 --> 00:00:42,050
+but the political foundation beneath that retreat remained.
+
+17
+00:00:42,080 --> 00:00:42,700
+uncertain.
+
+18
+00:00:43,700 --> 00:00:45,700
+Oil reacted first and most dramatically.
+
+19
+00:00:46,440 --> 00:00:49,730
+Brent crude fell about 5 % and settled near $83.
+
+20
+00:00:49,760 --> 00:00:53,630
+.47 a barrel, while West Texas Intermediate dropped more than.
+
+21
+00:00:53,660 --> 00:00:56,380
+5 % to roughly $79.47.
+
+22
+00:00:57,520 --> 00:01:00,030
+The decline reversed part of the surge that had developed.
+
+23
+00:01:00,060 --> 00:01:02,060
+during July when military threats.
+
+24
+00:01:02,380 --> 00:01:05,310
+attacks on commercial vessels and fears of supply disruption.
+
+25
+00:01:05,340 --> 00:01:07,120
+pushed energy prices higher.
+
+26
+00:01:08,000 --> 00:01:11,060
+Lower oil immediately changed the market's inflation calculus.
+
+27
+00:01:11,820 --> 00:01:14,560
+Airlines, transport companies, manufacturers.
+
+28
+00:01:15,060 --> 00:01:17,750
+and other fuel -intensive businesses stood to benefit from.
+
+29
+00:01:17,780 --> 00:01:18,920
+reduced cost pressure.
+
+30
+00:01:20,000 --> 00:01:22,240
+Energy producers moved in the opposite direction.
+
+31
+00:01:22,460 --> 00:01:25,530
+because a lower geopolitical premium threatens revenue and.
+
+32
+00:01:25,560 --> 00:01:27,260
+cash flow with the decline persists.
+
+33
+00:01:28,220 --> 00:01:29,920
+Yet the risk had not disappeared.
+
+34
+00:01:31,060 --> 00:01:33,140
+Shipping through Hormas remained below normal.
+
+35
+00:01:33,380 --> 00:01:36,270
+and another tanker incident or collapse in diplomacy could.
+
+36
+00:01:36,300 --> 00:01:37,560
+quickly restore the premium.
+
+37
+00:01:38,410 --> 00:01:41,220
+As oil fell, US equities rallied broadly.
+
+38
+00:01:42,280 --> 00:01:44,430
+The S &P 500 gained one and a half percent.
+
+39
+00:01:44,460 --> 00:01:47,020
+to close at 7,600.50.
+
+40
+00:01:47,440 --> 00:01:48,840
+just below its all -time high.
+
+41
+00:01:49,700 --> 00:01:53,410
+The Dow Jones industrial average rose 693 points to a.
+
+42
+00:01:53,440 --> 00:01:56,540
+record 53,178.41.
+
+43
+00:01:57,520 --> 00:02:00,290
+The Nasdaq composite advanced 2.1%.
+
+44
+00:02:00,320 --> 00:02:03,290
+while the Russell 2000 gained 1.7%.
+
+45
+00:02:03,320 --> 00:02:05,970
+showing that the move extended beyond the largest technology.
+
+46
+00:02:06,000 --> 00:02:06,540
+companies.
+
+47
+00:02:07,480 --> 00:02:10,360
+Lower energy prices eased immediate inflation concerns.
+
+48
+00:02:10,820 --> 00:02:13,790
+and treasury yields declined as investors reduced the probability.
+
+49
+00:02:13,820 --> 00:02:16,060
+of a fresh oil -driven inflation shock.
+
+50
+00:02:16,900 --> 00:02:20,350
+Growth stocks advanced, but so did economically sensitive smaller.
+
+51
+00:02:20,380 --> 00:02:20,900
+companies.
+
+52
+00:02:21,940 --> 00:02:23,900
+That breath gave the rally more substance.
+
+53
+00:02:25,000 --> 00:02:27,930
+Even so, the move depended heavily on the assumption that.
+
+54
+00:02:27,960 --> 00:02:30,630
+postpone strikes would translate into a meaningful reduction.
+
+55
+00:02:30,660 --> 00:02:32,080
+in supply disruption risk.
+
+56
+00:02:32,860 --> 00:02:35,400
+If that assumption proves wrong, oil, yields.
+
+57
+00:02:35,680 --> 00:02:37,840
+and equity valuations could reverse quickly.
+
+58
+00:02:38,840 --> 00:02:41,760
+The market rally was reinforced by another powerful force.
+
+59
+00:02:42,120 --> 00:02:45,480
+renewed enthusiasm for artificial intelligence and cloud computing.
+
+60
+00:02:46,560 --> 00:02:49,650
+Amazon crossed $3 trillion in market value for the first.
+
+61
+00:02:49,680 --> 00:02:52,850
+time on August 3, becoming only the fifth publicly traded.
+
+62
+00:02:52,880 --> 00:02:54,400
+company to reach that milestone.
+
+63
+00:02:55,340 --> 00:02:57,910
+It shares rose about 5 % to a record near.
+
+64
+00:02:57,940 --> 00:02:59,180
+$285.
+
+65
+00:03:00,120 --> 00:03:03,250
+The advanced followed quarterly results showing Amazon web.
+
+66
+00:03:03,280 --> 00:03:06,720
+services delivering its strongest growth in more than 4 years.
+
+67
+00:03:07,740 --> 00:03:10,390
+Investors interpreted that performance as evidence that enormous.
+
+68
+00:03:10,420 --> 00:03:13,170
+spending on cloud and artificial intelligence infrastructure.
+
+69
+00:03:13,200 --> 00:03:15,640
+was beginning to produce tangible revenue.
+
+70
+00:03:16,780 --> 00:03:20,530
+Microsoft, Meta, Alphabet, and Oracle also moved sharply higher.
+
+71
+00:03:20,560 --> 00:03:24,590
+The beneficiaries extended beyond the cloud platforms themselves.
+
+72
+00:03:24,620 --> 00:03:27,940
+to chipmakers, data center suppliers, networking companies.
+
+73
+00:03:28,280 --> 00:03:30,360
+power providers, and cooling specialists.
+
+74
+00:03:31,440 --> 00:03:33,380
+But the central risk remained unchanged.
+
+75
+00:03:33,840 --> 00:03:36,820
+capital spending must eventually generate durable cash flow.
+
+76
+00:03:37,840 --> 00:03:40,380
+The economic backdrop also supported the rally.
+
+77
+00:03:41,400 --> 00:03:44,910
+Data released on August 3 showed that US manufacturing activity.
+
+78
+00:03:44,940 --> 00:03:46,340
+accelerated in July.
+
+79
+00:03:47,100 --> 00:03:50,290
+The Institute for Supply Management's Manufacturing Index rose.
+
+80
+00:03:50,320 --> 00:03:53,000
+to 55.6 from 53.3.
+
+81
+00:03:53,280 --> 00:03:55,360
+its highest level since May 2022.
+
+82
+00:03:56,440 --> 00:03:59,750
+New orders improved, and the employment index moved into expansion.
+
+83
+00:03:59,780 --> 00:04:02,400
+territory for the first time in 33 months.
+
+84
+00:04:03,300 --> 00:04:06,170
+The report suggested that factory demand and hiring entered.
+
+85
+00:04:06,200 --> 00:04:07,600
+the third quarter with momentum.
+
+86
+00:04:08,620 --> 00:04:11,120
+But the details were not uniformly reassuring.
+
+87
+00:04:11,940 --> 00:04:15,400
+The price's index remained elevated at 71.1.
+
+88
+00:04:15,740 --> 00:04:17,380
+signaling persistent cost pressure.
+
+89
+00:04:18,400 --> 00:04:21,360
+A separate S &P global survey showed expansion as well.
+
+90
+00:04:21,600 --> 00:04:24,080
+but warned of slower output growth, weaker exports.
+
+91
+00:04:24,420 --> 00:04:26,840
+supply chain delays, and falling business confidence.
+
+92
+00:04:27,980 --> 00:04:30,770
+New York Federal Reserve President John Williams said underlying.
+
+93
+00:04:30,800 --> 00:04:33,690
+disinflation should continue, but also made clear that the.
+
+94
+00:04:33,720 --> 00:04:36,480
+Fed would respond if inflation moved away from that path.
+
+95
+00:04:37,400 --> 00:04:39,440
+Lower oil supported the benign scenario.
+
+96
+00:04:40,420 --> 00:04:43,660
+Strong activity and high input costs complicated it.
+
+97
+00:04:44,660 --> 00:04:47,710
+After the market closed, Palinter Technologies added another.
+
+98
+00:04:47,740 --> 00:04:49,180
+layer to the AI narrative.
+
+99
+00:04:50,220 --> 00:04:52,930
+The company reported second quarter revenue of approximately.
+
+100
+00:04:52,960 --> 00:04:57,200
+$1.94 billion, up 93 % from a year earlier.
+
+101
+00:04:58,280 --> 00:05:03,410
+US revenue rose 115%, with commercial revenue increasing 149.
+
+102
+00:05:03,440 --> 00:05:06,610
+% in government revenue rising 90%.
+
+103
+00:05:06,640 --> 00:05:10,080
+Adjusted free cash flow reached roughly $1.22 billion.
+
+104
+00:05:10,460 --> 00:05:13,190
+while total contract value closed during the quarter reached.
+
+105
+00:05:13,220 --> 00:05:14,640
+$3.37 billion.
+
+106
+00:05:15,760 --> 00:05:18,490
+Palinter also raised its full -year revenue outlook to about.
+
+107
+00:05:18,520 --> 00:05:22,640
+$8.15 billion and projected annual growth near 82%.
+
+108
+00:05:23,520 --> 00:05:26,140
+The shares rose sharply and after hours trading.
+
+109
+00:05:27,060 --> 00:05:29,990
+The results suggested that some AI companies were moving beyond.
+
+110
+00:05:30,020 --> 00:05:32,880
+promise and converting demand into contracts, revenue.
+
+111
+00:05:33,200 --> 00:05:34,130
+and cash generation.
+
+112
+00:05:34,160 --> 00:05:38,230
+It also raised the standard for every other enterprise software.
+
+113
+00:05:38,260 --> 00:05:41,100
+company claiming to benefit from artificial intelligence.
+
+114
+00:05:42,240 --> 00:05:45,410
+Away from technology, the pharmaceutical sector delivered a.
+
+115
+00:05:45,440 --> 00:05:46,620
+very different message.
+
+116
+00:05:47,620 --> 00:05:50,890
+AstraZeneca shares fell about 9 % in London after reports.
+
+117
+00:05:50,920 --> 00:05:53,670
+that the company had discussed a possible combination with.
+
+118
+00:05:53,700 --> 00:05:54,760
+Bristol Liars' squib.
+
+119
+00:05:55,700 --> 00:05:59,420
+The decline erased more than £17 billion of market value.
+
+120
+00:06:00,220 --> 00:06:03,830
+Investors questioned why AstraZeneca, which had delivered comparatively.
+
+121
+00:06:03,860 --> 00:06:07,110
+strong growth, would pursue a transformative deal with a company.
+
+122
+00:06:07,140 --> 00:06:09,160
+facing major patent explorations.
+
+123
+00:06:10,160 --> 00:06:12,720
+A merger could bring a larger US commercial presence.
+
+124
+00:06:13,020 --> 00:06:15,400
+broader oncology and immunology portfolios.
+
+125
+00:06:15,680 --> 00:06:17,000
+and potential cost savings.
+
+126
+00:06:18,060 --> 00:06:21,340
+But it could also create regulatory problems, integration risk.
+
+127
+00:06:21,560 --> 00:06:24,800
+overlapping drug pipelines, and pressure on research productivity.
+
+128
+00:06:25,580 --> 00:06:28,850
+Bristol Liars shares initially rose before giving back much.
+
+129
+00:06:28,880 --> 00:06:29,580
+of the move.
+
+130
+00:06:30,560 --> 00:06:32,500
+No definitive agreement was announced.
+
+131
+00:06:33,580 --> 00:06:36,330
+The market's reaction suggested that shareholders saw greater.
+
+132
+00:06:36,360 --> 00:06:39,610
+potential benefit for Bristol Liars and greater strategic risk.
+
+133
+00:06:39,640 --> 00:06:40,640
+for AstraZeneca.
+
+134
+00:06:41,800 --> 00:06:44,280
+The next phase of this story depends on verification.
+
+135
+00:06:45,620 --> 00:06:47,930
+Markets need evidence that commercial shipping through the.
+
+136
+00:06:47,960 --> 00:06:49,640
+straight of hormones is becoming safer.
+
+137
+00:06:50,020 --> 00:06:53,060
+insurance costs are falling, and energy flows are normalizing.
+
+138
+00:06:54,000 --> 00:06:56,360
+Political statements created the initial relief.
+
+139
+00:06:56,760 --> 00:06:59,300
+but only operational improvement can make it durable.
+
+140
+00:07:00,340 --> 00:07:03,440
+The US labor market will provide the second major test.
+
+141
+00:07:04,440 --> 00:07:07,900
+Investors will focus on payroll growth, unemployment, participation.
+
+142
+00:07:08,360 --> 00:07:10,780
+wages, and revisions to earlier data.
+
+143
+00:07:11,700 --> 00:07:14,660
+Moderate employment growth could support a soft landing narrative.
+
+144
+00:07:15,660 --> 00:07:17,960
+A sharp slowdown could weaken earnings expectations.
+
+145
+00:07:18,440 --> 00:07:21,360
+while stronger wage pressure could push Treasury yields higher.
+
+146
+00:07:22,360 --> 00:07:24,960
+Corporate results will provide the third test.
+
+147
+00:07:25,780 --> 00:07:29,090
+Amazon's valuation and Palantir's growth have raised expectations.
+
+148
+00:07:29,120 --> 00:07:30,840
+across the technology sector.
+
+149
+00:07:31,840 --> 00:07:35,580
+The positive scenario requires verified geopolitical de -escalation.
+
+150
+00:07:35,860 --> 00:07:39,230
+resilient economic data, and continued evidence that AI spending.
+
+151
+00:07:39,260 --> 00:07:40,420
+can produce returns.
+
+152
+00:07:41,420 --> 00:07:44,080
+The negative scenario would combine renewed oil disruption.
+
+153
+00:07:44,500 --> 00:07:46,600
+higher yields, and weaker corporate guidance.
+

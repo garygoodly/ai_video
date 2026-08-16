@@ -1,0 +1,21 @@
+{
+  "id": "2026-08-04-finance-daily",
+  "name": "2026-08-04 Finance Daily",
+  "category": "finance",
+  "created_at": "2026-08-04T00:32:12.868904+00:00",
+  "updated_at": "2026-08-04T08:33:57.253741+00:00",
+  "status": "complete",
+  "current_stage": "complete",
+  "reference_date": "2026-08-04",
+  "voice": "en-US-GuyNeural",
+  "subtitle_settings": {
+    "max_words": 10,
+    "max_characters": 58,
+    "max_duration_seconds": 4.5,
+    "whisper_model": "tiny"
+  },
+  "subtitle_style": {
+    "preset": "Compact",
+    "font_name": "Tahoma"
+  }
+}

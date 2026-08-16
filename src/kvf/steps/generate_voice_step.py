@@ -38,7 +38,7 @@ class GenerateVoiceStep(BaseStep):
             print("Voice already exists. [SKIP]")
             return
 
-        script = ScriptRepository().load(workspace / "script" / "script.json")
+        script = ScriptRepository().load(application.project.source_dir / "script.json")
         metadata = SessionService._read_metadata(workspace)
         mode = metadata.get("narration_mode", "continuous")
         if mode == "continuous":

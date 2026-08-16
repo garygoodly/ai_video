@@ -1,3 +1,5 @@
+import shutil
+
 from kvf.models.application import Application
 from kvf.providers.ffmpeg_provider import FFmpegProvider
 from kvf.repositories.timeline_repository import TimelineRepository
@@ -13,6 +15,14 @@ class GenerateVideoStep(BaseStep):
         output = output_dir / "video.mp4"
         timeline = TimelineRepository().load(workspace / "timeline" / "timeline.json")
         metadata = SessionService._read_metadata(workspace)
+
+        # projects/<id>/subtitle.srt is the Git-tracked editable source.
+        # Mirror it into workspace just before rendering so manual edits are honored.
+        source_srt = application.project.source_dir / "subtitle.srt"
+        runtime_srt = workspace / "subtitle" / "subtitle.srt"
+        if source_srt.exists():
+            runtime_srt.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source_srt, runtime_srt)
 
         FFmpegProvider().render(
             media_dir=workspace / "assets" / "rendered",

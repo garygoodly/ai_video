@@ -11,9 +11,7 @@ class WaitForStoryboardStep(BaseStep):
     ) -> None:
 
         path = (
-            application.project.workspace
-            / "storyboard"
-            / "storyboard.json"
+            application.project.source_dir / "storyboard.json"
         )
 
         if file_exists(path):

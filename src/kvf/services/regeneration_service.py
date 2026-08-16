@@ -51,6 +51,10 @@ class RegenerationService:
                     if path.is_file():
                         path.unlink(missing_ok=True)
 
+        if "subtitle" in expanded:
+            project_dir = SessionService._project_dir_from_workspace(workspace)
+            (project_dir / "subtitle.srt").unlink(missing_ok=True)
+
         metadata = SessionService._read_metadata(workspace)
         if voice_engine:
             metadata["voice_engine"] = voice_engine

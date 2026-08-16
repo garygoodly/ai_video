@@ -17,11 +17,10 @@ class GenerateScriptPromptStep(BaseStep):
     ) -> None:
 
         workspace = application.project.workspace
+        source_dir = application.project.source_dir
 
         prompt_path = (
-            workspace
-            / "script"
-            / "prompt.md"
+            source_dir / "script_prompt.md"
         )
 
         if file_exists(prompt_path):
@@ -29,9 +28,7 @@ class GenerateScriptPromptStep(BaseStep):
             return
 
         research_path = (
-            workspace
-            / "research"
-            / "research.json"
+            source_dir / "research.json"
         )
 
         research = ResearchRepository().load(

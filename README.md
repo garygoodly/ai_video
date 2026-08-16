@@ -129,3 +129,29 @@ The Modify Existing Video screen now separates narration from subtitles.
 - Voice Preview uses the currently selected engine, voice, speed, and pitch before regeneration.
 
 Changing narration mode, voice, speed, or pitch invalidates narration and its downstream outputs so the final video is rebuilt consistently.
+
+## Git-tracked project sources vs generated workspace
+
+New sessions separate editable/source artifacts from generated build output:
+
+```text
+projects/<session-id>/
+  project.json
+  research_prompt.md
+  research.json
+  script_prompt.md
+  script.json
+  storyboard_prompt.md
+  storyboard.json
+  subtitle.srt          # when subtitles are generated/enabled
+
+workspace/<session-id>/
+  assets/
+  voice/
+  subtitle/             # runtime copy used by FFmpeg
+  timeline/
+  video/
+  _preview/
+```
+
+`projects/` is the Git-tracked source of truth. `workspace/` is ignored and may be deleted/rebuilt. When an older session is opened, its research/script/storyboard files are automatically copied into `projects/<session-id>/`. A clean clone can resume from the tracked project files and regenerate media, voice, timeline, and video.

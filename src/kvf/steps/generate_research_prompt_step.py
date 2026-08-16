@@ -17,9 +17,7 @@ class GenerateResearchPromptStep(BaseStep):
         project = application.project
 
         prompt_path = (
-            project.workspace
-            / "research"
-            / "prompt.md"
+            project.source_dir / "research_prompt.md"
         )
 
         if file_exists(prompt_path):
@@ -28,8 +26,8 @@ class GenerateResearchPromptStep(BaseStep):
 
         service = PromptService()
 
-        metadata_path = project.workspace / "metadata.json"
-        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        from kvf.services.session_service import SessionService
+        metadata = SessionService._read_metadata(project.workspace)
         reference_date = date.fromisoformat(
             metadata.get("reference_date", date.today().isoformat())
         )

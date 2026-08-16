@@ -5,7 +5,7 @@ from kvf.steps.base_step import BaseStep
 
 class ValidateStoryboardStep(BaseStep):
     def execute(self, application: Application) -> None:
-        path = application.project.workspace / "storyboard" / "storyboard.json"
+        path = application.project.source_dir / "storyboard.json"
         if not path.exists():
             raise FileNotFoundError(path)
 

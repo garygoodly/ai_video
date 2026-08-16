@@ -1,0 +1,1203 @@
+{
+  "topic": "Oil’s Geopolitical Reversal Drives a Broad Market Rally as AI and U.S. Growth Stay Firm",
+  "total_estimated_duration_seconds": 336,
+  "scenes": [
+    {
+      "id": 1,
+      "section": "The Geopolitical Reversal",
+      "narration": "On August 3, 2026, the market’s central story began not on Wall Street, but in the waters surrounding the Strait of Hormuz.",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "map",
+        "query": "Strait of Hormuz map Persian Gulf shipping route",
+        "notes": "Open with a regional map highlighting the Strait of Hormuz. Source script: "
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 2,
+      "section": "The Geopolitical Reversal",
+      "narration": "President Donald Trump postponed a planned escalation of U.S. military strikes against Iran and instead promoted a renewed diplomatic effort focused on reopening the vital shipping route and addressing Iran’s nuclear program.",
+      "estimated_duration_seconds": 10,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Donald Trump speaking at White House podium foreign policy",
+        "notes": "Use a recent official-style image of Trump delivering remarks."
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": 10
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 3,
+      "section": "The Geopolitical Reversal",
+      "narration": "Iran, however, denied that direct talks with Washington were taking place, saying its discussions concerned maritime arrangements with Oman.",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Iran foreign ministry press conference Tehran officials",
+        "notes": "Show an Iranian government press briefing or foreign ministry exterior."
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 4,
+      "section": "The Geopolitical Reversal",
+      "narration": "That contradiction mattered. Markets were responding to the possibility of de-escalation, not to a completed agreement.",
+      "estimated_duration_seconds": 7,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "diplomatic handshake with question mark geopolitical uncertainty",
+        "notes": "Conceptual image emphasizing incomplete negotiations."
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 7
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 5,
+      "section": "The Geopolitical Reversal",
+      "narration": "The geopolitical risk premium began to retreat, but the political foundation beneath that retreat remained uncertain.",
+      "estimated_duration_seconds": 7,
+      "visual": {
+        "asset_type": "chart",
+        "query": "oil geopolitical risk premium declining chart concept",
+        "notes": "Use a stylized declining risk-premium chart rather than a fabricated data series."
+      },
+      "camera": {
+        "motion": "pan_down",
+        "duration_seconds": 7
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 6,
+      "section": "Oil Falls and Markets Reprice Risk",
+      "narration": "Oil reacted first and most dramatically.",
+      "estimated_duration_seconds": 5,
+      "visual": {
+        "asset_type": "video",
+        "query": "crude oil trading screen price falling",
+        "notes": "Show oil futures prices moving lower."
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 5
+      },
+      "transition": {
+        "type": "cut",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 7,
+      "section": "Oil Falls and Markets Reprice Risk",
+      "narration": "Brent crude fell about five percent and settled near eighty-three dollars and forty-seven cents a barrel, while West Texas Intermediate dropped more than five percent to roughly seventy-nine dollars and forty-seven cents.",
+      "estimated_duration_seconds": 10,
+      "visual": {
+        "asset_type": "chart",
+        "query": "Brent crude and WTI oil price decline August 2026 chart",
+        "notes": "Display both benchmarks with labeled percentage declines."
+      },
+      "camera": {
+        "motion": "pan_left",
+        "duration_seconds": 10
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 8,
+      "section": "Oil Falls and Markets Reprice Risk",
+      "narration": "The decline reversed part of the surge that had developed during July, when military threats, attacks on commercial vessels, and fears of supply disruption pushed energy prices higher.",
+      "estimated_duration_seconds": 10,
+      "visual": {
+        "asset_type": "video",
+        "query": "oil tanker sailing Strait of Hormuz military escort",
+        "notes": "Use footage of tanker traffic in a strategic shipping corridor."
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": 10
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 9,
+      "section": "Oil Falls and Markets Reprice Risk",
+      "narration": "Lower oil immediately changed the market’s inflation calculus.",
+      "estimated_duration_seconds": 6,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "lower oil prices reduce inflation economic diagram",
+        "notes": "Show oil feeding into transport, production, and consumer prices."
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": 6
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 10,
+      "section": "Oil Falls and Markets Reprice Risk",
+      "narration": "Airlines, transport companies, manufacturers, and other fuel-intensive businesses stood to benefit from reduced cost pressure.",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "video",
+        "query": "airplane cargo trucks factory fuel intensive businesses",
+        "notes": "Use a montage of aviation, logistics, and manufacturing."
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 11,
+      "section": "Oil Falls and Markets Reprice Risk",
+      "narration": "Energy producers moved in the opposite direction, because a lower geopolitical premium threatens revenue and cash flow if the decline persists.",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "photo",
+        "query": "offshore oil platform energy company workers",
+        "notes": "Show upstream energy production infrastructure."
+      },
+      "camera": {
+        "motion": "pan_left",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 12,
+      "section": "Oil Falls and Markets Reprice Risk",
+      "narration": "Yet the risk had not disappeared. Shipping through Hormuz remained below normal, and another tanker incident or collapse in diplomacy could quickly restore the premium.",
+      "estimated_duration_seconds": 10,
+      "visual": {
+        "asset_type": "satellite",
+        "query": "satellite view Strait of Hormuz tanker traffic",
+        "notes": "Use maritime traffic imagery or a satellite view of the channel."
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 10
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 13,
+      "section": "Wall Street Embraces the Relief Rally",
+      "narration": "As oil fell, U.S. equities rallied broadly.",
+      "estimated_duration_seconds": 5,
+      "visual": {
+        "asset_type": "video",
+        "query": "Wall Street trading floor stocks rising",
+        "notes": "Show green market screens and active trading."
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 5
+      },
+      "transition": {
+        "type": "cut",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 14,
+      "section": "Wall Street Embraces the Relief Rally",
+      "narration": "The S&P 500 gained one and a half percent to close at 7,600.50, just below its all-time high.",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "chart",
+        "query": "S&P 500 August 3 2026 gain 1.5 percent chart",
+        "notes": "Highlight the closing level and proximity to the record."
+      },
+      "camera": {
+        "motion": "pan_up",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 15,
+      "section": "Wall Street Embraces the Relief Rally",
+      "narration": "The Dow Jones Industrial Average rose 693 points to a record 53,178.41.",
+      "estimated_duration_seconds": 7,
+      "visual": {
+        "asset_type": "chart",
+        "query": "Dow Jones record high August 3 2026 chart",
+        "notes": "Emphasize the record close."
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 7
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 16,
+      "section": "Wall Street Embraces the Relief Rally",
+      "narration": "The Nasdaq Composite advanced 2.1 percent, while the Russell 2000 gained 1.7 percent, showing that the move extended beyond the largest technology companies.",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "chart",
+        "query": "Nasdaq Composite and Russell 2000 August 3 2026 gains chart",
+        "notes": "Compare both indexes side by side."
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 17,
+      "section": "Wall Street Embraces the Relief Rally",
+      "narration": "Lower energy prices eased immediate inflation concerns, and Treasury yields declined as investors reduced the probability of a fresh oil-driven inflation shock.",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "oil prices inflation Treasury yields relationship diagram",
+        "notes": "Illustrate the transmission from lower crude to inflation expectations and yields."
+      },
+      "camera": {
+        "motion": "pan_down",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "dissolve",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 18,
+      "section": "Wall Street Embraces the Relief Rally",
+      "narration": "Growth stocks advanced, but so did economically sensitive smaller companies. That breadth gave the rally more substance.",
+      "estimated_duration_seconds": 7,
+      "visual": {
+        "asset_type": "chart",
+        "query": "broad stock market rally technology and small cap sectors",
+        "notes": "Use a sector breadth heat map."
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": 7
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 19,
+      "section": "Wall Street Embraces the Relief Rally",
+      "narration": "Even so, the move depended heavily on the assumption that postponed strikes would translate into a meaningful reduction in supply-disruption risk.",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "stock rally supported by fragile geopolitical truce concept",
+        "notes": "Use a conceptual balancing image between markets and geopolitical risk."
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 20,
+      "section": "Wall Street Embraces the Relief Rally",
+      "narration": "If that assumption proves wrong, oil, yields, and equity valuations could reverse quickly.",
+      "estimated_duration_seconds": 6,
+      "visual": {
+        "asset_type": "chart",
+        "query": "oil yields stocks sudden market reversal chart concept",
+        "notes": "Show three market lines reversing direction."
+      },
+      "camera": {
+        "motion": "pan_down",
+        "duration_seconds": 6
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 21,
+      "section": "Amazon and the Return of AI Optimism",
+      "narration": "The market rally was reinforced by another powerful force: renewed enthusiasm for artificial intelligence and cloud computing.",
+      "estimated_duration_seconds": 7,
+      "visual": {
+        "asset_type": "video",
+        "query": "artificial intelligence cloud data center servers",
+        "notes": "Show modern hyperscale computing infrastructure."
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": 7
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 22,
+      "section": "Amazon and the Return of AI Optimism",
+      "narration": "Amazon crossed three trillion dollars in market value for the first time on August 3, becoming only the fifth publicly traded company to reach that milestone.",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Amazon headquarters logo corporate campus",
+        "notes": "Pair the company logo with a three-trillion-dollar milestone graphic."
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 23,
+      "section": "Amazon and the Return of AI Optimism",
+      "narration": "Its shares rose about five percent to a record near two hundred eighty-five dollars.",
+      "estimated_duration_seconds": 6,
+      "visual": {
+        "asset_type": "chart",
+        "query": "Amazon stock record 285 dollars August 2026 chart",
+        "notes": "Display the daily percentage gain and record price."
+      },
+      "camera": {
+        "motion": "pan_up",
+        "duration_seconds": 6
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 24,
+      "section": "Amazon and the Return of AI Optimism",
+      "narration": "The advance followed quarterly results showing Amazon Web Services delivering its strongest growth in more than four years.",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Amazon Web Services data center server racks",
+        "notes": "Use cloud infrastructure or AWS-branded data-center imagery."
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 25,
+      "section": "Amazon and the Return of AI Optimism",
+      "narration": "Investors interpreted that performance as evidence that enormous spending on cloud and artificial-intelligence infrastructure was beginning to produce tangible revenue.",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "AI infrastructure spending converts to cloud revenue diagram",
+        "notes": "Show capital expenditure flowing into servers, services, and revenue."
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 26,
+      "section": "Amazon and the Return of AI Optimism",
+      "narration": "Microsoft, Meta, Alphabet, and Oracle also moved sharply higher.",
+      "estimated_duration_seconds": 6,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "Microsoft Meta Alphabet Oracle logos technology stocks rising",
+        "notes": "Use a clean four-company logo composition with upward indicators."
+      },
+      "camera": {
+        "motion": "pan_left",
+        "duration_seconds": 6
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 27,
+      "section": "Amazon and the Return of AI Optimism",
+      "narration": "The beneficiaries extended beyond the cloud platforms themselves to chipmakers, data-center suppliers, networking companies, power providers, and cooling specialists.",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "video",
+        "query": "AI data center supply chain chips networking cooling power equipment",
+        "notes": "Use a rapid montage of the AI infrastructure supply chain."
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 28,
+      "section": "Amazon and the Return of AI Optimism",
+      "narration": "But the central risk remained unchanged: capital spending must eventually generate durable cash flow.",
+      "estimated_duration_seconds": 7,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "capital expenditure versus cash flow business diagram",
+        "notes": "Contrast rising investment with required long-term returns."
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 7
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 29,
+      "section": "Manufacturing Strength Meets Inflation Risk",
+      "narration": "The economic backdrop also supported the rally. Data released on August 3 showed that U.S. manufacturing activity accelerated in July.",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "video",
+        "query": "United States manufacturing factory production line workers",
+        "notes": "Show active industrial production."
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 30,
+      "section": "Manufacturing Strength Meets Inflation Risk",
+      "narration": "The Institute for Supply Management’s manufacturing index rose to 55.6 from 53.3, its highest level since May 2022.",
+      "estimated_duration_seconds": 7,
+      "visual": {
+        "asset_type": "chart",
+        "query": "ISM manufacturing PMI 55.6 July 2026 chart",
+        "notes": "Show the latest reading and previous month."
+      },
+      "camera": {
+        "motion": "pan_up",
+        "duration_seconds": 7
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 31,
+      "section": "Manufacturing Strength Meets Inflation Risk",
+      "narration": "New orders improved, and the employment index moved into expansion territory for the first time in thirty-three months.",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "chart",
+        "query": "manufacturing new orders employment index expansion chart",
+        "notes": "Show both subindexes crossing into expansion."
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 32,
+      "section": "Manufacturing Strength Meets Inflation Risk",
+      "narration": "The report suggested that factory demand and hiring entered the third quarter with momentum.",
+      "estimated_duration_seconds": 6,
+      "visual": {
+        "asset_type": "video",
+        "query": "factory workers hiring industrial production busy plant",
+        "notes": "Show workers and machinery operating at capacity."
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": 6
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 33,
+      "section": "Manufacturing Strength Meets Inflation Risk",
+      "narration": "But the details were not uniformly reassuring. The prices index remained elevated at 71.1, signaling persistent cost pressure.",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "chart",
+        "query": "ISM prices index 71.1 manufacturing cost pressure chart",
+        "notes": "Highlight the elevated input-cost reading."
+      },
+      "camera": {
+        "motion": "pan_up",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 34,
+      "section": "Manufacturing Strength Meets Inflation Risk",
+      "narration": "A separate S&P Global survey showed expansion as well, but warned of slower output growth, weaker exports, supply-chain delays, and falling business confidence.",
+      "estimated_duration_seconds": 10,
+      "visual": {
+        "asset_type": "video",
+        "query": "cargo port congestion containers supply chain delays",
+        "notes": "Use shipping containers, delayed cargo, and factory logistics."
+      },
+      "camera": {
+        "motion": "pan_left",
+        "duration_seconds": 10
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 35,
+      "section": "Manufacturing Strength Meets Inflation Risk",
+      "narration": "New York Federal Reserve President John Williams said underlying disinflation should continue, but also made clear that the Fed would respond if inflation moved away from that path.",
+      "estimated_duration_seconds": 10,
+      "visual": {
+        "asset_type": "photo",
+        "query": "John Williams New York Federal Reserve speaking",
+        "notes": "Use a press or conference image of John Williams."
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": 10
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 36,
+      "section": "Manufacturing Strength Meets Inflation Risk",
+      "narration": "Lower oil supported the benign scenario. Strong activity and high input costs complicated it.",
+      "estimated_duration_seconds": 6,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "lower oil versus strong growth inflation balance diagram",
+        "notes": "Create a split-screen economic balance."
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": 6
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 37,
+      "section": "Palantir Raises the AI Bar",
+      "narration": "After the market closed, Palantir Technologies added another layer to the AI narrative.",
+      "estimated_duration_seconds": 6,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Palantir Technologies headquarters logo",
+        "notes": "Show the company logo or office exterior at dusk."
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 6
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 38,
+      "section": "Palantir Raises the AI Bar",
+      "narration": "The company reported second-quarter revenue of approximately one point nine four billion dollars, up ninety-three percent from a year earlier.",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "chart",
+        "query": "Palantir Q2 2026 revenue 1.94 billion 93 percent growth chart",
+        "notes": "Use a year-over-year revenue comparison."
+      },
+      "camera": {
+        "motion": "pan_up",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 39,
+      "section": "Palantir Raises the AI Bar",
+      "narration": "U.S. revenue rose one hundred fifteen percent, with commercial revenue increasing one hundred forty-nine percent and government revenue rising ninety percent.",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "chart",
+        "query": "Palantir U.S. commercial and government revenue growth chart 2026",
+        "notes": "Compare commercial and government growth rates."
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 40,
+      "section": "Palantir Raises the AI Bar",
+      "narration": "Adjusted free cash flow reached roughly one point two two billion dollars, while total contract value closed during the quarter reached three point three seven billion.",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "chart",
+        "query": "Palantir free cash flow contract value Q2 2026 chart",
+        "notes": "Show both financial metrics in separate labeled bars."
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 41,
+      "section": "Palantir Raises the AI Bar",
+      "narration": "Palantir also raised its full-year revenue outlook to about eight point one five billion dollars and projected annual growth near eighty-two percent.",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "chart",
+        "query": "Palantir 2026 revenue guidance 8.15 billion 82 percent growth",
+        "notes": "Display the revised full-year guidance."
+      },
+      "camera": {
+        "motion": "pan_up",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 42,
+      "section": "Palantir Raises the AI Bar",
+      "narration": "The shares rose sharply in after-hours trading.",
+      "estimated_duration_seconds": 5,
+      "visual": {
+        "asset_type": "chart",
+        "query": "Palantir stock after hours surge chart",
+        "notes": "Show an after-hours price jump."
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 5
+      },
+      "transition": {
+        "type": "cut",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 43,
+      "section": "Palantir Raises the AI Bar",
+      "narration": "The result suggested that some AI companies were moving beyond promise and converting demand into contracts, revenue, and cash generation.",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "AI demand to contracts revenue cash flow diagram",
+        "notes": "Show a clear monetization funnel."
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 44,
+      "section": "Palantir Raises the AI Bar",
+      "narration": "It also raised the standard for every other enterprise software company claiming to benefit from artificial intelligence.",
+      "estimated_duration_seconds": 7,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "enterprise software companies competing in artificial intelligence",
+        "notes": "Show multiple software companies racing toward an AI benchmark."
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": 7
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 45,
+      "section": "AstraZeneca Faces a Different Kind of Risk",
+      "narration": "Away from technology, the pharmaceutical sector delivered a very different message.",
+      "estimated_duration_seconds": 6,
+      "visual": {
+        "asset_type": "photo",
+        "query": "pharmaceutical laboratory scientists drug research",
+        "notes": "Transition to healthcare and biotechnology."
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": 6
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 46,
+      "section": "AstraZeneca Faces a Different Kind of Risk",
+      "narration": "AstraZeneca shares fell about nine percent in London after reports that the company had discussed a possible combination with Bristol Myers Squibb.",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "chart",
+        "query": "AstraZeneca stock falls 9 percent London merger talks chart",
+        "notes": "Show AstraZeneca’s daily decline."
+      },
+      "camera": {
+        "motion": "pan_down",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 47,
+      "section": "AstraZeneca Faces a Different Kind of Risk",
+      "narration": "The decline erased more than seventeen billion pounds of market value.",
+      "estimated_duration_seconds": 6,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "17 billion pounds market value loss graphic",
+        "notes": "Use a restrained financial loss visualization."
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 6
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 48,
+      "section": "AstraZeneca Faces a Different Kind of Risk",
+      "narration": "Investors questioned why AstraZeneca, which had delivered comparatively strong growth, would pursue a transformative deal with a company facing major patent expirations.",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "photo",
+        "query": "AstraZeneca Bristol Myers Squibb logos pharmaceutical merger",
+        "notes": "Use a side-by-side corporate composition."
+      },
+      "camera": {
+        "motion": "pan_left",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 49,
+      "section": "AstraZeneca Faces a Different Kind of Risk",
+      "narration": "A merger could bring a larger U.S. commercial presence, broader oncology and immunology portfolios, and potential cost savings.",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "pharmaceutical merger benefits oncology immunology cost savings diagram",
+        "notes": "Show the potential strategic benefits."
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 50,
+      "section": "AstraZeneca Faces a Different Kind of Risk",
+      "narration": "But it could also create regulatory problems, integration risk, overlapping drug pipelines, and pressure on research productivity.",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "pharmaceutical merger risks regulation integration overlapping pipelines",
+        "notes": "Show four major deal risks."
+      },
+      "camera": {
+        "motion": "pan_down",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 51,
+      "section": "AstraZeneca Faces a Different Kind of Risk",
+      "narration": "Bristol Myers shares initially rose before giving back much of the move. No definitive agreement was announced.",
+      "estimated_duration_seconds": 7,
+      "visual": {
+        "asset_type": "chart",
+        "query": "Bristol Myers stock intraday rise reversal merger report",
+        "notes": "Show an initial spike followed by a pullback."
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": 7
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 52,
+      "section": "AstraZeneca Faces a Different Kind of Risk",
+      "narration": "The market’s reaction suggested that shareholders saw greater potential benefit for Bristol Myers and greater strategic risk for AstraZeneca.",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "merger benefits Bristol Myers risks AstraZeneca balance scale",
+        "notes": "Use a balanced comparison visual."
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 53,
+      "section": "What Comes Next",
+      "narration": "The next phase of this story depends on verification.",
+      "estimated_duration_seconds": 5,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "financial analyst verifying evidence documents",
+        "notes": "Use a clean transition into the outlook section."
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 5
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 54,
+      "section": "What Comes Next",
+      "narration": "Markets need evidence that commercial shipping through the Strait of Hormuz is becoming safer, insurance costs are falling, and energy flows are normalizing.",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "video",
+        "query": "commercial oil tankers moving safely through Strait of Hormuz",
+        "notes": "Show orderly tanker traffic and maritime operations."
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 55,
+      "section": "What Comes Next",
+      "narration": "Political statements created the initial relief, but only operational improvement can make it durable.",
+      "estimated_duration_seconds": 7,
+      "visual": {
+        "asset_type": "video",
+        "query": "oil tanker port operations loading crude safely",
+        "notes": "Emphasize physical shipping activity rather than political rhetoric."
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": 7
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 56,
+      "section": "What Comes Next",
+      "narration": "The U.S. labor market will provide the second major test.",
+      "estimated_duration_seconds": 5,
+      "visual": {
+        "asset_type": "photo",
+        "query": "United States workers job market employment",
+        "notes": "Transition to labor-market indicators."
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": 5
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 57,
+      "section": "What Comes Next",
+      "narration": "Investors will focus on payroll growth, unemployment, participation, wages, and revisions to earlier data.",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "chart",
+        "query": "U.S. jobs report payroll unemployment participation wages dashboard",
+        "notes": "Show five labeled labor indicators."
+      },
+      "camera": {
+        "motion": "pan_left",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 58,
+      "section": "What Comes Next",
+      "narration": "Moderate employment growth could support a soft-landing narrative.",
+      "estimated_duration_seconds": 6,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "economic soft landing airplane runway finance concept",
+        "notes": "Use a restrained soft-landing metaphor."
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 6
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 59,
+      "section": "What Comes Next",
+      "narration": "A sharp slowdown could weaken earnings expectations, while stronger wage pressure could push Treasury yields higher.",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "weak jobs earnings decline strong wages Treasury yields rise diagram",
+        "notes": "Show two diverging labor-market scenarios."
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 60,
+      "section": "What Comes Next",
+      "narration": "Corporate results will provide the third test.",
+      "estimated_duration_seconds": 5,
+      "visual": {
+        "asset_type": "photo",
+        "query": "corporate earnings reports financial statements desk",
+        "notes": "Transition into earnings and AI expectations."
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 5
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 61,
+      "section": "What Comes Next",
+      "narration": "Amazon’s valuation and Palantir’s growth have raised expectations across the technology sector.",
+      "estimated_duration_seconds": 7,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "Amazon and Palantir logos technology growth expectations",
+        "notes": "Use a clean two-company composition with rising expectations."
+      },
+      "camera": {
+        "motion": "pan_up",
+        "duration_seconds": 7
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 62,
+      "section": "What Comes Next",
+      "narration": "The positive scenario requires verified geopolitical de-escalation, resilient economic data, and continued evidence that AI spending can produce returns.",
+      "estimated_duration_seconds": 9,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "positive market scenario geopolitics economy AI returns diagram",
+        "notes": "Show three supporting pillars."
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": 9
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 63,
+      "section": "What Comes Next",
+      "narration": "The negative scenario would combine renewed oil disruption, higher yields, and weaker corporate guidance.",
+      "estimated_duration_seconds": 8,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "negative market scenario oil disruption higher yields weak earnings",
+        "notes": "End on three downside risks converging."
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": 8
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    }
+  ]
+}

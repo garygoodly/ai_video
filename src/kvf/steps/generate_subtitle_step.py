@@ -14,12 +14,14 @@ class GenerateSubtitleStep(BaseStep):
         subtitle_dir.mkdir(parents=True, exist_ok=True)
         srt = subtitle_dir / "subtitle.srt"
         metadata_path = subtitle_dir / "subtitle.json"
+        source_srt = application.project.source_dir / "subtitle.srt"
         session_metadata = SessionService._read_metadata(workspace)
 
         if not session_metadata.get("subtitles_enabled", True):
             # Keep an empty SRT as an explicit artifact so session progress and
             # regeneration remain deterministic while FFmpeg omits the filter.
             srt.write_text("", encoding="utf-8")
+            source_srt.write_text("", encoding="utf-8")
             SubtitleRepository().save(
                 Subtitle(provider="disabled", file="subtitle.srt"), metadata_path
             )
@@ -39,7 +41,7 @@ class GenerateSubtitleStep(BaseStep):
         voice = workspace / "voice" / "narration.mp3"
         timing = workspace / "voice" / "cue_timing.json"
         settings = session_metadata.get("subtitle_settings", {})
-        script = ScriptRepository().load(workspace / "script" / "script.json")
+        script = ScriptRepository().load(application.project.source_dir / "script.json")
         service = ExactSubtitleService(
             language_code=session_metadata.get("language_code", "en-US"),
             max_characters=settings.get("max_characters", 18),
@@ -52,4 +54,5 @@ class GenerateSubtitleStep(BaseStep):
         SubtitleRepository().save(
             Subtitle(provider="approved_script_exact_tts_timing", file="subtitle.srt"), metadata_path
         )
+        source_srt.write_text(srt.read_text(encoding="utf-8"), encoding="utf-8")
         print(f"Exact-script subtitles generated with {len(cues)} synchronized cues: {srt}")

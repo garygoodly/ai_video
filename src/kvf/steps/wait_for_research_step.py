@@ -13,9 +13,7 @@ class WaitForResearchStep(BaseStep):
     ) -> None:
 
         path = (
-            application.project.workspace
-            / "research"
-            / "research.json"
+            application.project.source_dir / "research.json"
         )
 
         if file_exists(path):

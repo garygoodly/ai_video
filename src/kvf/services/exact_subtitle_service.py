@@ -120,6 +120,10 @@ class ExactSubtitleService:
                 balanced.append(pending)
         return balanced
 
+    def write_cues(self, cues: list[dict], output: Path) -> None:
+        """Write already-aligned exact-text cues as SRT."""
+        self._write_srt(cues, output)
+
     def _write_srt(self, cues: list[dict], output: Path) -> None:
         output.parent.mkdir(parents=True, exist_ok=True)
         lines: list[str] = []

@@ -38,6 +38,9 @@ class GenerateTimelineStep(BaseStep):
 
         scenes = []
         cursor = 0.0
+        seen_sections: dict[str, int] = {}
+        section_counter = 0
+        timeline_id = 1
         for index, (scene, weight) in enumerate(zip(storyboard.scenes, weights)):
             if index == len(storyboard.scenes) - 1:
                 duration = max(total_audio_duration - cursor, 0.1)
@@ -48,18 +51,42 @@ class GenerateTimelineStep(BaseStep):
             end = min(cursor + duration, total_audio_duration)
             cursor = end
 
-            scenes.append(
-                TimelineScene(
-                    id=scene.id,
-                    image=f"{scene.id:04d}.jpg",
-                    narration=scene.narration,
-                    subtitle_start=start,
-                    subtitle_end=end,
-                    duration_seconds=max(end - start, 0.1),
-                    camera_motion=scene.camera.motion,
-                    transition=scene.transition.type,
+            # A section card occupies the first ~3 seconds of the section's
+            # narration. It does not add silence or extend the video.
+            if scene.section not in seen_sections:
+                section_counter += 1
+                seen_sections[scene.section] = section_counter
+                card_duration = min(3.0, max((end - start) * 0.45, 0.8))
+                card_end = min(start + card_duration, end)
+                scenes.append(
+                    TimelineScene(
+                        id=timeline_id,
+                        image=f"section_{section_counter:02d}.jpg",
+                        narration="",
+                        subtitle_start=start,
+                        subtitle_end=card_end,
+                        duration_seconds=max(card_end - start, 0.1),
+                        camera_motion="static",
+                        transition="fade",
+                    )
                 )
-            )
+                timeline_id += 1
+                start = card_end
+
+            if end - start > 0.05:
+                scenes.append(
+                    TimelineScene(
+                        id=timeline_id,
+                        image=f"{scene.id:04d}.jpg",
+                        narration=scene.narration,
+                        subtitle_start=start,
+                        subtitle_end=end,
+                        duration_seconds=max(end - start, 0.1),
+                        camera_motion=scene.camera.motion,
+                        transition=scene.transition.type,
+                    )
+                )
+                timeline_id += 1
 
         output.parent.mkdir(parents=True, exist_ok=True)
         TimelineRepository().save(

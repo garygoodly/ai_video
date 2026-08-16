@@ -3,6 +3,7 @@ from kvf.models.subtitle import Subtitle
 from kvf.repositories.script_repository import ScriptRepository
 from kvf.repositories.subtitle_repository import SubtitleRepository
 from kvf.services.exact_subtitle_service import ExactSubtitleService
+from kvf.services.forced_alignment_service import ForcedAlignmentService
 from kvf.services.session_service import SessionService
 from kvf.steps.base_step import BaseStep
 
@@ -18,25 +19,15 @@ class GenerateSubtitleStep(BaseStep):
         session_metadata = SessionService._read_metadata(workspace)
 
         if not session_metadata.get("subtitles_enabled", True):
-            # Keep an empty SRT as an explicit artifact so session progress and
-            # regeneration remain deterministic while FFmpeg omits the filter.
             srt.write_text("", encoding="utf-8")
             source_srt.write_text("", encoding="utf-8")
-            SubtitleRepository().save(
-                Subtitle(provider="disabled", file="subtitle.srt"), metadata_path
-            )
+            SubtitleRepository().save(Subtitle(provider="disabled", file="subtitle.srt"), metadata_path)
             print("Subtitles disabled for this session.")
             return
 
         if srt.exists() and metadata_path.exists():
             print("Subtitle already exists. [SKIP]")
             return
-
-        if session_metadata.get("narration_mode", "continuous") == "continuous":
-            raise RuntimeError(
-                "Continuous narration is intentionally independent of subtitle chunks. "
-                "Turn subtitles off, or choose Cue-synced narration for exact subtitles."
-            )
 
         voice = workspace / "voice" / "narration.mp3"
         timing = workspace / "voice" / "cue_timing.json"
@@ -48,11 +39,20 @@ class GenerateSubtitleStep(BaseStep):
             min_characters=settings.get("min_characters", 6),
             max_words=settings.get("max_words", 10),
         )
-        cues = service.generate(
-            [section.narration for section in script.sections], voice, srt, timing_file=timing
-        )
-        SubtitleRepository().save(
-            Subtitle(provider="approved_script_exact_tts_timing", file="subtitle.srt"), metadata_path
-        )
+        sections = [section.narration for section in script.sections]
+        mode = session_metadata.get("narration_mode", "continuous")
+
+        if mode == "continuous":
+            exact_text = service.segment_sections(sections)
+            cues = ForcedAlignmentService().align(
+                exact_text, voice, session_metadata.get("language_code", "en-US")
+            )
+            service.write_cues(cues, srt)
+            provider = "approved_script_forced_alignment"
+        else:
+            cues = service.generate(sections, voice, srt, timing_file=timing)
+            provider = "approved_script_exact_tts_timing"
+
+        SubtitleRepository().save(Subtitle(provider=provider, file="subtitle.srt"), metadata_path)
         source_srt.write_text(srt.read_text(encoding="utf-8"), encoding="utf-8")
-        print(f"Exact-script subtitles generated with {len(cues)} synchronized cues: {srt}")
+        print(f"Exact approved-script subtitles generated with {len(cues)} cues: {srt}")

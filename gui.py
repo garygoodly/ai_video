@@ -390,14 +390,7 @@ class VideoFactoryApp(tk.Tk):
             try:
                 normalized = self.controller.normalize_and_validate(stage, content)
             except Exception as exc:
-                details = str(exc).strip() or "Invalid JSON or schema"
-                lines = [line.strip() for line in details.splitlines() if line.strip()]
-                if len(lines) > 1:
-                    summary = " | ".join(lines[:4])
-                    if len(lines) > 4:
-                        summary += " | ..."
-                else:
-                    summary = lines[0] if lines else "Invalid JSON or schema"
+                summary = str(exc).splitlines()[0] if str(exc) else "Invalid JSON or schema"
                 status_var.set(f"Not valid yet: {summary}")
                 next_button.configure(state="disabled")
                 return
@@ -626,8 +619,8 @@ class VideoFactoryApp(tk.Tk):
         ).pack(anchor="w", pady=(8, 0))
         ttk.Label(
             narration_frame,
-            text=("For the most natural speech, use Continuous narration with subtitles off. "
-                  "If subtitles are enabled, choose Cue-synced narration for exact alignment."),
+            text=("Continuous narration can now use exact approved-script subtitles. "
+                  "The audio is generated naturally first; subtitle text is then aligned to it."),
             foreground="#555555", wraplength=470,
         ).pack(anchor="w", pady=(5, 0))
 
@@ -767,13 +760,6 @@ class VideoFactoryApp(tk.Tk):
             )
             narration_changed = narration_mode_var.get() != metadata.get("narration_mode", "continuous")
             subtitles_changed = bool(subtitles_enabled_var.get()) != bool(metadata.get("subtitles_enabled", False))
-            if subtitles_enabled_var.get() and narration_mode_var.get() == "continuous":
-                messagebox.showwarning(
-                    "Choose narration mode",
-                    "Continuous narration is intentionally independent of subtitle chunks. "
-                    "Turn subtitles off, or select Cue-synced narration for exact subtitle alignment.",
-                )
-                return
             if voice_changed or narration_changed:
                 selected.add("voice")
             if subtitles_changed:

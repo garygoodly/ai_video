@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import re
 import shutil
 from pathlib import Path
+
+from PIL import Image, ImageDraw, ImageFont
 
 from kvf.models.application import Application
 from kvf.models.media import Media
@@ -55,7 +58,7 @@ class DownloadMediaStep(BaseStep):
 
         for scene in storyboard.scenes:
             output = rendered_dir / f"{scene.id:04}.jpg"
-            topic_key = scene.section.strip().casefold()
+            topic_key = self._topic_key(scene)
 
             if persistence == "topic" and topic_key in representative_by_topic:
                 source_path, source_asset = representative_by_topic[topic_key]
@@ -116,7 +119,76 @@ class DownloadMediaStep(BaseStep):
             MediaRepository().save(Media(assets=assets), media_json)
 
         MediaRepository().save(Media(assets=assets), media_json)
+        self._generate_section_cards(storyboard, rendered_dir)
         print(
             f"Prepared {len(assets)} verified 1920x1080 assets in assets/rendered "
             f"using '{persistence}' visual persistence."
         )
+
+
+    @staticmethod
+    def _topic_key(scene) -> str:
+        """Use the actual market/entity topic, not the broad section title.
+
+        Previously every scene in e.g. 美股盤勢 shared one key, causing an
+        S&P visual to be reused for Nasdaq, SOX and unrelated sentences.
+        """
+        text = f"{scene.narration} {scene.visual.query}".casefold()
+        topics = [
+            ("sp500", r"s&p\s*500|sp500|標普"),
+            ("nasdaq", r"nasdaq|那斯達克|納斯達克"),
+            ("dow", r"dow jones|dow\b|道瓊"),
+            ("sox", r"philadelphia semiconductor|\bsox\b|費城半導體"),
+            ("taiex", r"taiex|加權指數|台股"),
+            ("tsmc", r"tsmc|台積電"),
+            ("nikkei", r"nikkei|日經"),
+            ("topix", r"topix"),
+            ("usdjpy", r"usd/jpy|usd jpy|美元.*日圓|日圓.*美元"),
+            ("usdtwd", r"usd/twd|usd twd|新台幣|台幣"),
+            ("dxy", r"\bdxy\b|dollar index|美元指數"),
+            ("treasury10y", r"10年期.*美債|10-year treasury|10 year treasury"),
+            ("oil", r"brent|wti|crude oil|原油|油價|荷莫茲"),
+            ("gold", r"gold|黃金|金價"),
+            ("bitcoin", r"bitcoin|btc|比特幣"),
+        ]
+        for key, pattern in topics:
+            if re.search(pattern, text, re.I):
+                return key
+        # For non-market stories, a normalized visual query is more precise
+        # than the whole section but still allows nearby scenes to reuse media.
+        words = re.findall(r"[a-z0-9]+|[\u3400-\u9fff]+", scene.visual.query.casefold())
+        return "query:" + " ".join(words[:5])
+
+    @classmethod
+    def _generate_section_cards(cls, storyboard, rendered_dir: Path) -> None:
+        seen = []
+        for scene in storyboard.scenes:
+            if scene.section not in seen:
+                seen.append(scene.section)
+        for index, section in enumerate(seen, start=1):
+            path = rendered_dir / f"section_{index:02d}.jpg"
+            cls._draw_section_card(path, section)
+
+    @staticmethod
+    def _draw_section_card(path: Path, section: str) -> None:
+        image = Image.new("RGB", (1920, 1080), (18, 31, 48))
+        draw = ImageDraw.Draw(image)
+        title = section.split("｜", 1)[0].strip()
+        detail = section.split("｜", 1)[1].strip() if "｜" in section else ""
+        font_candidates = ["msjhbd.ttc", "msjh.ttc", "Microsoft JhengHei Bold.ttf", "arialbd.ttf"]
+        def font(size):
+            for candidate in font_candidates:
+                try:
+                    return ImageFont.truetype(candidate, size)
+                except OSError:
+                    continue
+            return ImageFont.load_default()
+        title_font = font(92)
+        detail_font = font(40)
+        label_font = font(28)
+        draw.text((160, 370), title, font=title_font, fill="white")
+        if detail:
+            draw.text((165, 505), detail, font=detail_font, fill=(205, 215, 225))
+        draw.rectangle((160, 320, 360, 330), fill=(220, 220, 220))
+        draw.text((165, 650), "MARKET BRIEFING", font=label_font, fill=(155, 170, 185))
+        image.save(path, "JPEG", quality=94)

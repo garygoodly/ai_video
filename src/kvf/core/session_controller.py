@@ -121,7 +121,7 @@ class SessionController:
             narration_mode, subtitles_enabled
         )
         self.sessions.touch(workspace)
-        self.run_automatic(workspace, progress_callback)
+        self.run_automatic(workspace, progress_callback, stages=rebuilt)
         return rebuilt
 
     def generate_voice_preview(
@@ -152,6 +152,7 @@ class SessionController:
         self,
         workspace: Path,
         progress_callback: Callable[[str], None] | None = None,
+        stages: set[str] | None = None,
     ) -> None:
         from kvf.steps.download_media_step import DownloadMediaStep
         from kvf.steps.generate_subtitle_step import GenerateSubtitleStep
@@ -161,13 +162,15 @@ class SessionController:
 
         application = self.application_for(workspace)
         steps = [
-            ("Downloading media", DownloadMediaStep()),
-            ("Generating voice", GenerateVoiceStep()),
-            ("Generating subtitles", GenerateSubtitleStep()),
-            ("Building timeline", GenerateTimelineStep()),
-            ("Rendering video", GenerateVideoStep()),
+            ("media", "Downloading media", DownloadMediaStep()),
+            ("voice", "Generating voice", GenerateVoiceStep()),
+            ("subtitle", "Generating subtitles", GenerateSubtitleStep()),
+            ("timeline", "Building timeline", GenerateTimelineStep()),
+            ("video", "Rendering video", GenerateVideoStep()),
         ]
-        for label, step in steps:
+        for stage_key, label, step in steps:
+            if stages is not None and stage_key not in stages:
+                continue
             if progress_callback:
                 progress_callback(label)
             step.execute(application)

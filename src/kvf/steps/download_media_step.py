@@ -10,6 +10,7 @@ from kvf.models.application import Application
 from kvf.models.media import Media
 from kvf.providers.market_chart_provider import MarketChartProvider
 from kvf.providers.resilient_media_provider import ResilientMediaProvider
+from kvf.providers.source_screenshot_provider import SourceScreenshotProvider
 from kvf.repositories.media_repository import MediaRepository
 from kvf.repositories.research_repository import ResearchRepository
 from kvf.repositories.storyboard_repository import StoryboardRepository
@@ -46,6 +47,7 @@ class DownloadMediaStep(BaseStep):
 
         provider = ResilientMediaProvider(news_source_urls=research_sources)
         chart_provider = MarketChartProvider()
+        screenshot_provider = SourceScreenshotProvider(research_sources)
         source_dir = workspace / "assets" / "source"
         rendered_dir = workspace / "assets" / "rendered"
         source_dir.mkdir(parents=True, exist_ok=True)
@@ -73,16 +75,26 @@ class DownloadMediaStep(BaseStep):
                 continue
 
             asset = None
+            resolved_for_topic = True
             if prefer_charts:
                 asset = chart_provider.create(scene, output)
                 if asset is not None:
                     print(f"Scene {scene.id}: generated source-labelled market chart for '{scene.section}'.")
+
+            # For event-driven stories, show readable evidence before generic
+            # photography. SourceScreenshotProvider rejects generic pages,
+            # loading screens, paywalls, and evidence that does not match the claim.
+            if asset is None:
+                asset = screenshot_provider.create(scene, output)
+                if asset is not None:
+                    print(f"Scene {scene.id}: selected readable source evidence for '{scene.section}'.")
 
             if asset is None:
                 try:
                     asset = provider.download(scene, output)
                 except Exception as exc:
                     if last_real is not None:
+                        resolved_for_topic = False
                         previous_path, previous_asset = last_real
                         shutil.copy2(previous_path, output)
                         asset = previous_asset.model_copy(
@@ -113,15 +125,21 @@ class DownloadMediaStep(BaseStep):
                 shutil.copy2(output, source_copy)
 
             assets.append(asset)
-            last_real = (output, asset)
-            if persistence == "topic":
-                representative_by_topic[topic_key] = (output, asset)
+            # A fallback reuse remains a valid frame for the current scene, but
+            # it must not become the representative of a *new* topic. Otherwise
+            # later, more specific scenes would never get a chance to resolve a
+            # proper chart/source/photo for that topic.
+            if resolved_for_topic:
+                last_real = (output, asset)
+                if persistence == "topic":
+                    representative_by_topic[topic_key] = (output, asset)
             MediaRepository().save(Media(assets=assets), media_json)
 
+        screenshot_provider.close()
         MediaRepository().save(Media(assets=assets), media_json)
         self._generate_section_cards(storyboard, rendered_dir)
         print(
-            f"Prepared {len(assets)} verified 1920x1080 assets in assets/rendered "
+            f"Prepared {len(assets)} verified visuals on 1920x1080 canvases in assets/rendered "
             f"using '{persistence}' visual persistence."
         )
 

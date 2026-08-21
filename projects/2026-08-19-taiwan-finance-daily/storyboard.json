@@ -1,0 +1,1811 @@
+{
+  "topic": "AI與半導體高估值遭遇長債、油價雙重壓力：費半重挫5.6%，台股面臨8月19日月結算與科技股重新定價",
+  "total_estimated_duration_seconds": null,
+  "scenes": [
+    {
+      "id": 1,
+      "section": "今日焦點｜AI高估值同時遭遇高利率與高油價",
+      "narration": "8月18日全球市場最重要的訊號，來自美國半導體股的急跌。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "semiconductor chips stock market trading screens",
+        "notes": "以半導體晶片與金融市場交易螢幕建立今日主題。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 2,
+      "section": "今日焦點｜AI高估值同時遭遇高利率與高油價",
+      "narration": "費城半導體指數SOX重挫約5.6%，30檔成分股全面下跌，Micron跌7%、Nvidia跌2.3%、Broadcom跌3.2%，Coherent與Credo Technology等高速傳輸相關股票跌幅甚至超過12%。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "semiconductor stocks falling AI chip companies market dashboard",
+        "notes": "以SOX及主要AI晶片、高速傳輸公司下跌資訊卡呈現，不暗示為真實交易終端截圖。"
+      },
+      "camera": {
+        "motion": "pan_down",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 3,
+      "section": "今日焦點｜AI高估值同時遭遇高利率與高油價",
+      "narration": "但同一天S&P 500只下跌0.7%，Dow Jones更只跌0.2%。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "S&P 500 Dow Jones market index dashboard",
+        "notes": "以S&P 500與Dow Jones較小跌幅的數值卡，對比半導體急跌。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 4,
+      "section": "今日焦點｜AI高估值同時遭遇高利率與高油價",
+      "narration": "這個差距很重要，因為它顯示市場不是在全面拋售所有美國企業，而是集中調節先前漲幅較大、估值較高的AI、記憶體、光通訊與晶片資產。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "AI memory optical semiconductor sector selloff diagram",
+        "notes": "呈現賣壓集中於AI、記憶體、光通訊與半導體，而非全面性市場崩跌。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 5,
+      "section": "今日焦點｜AI高估值同時遭遇高利率與高油價",
+      "narration": "換句話說，現在市場開始重新問一個問題：AI需求確實很強，但目前股價反映的成長，是否已經跑得比實際獲利更快？",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "AI stock valuation versus earnings growth concept",
+        "notes": "以股價估值與實際獲利成長兩條不同速度的路徑呈現核心問題。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 6,
+      "section": "今日焦點｜AI高估值同時遭遇高利率與高油價",
+      "narration": "第二股壓力來自債券。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "US Treasury bonds financial market",
+        "notes": "轉入美國公債與長端利率。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 7,
+      "section": "今日焦點｜AI高估值同時遭遇高利率與高油價",
+      "narration": "美國10年期公債殖利率升到約4.74%，30年期一度來到5.234%，接近2007年以來高檔。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "US 10 year 30 year Treasury yields dashboard",
+        "notes": "以10年期約4.74%、30年期5.234%的數值卡呈現長端利率高檔，不製作缺乏完整時間序列來源的歷史圖。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 8,
+      "section": "今日焦點｜AI高估值同時遭遇高利率與高油價",
+      "narration": "當無風險利率上升，企業融資成本提高，股票未來現金流的折現率也會上升。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "interest rates financing cost discount rate stocks diagram",
+        "notes": "呈現無風險利率上升傳導至融資成本與股票折現率。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 9,
+      "section": "今日焦點｜AI高估值同時遭遇高利率與高油價",
+      "narration": "對AI產業尤其重要，因為大型資料中心需要GPU、網路、電力與散熱等大量前期資本支出，利率越高，市場要求的投資報酬也越高。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "AI data center GPU servers cooling power infrastructure",
+        "notes": "以GPU伺服器、網路設備、電力與散熱基礎建設呈現AI資本密集特性。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 10,
+      "section": "今日焦點｜AI高估值同時遭遇高利率與高油價",
+      "narration": "第三股壓力來自能源。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "crude oil tanker refinery oil barrels",
+        "notes": "轉入能源與原油風險。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 11,
+      "section": "今日焦點｜AI高估值同時遭遇高利率與高油價",
+      "narration": "布蘭特原油升到每桶91.02美元附近，中東與荷莫茲海峽風險仍未解除。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "map",
+        "query": "Strait of Hormuz Persian Gulf oil shipping map",
+        "notes": "標示荷莫茲海峽與波斯灣能源運輸路線，搭配布蘭特原油91.02美元資訊。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 12,
+      "section": "今日焦點｜AI高估值同時遭遇高利率與高油價",
+      "narration": "油價上升可能增加企業成本，也可能讓通膨下降速度變慢，進一步限制Fed寬鬆空間。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "oil prices inflation Federal Reserve rates diagram",
+        "notes": "呈現油價上升到企業成本、通膨與Fed政策空間的傳導。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 13,
+      "section": "今日焦點｜AI高估值同時遭遇高利率與高油價",
+      "narration": "對台灣而言，這三股力量最後會匯集到同一條傳導鏈：油價與長端利率提高成本與折現率，而台積電、記憶體、PCB、CPO與AI伺服器供應鏈，正位在這場AI重新定價的核心。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "Taiwan AI semiconductor supply chain oil rates valuation diagram",
+        "notes": "將油價、長端利率連結至台積電、記憶體、PCB、CPO與AI伺服器供應鏈。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 14,
+      "section": "美股盤勢｜Nasdaq跌1.3%，費半跌5.6%，真正的賣壓集中在科技股",
+      "narration": "接著看8月18日美股四個主要錨點。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "Wall Street New York stock exchange trading floor",
+        "notes": "由總體主線轉入美股盤勢。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 15,
+      "section": "美股盤勢｜Nasdaq跌1.3%，費半跌5.6%，真正的賣壓集中在科技股",
+      "narration": "S&P 500下跌53.30點，跌幅0.7%，收在7,691.76點，連續第三個交易日從歷史高點回落。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "S&P 500 stock index market dashboard",
+        "notes": "以S&P 500收盤7,691.76點、下跌53.30點與0.7%的資訊卡呈現。"
+      },
+      "camera": {
+        "motion": "pan_down",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 16,
+      "section": "美股盤勢｜Nasdaq跌1.3%，費半跌5.6%，真正的賣壓集中在科技股",
+      "narration": "Dow Jones Industrial Average下跌116.38點，跌幅0.2%，收53,343.40點。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "Dow Jones Industrial Average market dashboard",
+        "notes": "以Dow Jones收盤53,343.40點、下跌116.38點與0.2%的資訊卡呈現。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 17,
+      "section": "美股盤勢｜Nasdaq跌1.3%，費半跌5.6%，真正的賣壓集中在科技股",
+      "narration": "Nasdaq Composite下跌355.20點，跌幅1.3%，收26,289.71點。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "Nasdaq Composite technology stock market dashboard",
+        "notes": "以Nasdaq Composite收盤26,289.71點、下跌355.20點與1.3%的資訊卡呈現。"
+      },
+      "camera": {
+        "motion": "pan_down",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 18,
+      "section": "美股盤勢｜Nasdaq跌1.3%，費半跌5.6%，真正的賣壓集中在科技股",
+      "narration": "真正劇烈的是費城半導體指數SOX，單日重挫約5.6%。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "semiconductor wafer microchips red stock market screen",
+        "notes": "以晶圓與下跌市場螢幕強調SOX跌幅遠大於大盤。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "cut",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 19,
+      "section": "美股盤勢｜Nasdaq跌1.3%，費半跌5.6%，真正的賣壓集中在科技股",
+      "narration": "Dow跌幅遠小於Nasdaq與SOX，再次說明這次不是所有產業同步惡化，而是科技與AI資產承受更強的估值壓力。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "Dow Nasdaq semiconductor index selloff comparison diagram",
+        "notes": "比較Dow、Nasdaq與半導體資產的相對壓力，強調賣壓集中。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 20,
+      "section": "美股盤勢｜Nasdaq跌1.3%，費半跌5.6%，真正的賣壓集中在科技股",
+      "narration": "半導體內部的分化更明顯。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "semiconductor chips memory GPU optical transceiver",
+        "notes": "轉入半導體各子產業與個股表現。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 21,
+      "section": "美股盤勢｜Nasdaq跌1.3%，費半跌5.6%，真正的賣壓集中在科技股",
+      "narration": "Micron跌約7%，Sandisk約跌9%，AMD跌4.3%，Broadcom跌3.2%，Coherent與Credo等高速網路與光通訊相關股票跌幅超過12%。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "memory chips GPU networking optical stocks falling dashboard",
+        "notes": "以記憶體、GPU、網路與光通訊分類呈現主要個股跌幅。"
+      },
+      "camera": {
+        "motion": "pan_down",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 22,
+      "section": "美股盤勢｜Nasdaq跌1.3%，費半跌5.6%，真正的賣壓集中在科技股",
+      "narration": "這些公司先前都是AI資料中心、記憶體與高速傳輸需求的重要受惠者，因此當市場開始擔心估值過高、投資回收時間拉長時，高波動、前期漲幅較大的股票通常最先被調節。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "AI data center memory servers optical networking",
+        "notes": "以AI資料中心、記憶體與高速網路設備呈現前期受惠產業。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 23,
+      "section": "美股盤勢｜Nasdaq跌1.3%，費半跌5.6%，真正的賣壓集中在科技股",
+      "narration": "不過，這裡需要區分『基本面反轉』與『估值壓縮』。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "fundamentals reversal versus valuation compression diagram",
+        "notes": "以兩欄方式區分基本面反轉與估值壓縮。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 24,
+      "section": "美股盤勢｜Nasdaq跌1.3%，費半跌5.6%，真正的賣壓集中在科技股",
+      "narration": "目前沒有可靠證據顯示主要雲端業者全面取消AI資料中心資本支出，所以SOX單日重挫不能直接等同AI需求崩潰。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "hyperscale cloud data center server racks construction",
+        "notes": "使用一般大型資料中心與伺服器基礎建設畫面，不暗示特定公司取消或增加投資。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 25,
+      "section": "美股盤勢｜Nasdaq跌1.3%，費半跌5.6%，真正的賣壓集中在科技股",
+      "narration": "接下來如果美債殖利率回落，而AI訂單、營收與資本支出仍然強勁，這次修正比較接近估值調整；如果殖利率持續上升，同時企業開始下修AI投資，才會對台灣供應鏈形成更深層的基本面壓力。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "AI investment bond yields Taiwan supply chain scenarios",
+        "notes": "以兩種情境呈現殖利率與AI投資變化對台灣供應鏈的不同結果。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 26,
+      "section": "全球股市｜美國科技股壓力傳到日本，中國AI也面臨獲利驗證",
+      "narration": "美國科技股的修正，很快傳導到亞洲。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "map",
+        "query": "United States Japan Taiwan Asia financial markets map",
+        "notes": "呈現美國科技股壓力向日本與亞洲市場傳導。"
+      },
+      "camera": {
+        "motion": "pan_left",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 27,
+      "section": "全球股市｜美國科技股壓力傳到日本，中國AI也面臨獲利驗證",
+      "narration": "8月19日東京早盤，日經225一度下跌2.7%至65,604.25點。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Tokyo stock market trading screens Japan",
+        "notes": "以東京金融市場與下跌行情畫面呈現日經225早盤壓力。"
+      },
+      "camera": {
+        "motion": "pan_down",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 28,
+      "section": "全球股市｜美國科技股壓力傳到日本，中國AI也面臨獲利驗證",
+      "narration": "Renesas Electronics與Fujikura一度各跌約7.2%，Sumitomo Electric Industries跌約6.7%。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "Japan semiconductor electronics optical companies market dashboard",
+        "notes": "以日本半導體、電子零組件與高速傳輸公司跌幅資訊卡呈現。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 29,
+      "section": "全球股市｜美國科技股壓力傳到日本，中國AI也面臨獲利驗證",
+      "narration": "這些公司分別涉及半導體、電子零組件與高速資料傳輸，因此日本市場的反應說明，這次AI估值修正已經不只是華爾街內部的短期交易，而是開始影響亞洲科技供應鏈。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "Japan semiconductor electronics fiber optic manufacturing",
+        "notes": "以日本半導體、電子零組件與光纖製造呈現亞洲供應鏈傳導。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 30,
+      "section": "全球股市｜美國科技股壓力傳到日本，中國AI也面臨獲利驗證",
+      "narration": "日本同時還面臨自己的利率壓力。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Bank of Japan government bonds Tokyo",
+        "notes": "轉入日本公債殖利率與匯率。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 31,
+      "section": "全球股市｜美國科技股壓力傳到日本，中國AI也面臨獲利驗證",
+      "narration": "10年期日本公債殖利率8月18日突破2.95%，來到1996年以來高檔；8月19日東京早盤USD/JPY約159.46。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "Japan 10 year bond yield USD JPY financial dashboard",
+        "notes": "呈現日本10年期公債殖利率2.95%以上與USD/JPY約159.46的資訊卡。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 32,
+      "section": "全球股市｜美國科技股壓力傳到日本，中國AI也面臨獲利驗證",
+      "narration": "對台灣而言，日本具有很高的參考價值，因為台日市場都高度集中在半導體、電子零組件與AI基礎建設。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "Japan Taiwan semiconductor AI supply chain diagram",
+        "notes": "呈現日本與台灣在半導體、電子零組件及AI基礎建設的產業連結。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 33,
+      "section": "全球股市｜美國科技股壓力傳到日本，中國AI也面臨獲利驗證",
+      "narration": "如果日本科技股在本國長端利率上升的環境下持續承壓，代表亞洲成長股的估值壓力可能比單純美股回檔更廣。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "Japan bond yields Asia growth stocks valuation pressure",
+        "notes": "呈現日本利率上升向亞洲成長股估值傳導的情境。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 34,
+      "section": "全球股市｜美國科技股壓力傳到日本，中國AI也面臨獲利驗證",
+      "narration": "中國則呈現另一種AI考驗。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "China artificial intelligence data center technology",
+        "notes": "由日本市場轉入中國AI企業獲利驗證。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 35,
+      "section": "全球股市｜美國科技股壓力傳到日本，中國AI也面臨獲利驗證",
+      "narration": "Baidu第二季營收年減4.2%至人民幣313.25億元，淨利大減68%至23.2億元。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Baidu headquarters Beijing logo",
+        "notes": "以Baidu企業畫面搭配第二季營收與淨利數值資訊。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 36,
+      "section": "全球股市｜美國科技股壓力傳到日本，中國AI也面臨獲利驗證",
+      "narration": "AI相關收入雖然年增25%，卻仍不足以抵銷核心廣告業務轉弱。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "AI revenue growth versus advertising decline diagram",
+        "notes": "以AI收入成長與核心廣告業務轉弱的相反方向呈現Baidu獲利結構。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 37,
+      "section": "全球股市｜美國科技股壓力傳到日本，中國AI也面臨獲利驗證",
+      "narration": "這提供一個很重要的訊號：AI業務成長，不一定能立即轉化成整家公司更好的獲利。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "AI revenue growth corporate profit challenge",
+        "notes": "呈現AI營收成長與整體企業獲利之間並非直接等號。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 38,
+      "section": "全球股市｜美國科技股壓力傳到日本，中國AI也面臨獲利驗證",
+      "narration": "市場正在從『有沒有AI』進一步追問『AI最後能不能產生足夠現金流』。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "AI investment revenue free cash flow diagram",
+        "notes": "以AI投資最終轉化為現金流的驗證流程收束全球市場段落。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 39,
+      "section": "台股焦點｜費半急跌碰上月結算，台積電成為關鍵觀察點",
+      "narration": "回到台灣，8月19日面對的外部環境明顯轉弱。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Taiwan Stock Exchange Taipei trading market",
+        "notes": "由全球市場轉回台灣股市。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 40,
+      "section": "台股焦點｜費半急跌碰上月結算，台積電成為關鍵觀察點",
+      "narration": "前一晚Nasdaq跌1.3%、SOX重挫約5.6%，Nvidia、Micron、Broadcom與多檔AI高速傳輸股票同步下跌，日本科技股早盤也明顯走弱。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "US Japan technology stocks falling semiconductor market",
+        "notes": "以美國與日本科技股同步承壓的跨市場資訊畫面呈現台股外部環境。"
+      },
+      "camera": {
+        "motion": "pan_left",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 41,
+      "section": "台股焦點｜費半急跌碰上月結算，台積電成為關鍵觀察點",
+      "narration": "這使台積電、記憶體、CPO、PCB、AI伺服器、散熱、電源與高速傳輸供應鏈，成為今天最直接的風險傳導區。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "Taiwan semiconductor AI server supply chain diagram",
+        "notes": "呈現台積電、記憶體、CPO、PCB、AI伺服器、散熱、電源與高速傳輸供應鏈。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 42,
+      "section": "台股焦點｜費半急跌碰上月結算，台積電成為關鍵觀察點",
+      "narration": "由於這份報告製作時8月19日台股仍在交易，因此不能把任何盤中TAIEX或台積電價格當成正式收盤，最終收盤與三大法人買賣超仍要等交易結束後確認。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Taiwan stock market intraday trading screen",
+        "notes": "使用盤中交易畫面，不顯示或暗示任何未確認正式收盤數字。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 43,
+      "section": "台股焦點｜費半急跌碰上月結算，台積電成為關鍵觀察點",
+      "narration": "今天還多了一個台灣市場特有的短線變數。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Taiwan futures trading financial market",
+        "notes": "轉入台指期與選擇權月結算。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 44,
+      "section": "台股焦點｜費半急跌碰上月結算，台積電成為關鍵觀察點",
+      "narration": "臺灣期貨交易所行事曆顯示，8月19日是國內股價指數期貨、股價指數選擇權、股票期貨與股票選擇權契約的月結算最後交易日。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "Taiwan futures options monthly expiration calendar",
+        "notes": "以8月19日月結算日曆與期貨、選擇權契約圖示呈現。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 45,
+      "section": "台股焦點｜費半急跌碰上月結算，台積電成為關鍵觀察點",
+      "narration": "月結算本身不代表市場一定上漲或下跌，但在海外科技股劇烈修正時，期現貨部位調整、避險與轉倉可能進一步放大盤中波動。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "futures expiration hedging rollover market volatility diagram",
+        "notes": "呈現期現貨部位調整、避險、轉倉與盤中波動之間的關係。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 46,
+      "section": "台股焦點｜費半急跌碰上月結算，台積電成為關鍵觀察點",
+      "narration": "因此今天不能只看加權指數跌多少，更要觀察台積電是否相對抗跌、電子成交比重是否下降，以及AI供應鏈究竟是全面賣壓，還是前期高基期個股的估值調整。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "TSMC semiconductor factory Taiwan stock market",
+        "notes": "以台積電與台灣電子產業作為判斷市場內部強弱的核心視覺。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 47,
+      "section": "台股焦點｜費半急跌碰上月結算，台積電成為關鍵觀察點",
+      "narration": "更重要的是訂單。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "semiconductor factory production orders server manufacturing",
+        "notes": "由市場價格轉向實際訂單與生產基本面。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 48,
+      "section": "台股焦點｜費半急跌碰上月結算，台積電成為關鍵觀察點",
+      "narration": "目前沒有證據顯示全球大型雲端業者全面削減AI資本支出，但高利率會提高資料中心的融資與資本成本。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "hyperscale AI data center construction servers",
+        "notes": "使用一般雲端資料中心建設畫面，強調資本密集與融資成本。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 49,
+      "section": "台股焦點｜費半急跌碰上月結算，台積電成為關鍵觀察點",
+      "narration": "如果企業開始要求更嚴格的投資回收率，才可能逐步影響GPU、HBM、先進封裝、光通訊與伺服器採購節奏。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "GPU HBM advanced packaging optical servers procurement diagram",
+        "notes": "呈現投資回收率門檻提高可能向GPU、HBM、先進封裝、光通訊與伺服器採購傳導。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 50,
+      "section": "匯率與利率｜30年美債殖利率站上5.2%，今晚Fed會議紀錄是下一個關卡",
+      "narration": "接下來看這次科技股修正背後最重要的金融變數，也就是長端利率。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "US Treasury bonds trading financial market",
+        "notes": "由台股轉入全球長端利率。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 51,
+      "section": "匯率與利率｜30年美債殖利率站上5.2%，今晚Fed會議紀錄是下一個關卡",
+      "narration": "8月18日美國10年期公債殖利率升到約4.74%，30年期殖利率升到5.234%，接近2007年6月以來最高水準。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "US Treasury 10 year 30 year yields dashboard",
+        "notes": "呈現10年期約4.74%與30年期5.234%的數值卡，並標示30年期接近2007年6月以來高檔。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 52,
+      "section": "匯率與利率｜30年美債殖利率站上5.2%，今晚Fed會議紀錄是下一個關卡",
+      "narration": "市場擔心的不只有Fed政策，還包括通膨、政府赤字、國債供給，以及AI基礎建設本身帶來的大量融資需求。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "inflation fiscal deficit Treasury supply AI financing diagram",
+        "notes": "拆解長端利率受到Fed、通膨、財政赤字、國債供給與AI融資需求共同影響。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 53,
+      "section": "匯率與利率｜30年美債殖利率站上5.2%，今晚Fed會議紀錄是下一個關卡",
+      "narration": "這對台灣科技股非常重要，因為高成長公司的估值高度依賴多年後的現金流。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Taiwan semiconductor technology companies stock market",
+        "notes": "將長端利率重新連結至台灣高成長科技股。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 54,
+      "section": "匯率與利率｜30年美債殖利率站上5.2%，今晚Fed會議紀錄是下一個關卡",
+      "narration": "折現率越高，同樣一筆未來獲利，今天能支持的股價就越低。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "discount rate future earnings stock valuation diagram",
+        "notes": "簡潔呈現折現率提高如何降低未來獲利的現值。"
+      },
+      "camera": {
+        "motion": "pan_down",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 55,
+      "section": "匯率與利率｜30年美債殖利率站上5.2%，今晚Fed會議紀錄是下一個關卡",
+      "narration": "亞洲匯率方面，8月19日東京早盤USD/JPY約159.46，略低於前一日東京市場的159.73。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Japanese yen US dollar banknotes foreign exchange",
+        "notes": "以美元與日圓紙鈔搭配USD/JPY約159.46與前值159.73資訊。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 56,
+      "section": "匯率與利率｜30年美債殖利率站上5.2%，今晚Fed會議紀錄是下一個關卡",
+      "narration": "日圓仍在相對弱勢區域，但日本公債殖利率快速上升，使美日利差、日圓與亞洲資金配置的關係變得更加複雜。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "US Japan interest rate differential yen Asia capital flows diagram",
+        "notes": "呈現美日利差、日圓與亞洲資金配置的互動。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 57,
+      "section": "匯率與利率｜30年美債殖利率站上5.2%，今晚Fed會議紀錄是下一個關卡",
+      "narration": "至於新台幣，由於報告製作時台北匯市仍在交易，尚未取得可靠的8月19日正式收盤USD/TWD，所以不填入預測數字。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "New Taiwan dollar US dollar foreign exchange market",
+        "notes": "使用新台幣與美元外匯畫面，不顯示未確認8月19日正式收盤匯率。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 58,
+      "section": "匯率與利率｜30年美債殖利率站上5.2%，今晚Fed會議紀錄是下一個關卡",
+      "narration": "真正要看的是，如果外資因科技股風險升高而撤出亞洲，新台幣是否同步承壓；如果匯率保持穩定，則可能代表壓力主要集中在股票估值，而不是全面資本外流。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "foreign capital flows Taiwan dollar technology stocks diagram",
+        "notes": "比較新台幣同步走弱與匯率穩定兩種資金壓力情境。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 59,
+      "section": "匯率與利率｜30年美債殖利率站上5.2%，今晚Fed會議紀錄是下一個關卡",
+      "narration": "下一個催化劑在今晚。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Federal Reserve building Washington DC",
+        "notes": "轉入FOMC會議紀錄。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 60,
+      "section": "匯率與利率｜30年美債殖利率站上5.2%，今晚Fed會議紀錄是下一個關卡",
+      "narration": "Federal Reserve預定於美東時間8月19日下午2點公布7月28日至29日FOMC會議紀錄。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Federal Reserve FOMC meeting room",
+        "notes": "以Federal Reserve或FOMC會議相關官方建築畫面呈現公布時間。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 61,
+      "section": "匯率與利率｜30年美債殖利率站上5.2%，今晚Fed會議紀錄是下一個關卡",
+      "narration": "該次會議把政策利率維持在3.5%至3.75%，但12名有投票權官員中有3人主張升息。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "Federal Reserve interest rate vote financial dashboard",
+        "notes": "呈現政策利率3.5%至3.75%，以及12名投票官員中3人主張升息。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 62,
+      "section": "匯率與利率｜30年美債殖利率站上5.2%，今晚Fed會議紀錄是下一個關卡",
+      "narration": "如果會議紀錄顯示支持進一步緊縮的官員比正式投票結果更多，美債殖利率與美元可能面臨進一步上行壓力；如果Fed內部更重視成長風險，科技股目前的折現率壓力則可能有所緩和。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "hawkish dovish Fed minutes bond yields dollar technology stocks",
+        "notes": "以偏鷹與偏重成長風險兩種FOMC會議紀錄情境呈現市場傳導。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 63,
+      "section": "商品市場｜布蘭特站上91美元，油價透過通膨與利率壓向台灣科技股",
+      "narration": "商品市場今天真正需要關注的是原油。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "crude oil tanker refinery oil barrels",
+        "notes": "由利率市場轉入原油與能源。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 64,
+      "section": "商品市場｜布蘭特站上91美元，油價透過通膨與利率壓向台灣科技股",
+      "narration": "8月18日布蘭特原油升到每桶91.02美元附近，美國與伊朗目前沒有新的直接談判安排，荷莫茲海峽船舶通行仍受到限制，區域內也持續出現船舶與能源設施安全事件。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "oil tanker Persian Gulf Strait of Hormuz",
+        "notes": "使用荷莫茲海峽與一般油輪航行畫面，不宣稱畫面為特定安全事件現場。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 65,
+      "section": "商品市場｜布蘭特站上91美元，油價透過通膨與利率壓向台灣科技股",
+      "narration": "這代表目前的油價不只是反映實際供需，也包含相當程度的地緣政治風險溢價。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "oil supply demand geopolitical risk premium diagram",
+        "notes": "將原油價格拆解為基本供需與地緣政治風險溢價。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 66,
+      "section": "商品市場｜布蘭特站上91美元，油價透過通膨與利率壓向台灣科技股",
+      "narration": "只要荷莫茲海峽無法穩定恢復通行，這部分價格就很難完全消失。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "satellite",
+        "query": "Strait of Hormuz tanker traffic satellite view",
+        "notes": "以荷莫茲海峽衛星視角強調船舶通行的重要性。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 67,
+      "section": "商品市場｜布蘭特站上91美元，油價透過通膨與利率壓向台灣科技股",
+      "narration": "對台灣來說，油價突破90美元有兩條重要傳導路徑。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "oil price Taiwan economy two transmission channels",
+        "notes": "建立直接企業成本與金融市場兩條油價傳導路徑。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 68,
+      "section": "商品市場｜布蘭特站上91美元，油價透過通膨與利率壓向台灣科技股",
+      "narration": "第一條是直接成本。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Taiwan cargo port trucks factory logistics",
+        "notes": "第一條傳導：企業與物流直接成本。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 69,
+      "section": "商品市場｜布蘭特站上91美元，油價透過通膨與利率壓向台灣科技股",
+      "narration": "航空、海運、陸運、塑化、製造、電力與物流成本都可能增加，並透過進口商品形成輸入性通膨。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "airplane container ship trucks petrochemical factory logistics",
+        "notes": "以航空、海運、陸運、塑化、製造與物流產業畫面呈現成本傳導。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 70,
+      "section": "商品市場｜布蘭特站上91美元，油價透過通膨與利率壓向台灣科技股",
+      "narration": "第二條則是金融市場。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "bond market trading screens interest rates",
+        "notes": "第二條傳導：通膨、Fed與長端美債。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 71,
+      "section": "商品市場｜布蘭特站上91美元，油價透過通膨與利率壓向台灣科技股",
+      "narration": "油價上升提高美國通膨維持高檔的風險，讓Fed更難快速轉向寬鬆，也讓長天期美債殖利率更難下降。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "oil inflation Fed easing Treasury yields diagram",
+        "notes": "呈現油價到通膨、Fed政策與長天期美債殖利率的因果鏈。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 72,
+      "section": "商品市場｜布蘭特站上91美元，油價透過通膨與利率壓向台灣科技股",
+      "narration": "結果就是台灣AI與半導體公司一方面面對較高的能源與物流成本，另一方面又面對更高的全球折現率。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "Taiwan semiconductor energy costs discount rates diagram",
+        "notes": "呈現台灣AI與半導體公司同時承受實體成本與金融折現率壓力。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 73,
+      "section": "商品市場｜布蘭特站上91美元，油價透過通膨與利率壓向台灣科技股",
+      "narration": "所以接下來不能只看油價本身，而要看上漲原因是否持續。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "oil tanker shipping route Persian Gulf",
+        "notes": "把觀察重點從價格本身轉向供應與地緣政治原因。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 74,
+      "section": "商品市場｜布蘭特站上91美元，油價透過通膨與利率壓向台灣科技股",
+      "narration": "如果荷莫茲海峽通行改善、外交談判重新啟動，能源風險溢價可能下降；反過來，如果區域衝突擴大，油價、通膨預期與長端殖利率就可能互相強化，對高本益比科技股形成更大的壓力。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "Hormuz diplomacy conflict oil inflation bond yields scenarios",
+        "notes": "以通行改善與衝突擴大兩種情境呈現油價、通膨與殖利率的不同方向。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 75,
+      "section": "產業與公司焦點｜AI故事還在，但市場開始要求真正的投資報酬",
+      "narration": "回到產業本身，8月18日的賣壓集中在今年漲幅較大的AI受惠股。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "AI semiconductor chips data center networking",
+        "notes": "由商品市場轉回AI與半導體產業。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 76,
+      "section": "產業與公司焦點｜AI故事還在，但市場開始要求真正的投資報酬",
+      "narration": "Micron跌7%、Nvidia跌2.3%、Broadcom跌3.2%、AMD跌4.3%、Sandisk約跌9%，Coherent與Credo等高速資料傳輸股票跌幅更超過12%。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "AI semiconductor memory networking stocks selloff dashboard",
+        "notes": "以主要AI、記憶體、網路與高速傳輸公司跌幅資訊卡呈現。"
+      },
+      "camera": {
+        "motion": "pan_down",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 77,
+      "section": "產業與公司焦點｜AI故事還在，但市場開始要求真正的投資報酬",
+      "narration": "這種結構顯示市場正在優先降低高波動、高估值部位。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "high volatility high valuation stocks risk reduction",
+        "notes": "呈現資金優先降低高波動與高估值部位。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 78,
+      "section": "產業與公司焦點｜AI故事還在，但市場開始要求真正的投資報酬",
+      "narration": "部分分析把跌勢歸因於8月成交量較低環境下的獲利了結與程式交易，但高殖利率與AI投資回收疑慮，提供了更重要的總體背景。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "algorithmic trading financial market computer screens",
+        "notes": "以程式交易與市場交易畫面呈現短線因素，再以債券與AI基礎建設元素帶出總體背景。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 79,
+      "section": "產業與公司焦點｜AI故事還在，但市場開始要求真正的投資報酬",
+      "narration": "市場真正開始問的是，AI資本支出到底能產生多少報酬。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "AI capital expenditure return on investment concept",
+        "notes": "以AI資本支出與投資報酬率作為核心問題。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 80,
+      "section": "產業與公司焦點｜AI故事還在，但市場開始要求真正的投資報酬",
+      "narration": "大型資料中心需要GPU、HBM、網路晶片、光通訊、電力、散熱與建築基礎設施，這些投資對台灣供應鏈當然是龐大商機；但當30年期美債殖利率超過5.2%，企業計算資本成本時使用的門檻也提高。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "AI data center GPU HBM networking power cooling supply chain",
+        "notes": "呈現AI資料中心所需GPU、HBM、網路、光通訊、電力、散熱與建築基礎設施，並連結資本成本門檻。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 81,
+      "section": "產業與公司焦點｜AI故事還在，但市場開始要求真正的投資報酬",
+      "narration": "即使硬體訂單短期仍然成長，如果AI專案需要更長時間才能產生足夠收入，市場願意支付的估值倍數仍可能下降。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "AI project revenue timeline valuation multiple diagram",
+        "notes": "呈現AI專案回收期拉長時，即使硬體訂單成長，估值倍數仍可能下降。"
+      },
+      "camera": {
+        "motion": "pan_down",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 82,
+      "section": "產業與公司焦點｜AI故事還在，但市場開始要求真正的投資報酬",
+      "narration": "Baidu的財報也可以放在同一個框架理解。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Baidu headquarters Beijing technology company",
+        "notes": "轉入Baidu作為AI投資報酬案例。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 83,
+      "section": "產業與公司焦點｜AI故事還在，但市場開始要求真正的投資報酬",
+      "narration": "第二季AI相關收入年增25%，但公司整體營收仍年減4.2%，淨利大減68%。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "Baidu AI revenue profit financial dashboard",
+        "notes": "呈現AI相關收入+25%、整體營收-4.2%、淨利-68%的對比資訊卡。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 84,
+      "section": "產業與公司焦點｜AI故事還在，但市場開始要求真正的投資報酬",
+      "narration": "這說明AI業務快速成長，不一定能立刻抵銷成熟業務下滑與龐大投資成本。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "AI growth legacy business decline investment costs diagram",
+        "notes": "呈現AI成長、成熟業務下滑與高投資成本三者的拉鋸。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 85,
+      "section": "產業與公司焦點｜AI故事還在，但市場開始要求真正的投資報酬",
+      "narration": "對台灣半導體、伺服器、CPO與PCB供應鏈而言，下一階段真正重要的會是客戶資本支出、訂單能見度、量產進度、毛利率與自由現金流，而不是只要貼上AI標籤就能獲得更高估值。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "Taiwan AI supply chain capex orders production margins cash flow",
+        "notes": "以資本支出、訂單能見度、量產、毛利率與自由現金流五項驗證指標呈現。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 86,
+      "section": "今日市場結論｜接下來看費半、長債、油價與Fed四個變數",
+      "narration": "最後把8月18日至19日的市場串起來。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "AI stocks bonds oil Taiwan market causal chain",
+        "notes": "以AI、長債、油價與台灣市場四個元素建立總結因果鏈。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "cross_fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 87,
+      "section": "今日市場結論｜接下來看費半、長債、油價與Fed四個變數",
+      "narration": "現在的核心不是AI需求突然消失，而是AI資產正在接受更嚴格的估值測試。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "AI technology stocks valuation test concept",
+        "notes": "強調核心議題是估值測試，而非已確認的AI需求崩潰。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 88,
+      "section": "今日市場結論｜接下來看費半、長債、油價與Fed四個變數",
+      "narration": "中東風險讓布蘭特原油升到91美元附近，能源與財政疑慮又讓美國10年期殖利率升至約4.74%、30年期升至5.234%。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "Brent oil US Treasury yields market dashboard",
+        "notes": "同時呈現布蘭特約91美元、美國10年期約4.74%與30年期5.234%。"
+      },
+      "camera": {
+        "motion": "static",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 89,
+      "section": "今日市場結論｜接下來看費半、長債、油價與Fed四個變數",
+      "narration": "更高的無風險利率提高AI投資與資料中心的資本成本，也降低高成長科技股未來現金流的現值，因此先前漲幅最大的半導體、記憶體與高速傳輸股票成為主要調節對象，SOX單日重挫約5.6%。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "high rates AI data center costs semiconductor selloff diagram",
+        "notes": "完整呈現高利率到AI資本成本、科技估值與半導體調節的傳導鏈。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 90,
+      "section": "今日市場結論｜接下來看費半、長債、油價與Fed四個變數",
+      "narration": "對台灣觀眾而言，接下來最值得追蹤四個變數。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "Taiwan market four key indicators dashboard",
+        "notes": "建立SOX、長端美債、布蘭特原油與Fed四項觀察變數總覽。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 91,
+      "section": "今日市場結論｜接下來看費半、長債、油價與Fed四個變數",
+      "narration": "第一，SOX以及Nvidia、Micron等AI晶片股能不能止穩，並觀察台積電與台灣AI供應鏈是否出現相同程度的估值壓縮。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "semiconductor chips TSMC AI servers Taiwan",
+        "notes": "第一項觀察：美國AI晶片股與台積電、台灣AI供應鏈的相對強弱。"
+      },
+      "camera": {
+        "motion": "ken_burns",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 92,
+      "section": "今日市場結論｜接下來看費半、長債、油價與Fed四個變數",
+      "narration": "第二，美國10年期與30年期公債殖利率是否繼續創高；長端利率如果下降，科技股的折現率壓力才可能真正減輕。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "diagram",
+        "query": "US Treasury yields technology stock valuation pressure",
+        "notes": "第二項觀察：10年與30年美債殖利率是否續升，以及對科技股折現率的影響。"
+      },
+      "camera": {
+        "motion": "pan_down",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 93,
+      "section": "今日市場結論｜接下來看費半、長債、油價與Fed四個變數",
+      "narration": "第三，布蘭特原油能不能回到90美元以下，以及荷莫茲海峽船舶通行是否改善。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "video",
+        "query": "oil tanker Strait of Hormuz Persian Gulf",
+        "notes": "第三項觀察：布蘭特90美元關卡與荷莫茲海峽實際船舶通行。"
+      },
+      "camera": {
+        "motion": "pan_right",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 94,
+      "section": "今日市場結論｜接下來看費半、長債、油價與Fed四個變數",
+      "narration": "第四，8月19日晚間公布的Fed會議紀錄，是否顯示更多官員支持升息。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "photo",
+        "query": "Federal Reserve building Washington DC evening",
+        "notes": "第四項觀察：FOMC會議紀錄與Fed內部政策立場。"
+      },
+      "camera": {
+        "motion": "zoom_in",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    },
+    {
+      "id": 95,
+      "section": "今日市場結論｜接下來看費半、長債、油價與Fed四個變數",
+      "narration": "這四個變數會幫助我們判斷，眼前看到的是高檔獲利了結，還是全球科技股正在進入更持久的估值調整。",
+      "estimated_duration_seconds": null,
+      "visual": {
+        "asset_type": "illustration",
+        "query": "technology market correction versus long term valuation reset",
+        "notes": "以短期獲利了結與較長期估值重定價兩種路徑收尾。"
+      },
+      "camera": {
+        "motion": "zoom_out",
+        "duration_seconds": null
+      },
+      "transition": {
+        "type": "fade",
+        "duration_seconds": 1
+      }
+    }
+  ]
+}

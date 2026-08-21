@@ -1,0 +1,93 @@
+{
+  "id": "2026-08-21-taiwan-finance-daily",
+  "name": "2026-08-21 Taiwan Finance Daily",
+  "category": "finance",
+  "created_at": "2026-08-21T07:22:03.139829+00:00",
+  "updated_at": "2026-08-21T09:29:35.570703+00:00",
+  "status": "complete",
+  "current_stage": "complete",
+  "reference_date": "2026-08-21",
+  "edition": "taiwan",
+  "edition_label": "Taiwan",
+  "language_code": "zh-TW",
+  "output_language": "Traditional Chinese (Taiwan)",
+  "whisper_language": "zh",
+  "voice_engine": "edge",
+  "voice": "zh-CN-YunxiNeural",
+  "voice_rate": "+10%",
+  "voice_pitch": "+0Hz",
+  "narration_mode": "continuous",
+  "subtitles_enabled": true,
+  "edition_profile": {
+    "key": "taiwan",
+    "label": "Taiwan",
+    "output_language": "Traditional Chinese (Taiwan)",
+    "language_code": "zh-TW",
+    "whisper_language": "zh",
+    "default_project_suffix": "Taiwan Finance Daily",
+    "default_voice": "zh-TW-HsiaoChenNeural",
+    "default_subtitle_font": "Microsoft JhengHei",
+    "subtitle_max_words": 12,
+    "subtitle_max_characters": 18,
+    "subtitle_min_characters": 6,
+    "subtitle_fonts": [
+      "Microsoft JhengHei",
+      "Noto Sans CJK TC",
+      "Segoe UI",
+      "Arial"
+    ],
+    "voices": [
+      "zh-TW-HsiaoChenNeural",
+      "zh-TW-YunJheNeural",
+      "zh-TW-HsiaoYuNeural",
+      "zh-CN-XiaoxiaoNeural",
+      "zh-CN-YunxiNeural",
+      "zh-CN-YunjianNeural",
+      "zh-CN-XiaoyiNeural"
+    ],
+    "voice_engines": {
+      "edge": {
+        "label": "Microsoft Edge TTS",
+        "voices": [
+          "zh-TW-HsiaoChenNeural",
+          "zh-TW-YunJheNeural",
+          "zh-TW-HsiaoYuNeural",
+          "zh-CN-XiaoxiaoNeural",
+          "zh-CN-YunxiNeural",
+          "zh-CN-YunjianNeural",
+          "zh-CN-XiaoyiNeural"
+        ]
+      },
+      "kokoro": {
+        "label": "Kokoro (local, optional)",
+        "voices": [
+          "zf_xiaobei",
+          "zf_xiaoni",
+          "zm_yunxi",
+          "zm_yunjian"
+        ]
+      }
+    },
+    "research_focus": "Build the briefing for investors and economically engaged viewers in Taiwan.\nLead with Taiwan equities, TAIEX, Taiwan-listed companies, semiconductors,\nelectronics supply chains, the New Taiwan dollar, Taiwan interest rates,\nexports, manufacturing, property, and policy developments. Also include\noverseas events when they can materially affect Taiwan, especially the\nUnited States, China, Japan, the Japanese yen, global rates, oil, shipping,\nAI demand, and semiconductor demand. Do not force a Taiwan angle onto an\nevent with no meaningful Taiwan transmission channel.\n",
+    "editorial_structure": "Use this Taiwan daily rundown:\n1. 今日焦點 — the 2-4 most consequential stories of the day.\n2. 美股盤勢 — S&P 500, Nasdaq, Dow Jones, and SOX are mandatory anchors; explain material moves and the driver.\n3. 全球股市 — Japan first, then China/Hong Kong, Europe, or other markets only when relevant.\n4. 台股焦點 — TAIEX, TSMC, major electronics/AI sectors, foreign flows, and important Taiwan-specific developments.\n5. 匯率與利率 — USD/TWD, USD/JPY, DXY and major bond yields when relevant; emphasize transmission into Taiwan assets.\n6. 商品市場 — oil, gold, copper, or other commodities only when the move is material.\n7. 產業與公司焦點 — major earnings, AI/semiconductor demand, capex, or company-specific developments only when important.\n8. 今日市場結論 — summarize the causal chain and the 2-4 variables Taiwan viewers should watch next.\nKeep sections 1, 2, 4, and 8 as anchors. Sections 3, 5, 6, and 7 are depth-adjustable; omit or compress immaterial items.\n",
+    "audience_note": "Taiwan-based viewers; use Taiwan market terminology and Traditional Chinese.",
+    "script_language_rule": "Write all narration in natural Traditional Chinese used in Taiwan. Avoid Simplified Chinese vocabulary. Explain foreign-market terms clearly when first introduced.",
+    "search_query_rule": "Keep visual search queries in concise English whenever possible because international media catalogs retrieve better results in English."
+  },
+  "subtitle_settings": {
+    "max_words": 12,
+    "max_characters": 18,
+    "min_characters": 6,
+    "max_duration_seconds": 4.5,
+    "source": "approved_script_exact"
+  },
+  "subtitle_style": {
+    "preset": "Compact",
+    "font_name": "Microsoft JhengHei"
+  },
+  "media_settings": {
+    "visual_persistence": "topic",
+    "prefer_market_charts": true,
+    "strict_precision": true
+  }
+}

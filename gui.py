@@ -419,33 +419,207 @@ class VideoFactoryApp(tk.Tk):
             self.after(100, validate_and_save)
 
     def show_automatic_stage(self):
+        """Show production settings before any automatic generation starts."""
         self.clear()
         metadata = SessionService._read_metadata(self.workspace)
-        frame = ttk.Frame(self, padding=40)
+        edition_profile = self.controller.editions.get(metadata.get("edition", "global"))
+
+        frame = ttk.Frame(self, padding=32)
         frame.pack(fill="both", expand=True)
-        ttk.Label(frame, text="Automatic Production", style="Title.TLabel").pack(pady=(90, 12))
-        ttk.Label(frame, text=metadata["name"], style="Heading.TLabel").pack(pady=(0, 25))
-        status_var = tk.StringVar(value="Preparing automatic stages...")
-        ttk.Label(frame, textvariable=status_var, font=("Segoe UI", 12)).pack(pady=12)
-        progress = ttk.Progressbar(frame, mode="indeterminate", length=520)
-        progress.pack(pady=18)
-        progress.start(12)
+        ttk.Button(frame, text="← Sessions", command=self.show_resume).pack(anchor="w")
+        ttk.Label(frame, text="Production Setup", style="Title.TLabel").pack(anchor="w", pady=(18, 4))
+        ttk.Label(
+            frame,
+            text=("Choose the narration voice before media, voice, subtitles, timeline, and video "
+                  "are generated. You can preview the selected voice first."),
+            wraplength=900, font=("Segoe UI", 11),
+        ).pack(anchor="w", pady=(0, 18))
 
-        def update_status(label):
-            self.after(0, status_var.set, label)
+        settings_frame = ttk.LabelFrame(frame, text="Narration voice", padding=16)
+        settings_frame.pack(fill="x", anchor="w")
 
-        def worker():
-            try:
-                self.controller.run_automatic(self.workspace, update_status)
-            except Exception as exc:
+        engine_profiles = edition_profile.get("voice_engines", {})
+        if not engine_profiles:
+            engine_profiles = {
+                "edge": {
+                    "label": "Microsoft Edge TTS",
+                    "voices": edition_profile.get(
+                        "voices", [edition_profile.get("default_voice", "en-US-AndrewNeural")]
+                    ),
+                }
+            }
+        engine_labels = {key: value.get("label", key) for key, value in engine_profiles.items()}
+        engine_by_label = {label: key for key, label in engine_labels.items()}
+        current_engine = metadata.get("voice_engine", "edge")
+        engine_var = tk.StringVar(value=engine_labels.get(current_engine, current_engine))
+        voice_var = tk.StringVar(
+            value=metadata.get("voice", edition_profile.get("default_voice", "en-US-AndrewNeural"))
+        )
+        rate_var = tk.StringVar(value=metadata.get("voice_rate", "+0%"))
+        pitch_var = tk.StringVar(value=metadata.get("voice_pitch", "+0Hz"))
+
+        ttk.Label(settings_frame, text="Engine").grid(row=0, column=0, sticky="w")
+        ttk.Label(settings_frame, text="Speaker").grid(row=0, column=1, sticky="w", padx=(12, 0))
+        engine_box = ttk.Combobox(
+            settings_frame, textvariable=engine_var, values=list(engine_by_label),
+            width=25, state="readonly",
+        )
+        engine_box.grid(row=1, column=0, sticky="w", pady=(3, 10))
+        voice_box = ttk.Combobox(settings_frame, textvariable=voice_var, width=34, state="readonly")
+        voice_box.grid(row=1, column=1, sticky="w", padx=(12, 0), pady=(3, 10))
+
+        def refresh_voice_choices(event=None):
+            engine_key = engine_by_label.get(engine_var.get(), "edge")
+            choices = engine_profiles.get(engine_key, {}).get("voices", [])
+            voice_box.configure(values=choices)
+            if voice_var.get() not in choices and choices:
+                voice_var.set(choices[0])
+
+        engine_box.bind("<<ComboboxSelected>>", refresh_voice_choices)
+        refresh_voice_choices()
+
+        ttk.Label(settings_frame, text="Speed").grid(row=2, column=0, sticky="w")
+        ttk.Label(settings_frame, text="Pitch").grid(row=2, column=1, sticky="w", padx=(12, 0))
+        ttk.Combobox(
+            settings_frame, textvariable=rate_var,
+            values=["-20%", "-15%", "-10%", "-5%", "+0%", "+5%", "+10%", "+15%", "+20%"],
+            width=12, state="readonly",
+        ).grid(row=3, column=0, sticky="w", pady=(3, 8))
+        ttk.Combobox(
+            settings_frame, textvariable=pitch_var,
+            values=["-10Hz", "-5Hz", "+0Hz", "+5Hz", "+10Hz"],
+            width=12, state="readonly",
+        ).grid(row=3, column=1, sticky="w", padx=(12, 0), pady=(3, 8))
+
+        narration_mode_var = tk.StringVar(value=metadata.get("narration_mode", "continuous"))
+        subtitles_enabled_var = tk.BooleanVar(value=bool(metadata.get("subtitles_enabled", False)))
+        ttk.Radiobutton(
+            settings_frame,
+            text="Continuous narration — recommended for natural speech",
+            variable=narration_mode_var, value="continuous",
+        ).grid(row=4, column=0, columnspan=2, sticky="w", pady=(7, 0))
+        ttk.Radiobutton(
+            settings_frame,
+            text="Cue-synced narration — legacy mode",
+            variable=narration_mode_var, value="cue_synced",
+        ).grid(row=5, column=0, columnspan=2, sticky="w", pady=(3, 0))
+        ttk.Checkbutton(
+            settings_frame, text="Enable burned-in subtitles",
+            variable=subtitles_enabled_var,
+        ).grid(row=6, column=0, columnspan=2, sticky="w", pady=(8, 0))
+
+        preview_status = tk.StringVar(value="Preview the voice before starting the full production run.")
+        ttk.Label(settings_frame, textvariable=preview_status, foreground="#555555").grid(
+            row=7, column=0, columnspan=2, sticky="w", pady=(10, 4)
+        )
+
+        samples = {
+            "zh-TW": "今天先看市場最重要的三個變數，再回到台股與半導體供應鏈。",
+            "ja-JP": "まず今日の重要な市場材料を確認し、その後、日本株と為替を見ていきます。",
+            "en-US": "First, we will review today's most important market drivers, then move across major assets.",
+        }
+
+        def play_preview():
+            preview_button.configure(state="disabled")
+            preview_status.set("Generating preview...")
+            engine_key = engine_by_label.get(engine_var.get(), "edge")
+            text = samples.get(metadata.get("language_code", "en-US"), samples["en-US"])
+
+            def worker():
+                try:
+                    path = self.controller.generate_voice_preview(
+                        self.workspace,
+                        engine=engine_key,
+                        voice=voice_var.get(),
+                        rate=rate_var.get(),
+                        pitch=pitch_var.get(),
+                        text=text,
+                    )
+                    subprocess.Popen(
+                        ["ffplay", "-nodisp", "-autoexit", "-loglevel", "quiet", str(path)],
+                        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                    )
+                    self.after(0, preview_status.set, "Playing voice preview.")
+                except Exception as exc:
+                    self.after(0, preview_status.set, f"Preview failed: {exc}")
+                finally:
+                    self.after(0, preview_button.configure, {"state": "normal"})
+
+            threading.Thread(target=worker, daemon=True).start()
+
+        preview_button = ttk.Button(settings_frame, text="▶ Play Voice Preview", command=play_preview)
+        preview_button.grid(row=8, column=0, columnspan=2, sticky="w", pady=(3, 4))
+
+        ttk.Label(
+            frame,
+            text=("Section title cards are 3 seconds and intentionally silent. Continuous narration is "
+                  "generated one full section at a time, so normal sentence phrasing is preserved."),
+            foreground="#555555", wraplength=900,
+        ).pack(anchor="w", pady=(14, 14))
+
+        def start_production():
+            from kvf.services.regeneration_service import RegenerationService
+
+            selected_engine = engine_by_label.get(engine_var.get(), "edge")
+            voice_changed = (
+                selected_engine != metadata.get("voice_engine", "edge")
+                or voice_var.get() != metadata.get("voice")
+                or rate_var.get() != metadata.get("voice_rate", "+0%")
+                or pitch_var.get() != metadata.get("voice_pitch", "+0Hz")
+                or narration_mode_var.get() != metadata.get("narration_mode", "continuous")
+            )
+            subtitle_changed = (
+                bool(subtitles_enabled_var.get()) != bool(metadata.get("subtitles_enabled", False))
+            )
+            selected = set()
+            if voice_changed:
+                selected.add("voice")
+            if subtitle_changed:
+                selected.add("subtitle")
+
+            RegenerationService.invalidate(
+                self.workspace,
+                selected,
+                voice=voice_var.get(),
+                voice_engine=selected_engine,
+                voice_rate=rate_var.get(),
+                voice_pitch=pitch_var.get(),
+                narration_mode=narration_mode_var.get(),
+                subtitles_enabled=bool(subtitles_enabled_var.get()),
+            )
+            self.controller.sessions.touch(self.workspace)
+
+            self.clear()
+            run_frame = ttk.Frame(self, padding=40)
+            run_frame.pack(fill="both", expand=True)
+            ttk.Label(run_frame, text="Automatic Production", style="Title.TLabel").pack(pady=(90, 12))
+            ttk.Label(run_frame, text=metadata["name"], style="Heading.TLabel").pack(pady=(0, 25))
+            status_var = tk.StringVar(value="Preparing automatic stages...")
+            ttk.Label(run_frame, textvariable=status_var, font=("Segoe UI", 12)).pack(pady=12)
+            progress = ttk.Progressbar(run_frame, mode="indeterminate", length=520)
+            progress.pack(pady=18)
+            progress.start(12)
+
+            def update_status(label):
+                self.after(0, status_var.set, label)
+
+            def worker():
+                try:
+                    self.controller.run_automatic(self.workspace, update_status)
+                except Exception as exc:
+                    self.after(0, progress.stop)
+                    self.after(0, messagebox.showerror, "Production stopped", str(exc))
+                    self.after(0, self.show_resume)
+                    return
                 self.after(0, progress.stop)
-                self.after(0, messagebox.showerror, "Production stopped", str(exc))
-                self.after(0, self.show_resume)
-                return
-            self.after(0, progress.stop)
-            self.after(0, self.show_complete)
+                self.after(0, self.show_complete)
 
-        threading.Thread(target=worker, daemon=True).start()
+            threading.Thread(target=worker, daemon=True).start()
+
+        ttk.Button(
+            frame, text="Start Automatic Production", style="Primary.TButton",
+            command=start_production,
+        ).pack(anchor="w", pady=(4, 0))
 
     def show_modify(self):
         self.clear()
@@ -553,7 +727,7 @@ class VideoFactoryApp(tk.Tk):
         ttk.Label(voice_frame, text="Pitch").grid(row=2, column=1, sticky="w", padx=(12, 0))
         ttk.Combobox(
             voice_frame, textvariable=rate_var,
-            values=["-20%", "-10%", "+0%", "+10%", "+20%"],
+            values=["-20%", "-15%", "-10%", "-5%", "+0%", "+5%", "+10%", "+15%", "+20%"],
             width=12, state="readonly"
         ).grid(row=3, column=0, sticky="w")
         ttk.Combobox(

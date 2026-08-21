@@ -28,6 +28,9 @@ class MarketChartProvider:
         "dow jones": ("^DJI", "^dji", "Dow Jones Industrial Average", "Index points"),
         "dow": ("^DJI", "^dji", "Dow Jones Industrial Average", "Index points"),
         "nasdaq": ("^IXIC", "^ndq", "Nasdaq Composite", "Index points"),
+        "philadelphia semiconductor": ("^SOX", None, "Philadelphia Semiconductor Index (SOX)", "Index points"),
+        "sox": ("^SOX", None, "Philadelphia Semiconductor Index (SOX)", "Index points"),
+        "費城半導體": ("^SOX", None, "Philadelphia Semiconductor Index (SOX)", "Index points"),
         "taiex": ("^TWII", None, "TAIEX", "Index points"),
         "taiwan weighted": ("^TWII", None, "TAIEX", "Index points"),
         "加權指數": ("^TWII", None, "TAIEX", "Index points"),
@@ -35,10 +38,20 @@ class MarketChartProvider:
         "topix": ("^TOPX", None, "TOPIX", "Index points"),
         "usd/twd": ("TWD=X", None, "USD/TWD", "TWD per USD"),
         "usd/jpy": ("JPY=X", None, "USD/JPY", "JPY per USD"),
+        "dxy": ("DX-Y.NYB", None, "U.S. Dollar Index (DXY)", "Index points"),
+        "美元指數": ("DX-Y.NYB", None, "U.S. Dollar Index (DXY)", "Index points"),
+        "10-year treasury": ("^TNX", None, "U.S. 10-Year Treasury Yield", "%"),
+        "10 year treasury": ("^TNX", None, "U.S. 10-Year Treasury Yield", "%"),
+        "10年期": ("^TNX", None, "U.S. 10-Year Treasury Yield", "%"),
+        "30-year treasury": ("^TYX", None, "U.S. 30-Year Treasury Yield", "%"),
+        "30 year treasury": ("^TYX", None, "U.S. 30-Year Treasury Yield", "%"),
+        "30年期": ("^TYX", None, "U.S. 30-Year Treasury Yield", "%"),
         "日圓": ("JPY=X", None, "USD/JPY", "JPY per USD"),
         "yen": ("JPY=X", None, "USD/JPY", "JPY per USD"),
         "bitcoin": ("BTC-USD", None, "Bitcoin", "USD"),
         "gold": ("GC=F", None, "Gold futures", "USD per troy ounce"),
+        "brent": ("BZ=F", None, "Brent crude oil futures", "USD per barrel"),
+        "布蘭特": ("BZ=F", None, "Brent crude oil futures", "USD per barrel"),
         "crude oil": ("CL=F", None, "WTI crude oil futures", "USD per barrel"),
         "wti": ("CL=F", None, "WTI crude oil futures", "USD per barrel"),
         "tsmc": ("TSM", "tsm.us", "TSMC ADR", "USD"),
@@ -61,10 +74,13 @@ class MarketChartProvider:
         self.session.headers.update({"User-Agent": "Mozilla/5.0 FinanceVideoFactory/4.0"})
 
     def match(self, scene: StoryboardScene):
-        haystack = f"{scene.section} {scene.visual.query} {scene.narration}".casefold()
-        for key, value in sorted(self.SYMBOLS.items(), key=lambda item: -len(item[0])):
-            if key.casefold() in haystack:
-                return value
+        """Match only explicit instruments in the scene, never section titles."""
+        query = scene.visual.query.casefold()
+        narration = scene.narration.casefold()
+        for haystack in (query, narration):
+            for key, value in sorted(self.SYMBOLS.items(), key=lambda item: -len(item[0])):
+                if key.casefold() in haystack:
+                    return value
         return None
 
     def create(self, scene: StoryboardScene, output: Path) -> MediaAsset | None:

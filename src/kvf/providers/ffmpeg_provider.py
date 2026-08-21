@@ -41,8 +41,8 @@ class FFmpegProvider:
         outline = int(style.get("outline", preset["outline"]))
 
         filters = [
-            f"scale={self.WIDTH}:{self.HEIGHT}:force_original_aspect_ratio=increase",
-            f"crop={self.WIDTH}:{self.HEIGHT}",
+            f"scale={self.WIDTH}:{self.HEIGHT}:force_original_aspect_ratio=decrease",
+            f"pad={self.WIDTH}:{self.HEIGHT}:(ow-iw)/2:(oh-ih)/2:black",
             "setsar=1",
             f"fps={self.FPS}",
         ]

@@ -6,12 +6,10 @@ from pathlib import Path
 
 
 class ForcedAlignmentService:
-    """Align exact approved subtitle text to continuous narration audio.
+    """Align exact approved text to continuous narration audio.
 
-    Whisper is used only as a timing sensor. Recognized words are never written
-    into subtitles, so names, numbers and Chinese characters remain exactly as
-    they appear in the approved script. If Whisper is unavailable, timing falls
-    back to speech-aware proportional allocation over the real audio duration.
+    ASR text is never emitted. Whisper is only a timing sensor. Section-aware
+    alignment respects the silent title-card gaps created during narration.
     """
 
     def align(self, exact_cues: list[str], audio: Path, language_code: str) -> list[dict]:
@@ -22,8 +20,53 @@ class ForcedAlignmentService:
             if anchors:
                 return self._map_by_text_weight(exact_cues, anchors)
         except Exception as exc:
-            print(f"Forced alignment warning: Whisper timing unavailable ({exc}); using audio-duration fallback.")
+            print(
+                "Forced alignment warning: Whisper timing unavailable "
+                f"({exc}); using audio-duration fallback."
+            )
         return self._duration_fallback(exact_cues, audio)
+
+    def align_sections(
+        self,
+        exact_sections: list[list[str]],
+        audio: Path,
+        language_code: str,
+        section_timings: list[dict],
+    ) -> list[dict]:
+        """Align each exact-text section only inside its measured speech window."""
+        if not exact_sections:
+            return []
+        anchors: list[dict] = []
+        try:
+            anchors = self._whisper_anchors(audio, language_code)
+        except Exception as exc:
+            print(
+                "Section alignment warning: Whisper timing unavailable "
+                f"({exc}); using measured section-duration fallback."
+            )
+
+        output: list[dict] = []
+        for index, cues in enumerate(exact_sections):
+            if not cues:
+                continue
+            if index >= len(section_timings):
+                raise ValueError("Narration section timing does not match the approved script sections.")
+            timing = section_timings[index]
+            start = float(timing["speech_start"])
+            end = float(timing["speech_end"])
+            if end <= start:
+                continue
+
+            local_words = [
+                word for word in anchors
+                if start - 0.10 <= (float(word["start"]) + float(word["end"])) / 2.0 <= end + 0.10
+            ]
+            if local_words:
+                aligned = self._map_by_text_weight(cues, local_words, clamp_start=start, clamp_end=end)
+            else:
+                aligned = self._proportional_window(cues, start, end)
+            output.extend(aligned)
+        return output
 
     def _whisper_anchors(self, audio: Path, language_code: str) -> list[dict]:
         try:
@@ -39,12 +82,22 @@ class ForcedAlignmentService:
             for word in segment.get("words", []) or []:
                 text = str(word.get("word", "")).strip()
                 if text:
-                    words.append({"text": text, "start": float(word["start"]), "end": float(word["end"])})
+                    words.append(
+                        {
+                            "text": text,
+                            "start": float(word["start"]),
+                            "end": float(word["end"]),
+                        }
+                    )
         return words
 
-    def _map_by_text_weight(self, cues: list[str], words: list[dict]) -> list[dict]:
-        # We intentionally do not copy ASR text. Word timestamps provide the
-        # speech clock; approved-text weights decide how that clock is divided.
+    def _map_by_text_weight(
+        self,
+        cues: list[str],
+        words: list[dict],
+        clamp_start: float | None = None,
+        clamp_end: float | None = None,
+    ) -> list[dict]:
         total_units = sum(self._units(cue) for cue in cues) or 1.0
         word_units = [max(self._units(word["text"]), 1.0) for word in words]
         cumulative = []
@@ -56,29 +109,37 @@ class ForcedAlignmentService:
 
         aligned = []
         cue_running = 0.0
-        previous_end = float(words[0]["start"])
+        previous_end = max(float(words[0]["start"]), clamp_start or 0.0)
         for index, cue in enumerate(cues):
             cue_running += self._units(cue)
             target = word_total * cue_running / total_units
-            word_index = next((i for i, value in enumerate(cumulative) if value >= target), len(words) - 1)
+            word_index = next(
+                (i for i, value in enumerate(cumulative) if value >= target),
+                len(words) - 1,
+            )
             end = float(words[word_index]["end"])
             if index == len(cues) - 1:
                 end = float(words[-1]["end"])
+            if clamp_end is not None:
+                end = min(end, clamp_end)
             end = max(end, previous_end + 0.05)
             aligned.append({"text": cue, "start": previous_end, "end": end})
             previous_end = end
         return aligned
 
     def _duration_fallback(self, cues: list[str], audio: Path) -> list[dict]:
-        duration = self._probe_duration(audio)
+        return self._proportional_window(cues, 0.0, self._probe_duration(audio))
+
+    def _proportional_window(self, cues: list[str], start: float, end: float) -> list[dict]:
         weights = [self._units(cue) for cue in cues]
         total = sum(weights) or 1.0
-        cursor = 0.0
+        cursor = start
         aligned = []
+        duration = max(end - start, 0.05)
         for index, (cue, weight) in enumerate(zip(cues, weights)):
-            end = duration if index == len(cues) - 1 else cursor + duration * weight / total
-            aligned.append({"text": cue, "start": cursor, "end": end})
-            cursor = end
+            cue_end = end if index == len(cues) - 1 else cursor + duration * weight / total
+            aligned.append({"text": cue, "start": cursor, "end": cue_end})
+            cursor = cue_end
         return aligned
 
     @staticmethod
@@ -90,8 +151,12 @@ class ForcedAlignmentService:
     @staticmethod
     def _probe_duration(audio: Path) -> float:
         result = subprocess.run(
-            ["ffprobe", "-v", "error", "-show_entries", "format=duration",
-             "-of", "default=noprint_wrappers=1:nokey=1", str(audio)],
-            check=True, capture_output=True, text=True,
+            [
+                "ffprobe", "-v", "error", "-show_entries", "format=duration",
+                "-of", "default=noprint_wrappers=1:nokey=1", str(audio),
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
         )
         return float(result.stdout.strip())

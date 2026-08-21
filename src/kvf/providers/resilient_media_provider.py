@@ -3,13 +3,14 @@ from __future__ import annotations
 import io
 import math
 import random
+import shutil
 import re
 import time
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
 
 import requests
-from PIL import Image, ImageDraw, ImageFont, ImageOps, UnidentifiedImageError
+from PIL import Image, ImageDraw, ImageFont, ImageOps, ImageStat, UnidentifiedImageError
 
 from kvf.models.media import MediaAsset, MediaProvider as MediaProviderType
 from kvf.models.storyboard import StoryboardScene
@@ -53,12 +54,26 @@ class ResilientMediaProvider(MediaProvider):
         self._last_request_at: dict[str, float] = {}
         self._search_cache: dict[tuple[str, str], list[dict]] = {}
         self._blocked_until: dict[str, float] = {}
-        self.news_source_urls = list(dict.fromkeys(news_source_urls or []))
+        self._hard_blocked_hosts: set[str] = set()
+        self.news_source_urls = list(dict.fromkeys(
+            url for raw in (news_source_urls or [])
+            if (url := self._canonical_url(raw))
+        ))
         self._news_candidates: list[dict] | None = None
         self._used_hashes: list[int] = []
         self._used_source_urls: set[str] = set()
+        self._resolved_scenes: dict[int, tuple[Path, MediaAsset]] = {}
 
     def download(self, scene: StoryboardScene, output_file: Path) -> MediaAsset:
+        cached = self._resolved_scenes.get(scene.id)
+        if cached is not None:
+            cached_file, cached_asset = cached
+            if cached_file.exists():
+                output_file.parent.mkdir(parents=True, exist_ok=True)
+                if cached_file.resolve() != output_file.resolve():
+                    shutil.copy2(cached_file, output_file)
+                return cached_asset
+
         queries = self._build_queries(scene.visual.query)[: self.MAX_QUERIES]
         errors: list[str] = []
 
@@ -71,12 +86,11 @@ class ResilientMediaProvider(MediaProvider):
                 scene=scene,
                 output_file=output_file,
             )
+            self._resolved_scenes[scene.id] = (output_file, result)
             return result
         except Exception as exc:
             errors.append(f"news_article/{scene.visual.query}: {exc}")
 
-        # Openverse is intentionally first: it aggregates multiple open media
-        # catalogs and avoids concentrating all requests on Wikimedia Commons.
         for source in ("openverse", "wikimedia"):
             for query in queries:
                 try:
@@ -86,6 +100,7 @@ class ResilientMediaProvider(MediaProvider):
                         scene=scene,
                         output_file=output_file,
                     )
+                    self._resolved_scenes[scene.id] = (output_file, result)
                     return result
                 except Exception as exc:
                     errors.append(f"{source}/{query}: {exc}")
@@ -96,6 +111,7 @@ class ResilientMediaProvider(MediaProvider):
             f"No precise real image was found for scene {scene.id} "
             f"({scene.visual.query}). Last error: {detail}"
         )
+
 
     def normalize_existing(self, image_file: Path) -> bool:
         try:
@@ -122,9 +138,14 @@ class ResilientMediaProvider(MediaProvider):
         output_file: Path,
     ) -> MediaAsset:
         candidates = self._search(source, query)
+        if source == "news_article":
+            candidates = [
+                candidate for candidate in candidates
+                if self._article_relevance(candidate, scene) >= 2.0
+            ]
         ranked = self._rank_images(candidates, query)
         if not ranked:
-            raise RuntimeError("search returned no acceptable candidates")
+            raise RuntimeError("search returned no sufficiently relevant candidates")
 
         failures: list[str] = []
         for candidate in ranked[: self.MAX_DOWNLOAD_CANDIDATES]:
@@ -145,10 +166,14 @@ class ResilientMediaProvider(MediaProvider):
                 except Exception as exc:
                     failures.append(str(exc))
             if selected_url:
+                if source == "news_article" and self._is_low_information_image(output_file):
+                    output_file.unlink(missing_ok=True)
+                    failures.append("article image looks like a logo/blank publisher card rather than useful evidence")
+                    continue
                 print(
                     f"Scene {scene.id}: {source} selected "
                     f"{source_width}x{source_height} for '{query}', "
-                    "saved as 1920x1080."
+                    "fit inside a 1920x1080 canvas without cropping."
                 )
                 if self._is_duplicate(output_file, candidate.get("source_url") or selected_url):
                     output_file.unlink(missing_ok=True)
@@ -193,6 +218,9 @@ class ResilientMediaProvider(MediaProvider):
         if self._news_candidates is None:
             self._news_candidates = []
             for source_url in self.news_source_urls[:30]:
+                host = urlparse(source_url).netloc.lower()
+                if host in self._hard_blocked_hosts:
+                    continue
                 try:
                     response = self._request(source_url)
                     content_type = response.headers.get("Content-Type", "").lower()
@@ -221,6 +249,21 @@ class ResilientMediaProvider(MediaProvider):
                 except Exception as exc:
                     print(f"Could not inspect news source {source_url}: {exc}")
         return list(self._news_candidates)
+
+    @staticmethod
+    def _canonical_url(raw: object) -> str | None:
+        """Extract one plain HTTP(S) URL from GPT/Markdown-formatted text."""
+        if raw is None:
+            return None
+        text = str(raw).strip().replace("\\/", "/").replace("\\(", "(").replace("\\)", ")")
+        destinations = re.findall(r"\]\(\s*(https?://[^)\s]+)", text, flags=re.IGNORECASE)
+        candidates = destinations + re.findall(r"https?://[^\s\]>)\"']+", text, flags=re.IGNORECASE)
+        for candidate in candidates:
+            candidate = candidate.strip().rstrip(".,;:").replace("\\", "")
+            parsed = urlparse(candidate)
+            if parsed.scheme.lower() in {"http", "https"} and parsed.netloc:
+                return candidate
+        return None
 
     @staticmethod
     def _html_meta(html: str, property_name: str) -> str | None:
@@ -298,9 +341,65 @@ class ResilientMediaProvider(MediaProvider):
             })
         return results
 
+    @staticmethod
+    def _article_relevance(candidate: dict, scene: StoryboardScene) -> float:
+        """Require a visible semantic tie between a news article and the scene.
+
+        This prevents a high-resolution but unrelated publisher image from
+        winning merely because it came from one of the day's research URLs.
+        """
+        scene_text = f"{scene.visual.query} {scene.narration}".casefold()
+        source_text = f"{candidate.get('title', '')} {candidate.get('source_url', '')}".casefold()
+        score = 0.0
+
+        numbers = set(re.findall(r"\d+(?:[.,]\d+)*(?:%|％)?", scene_text))
+        for number in numbers:
+            if number in source_text or number.replace(",", "") in source_text:
+                score += 2.0
+
+        stop = {"the", "and", "with", "from", "market", "financial", "video", "chart", "photo"}
+        terms = {
+            token.strip(".,/") for token in re.findall(r"[a-z][a-z0-9&./-]{2,}", scene_text)
+            if token.strip(".,/") not in stop
+        }
+        score += min(4.0, sum(1.0 for term in terms if term in source_text))
+
+        aliases = {
+            "semiconductor": ("半導體", "費半", "sox", "chip", "晶片"),
+            "treasury": ("美債", "公債", "treasury", "bond"),
+            "yield": ("殖利率", "yield"),
+            "oil": ("原油", "油價", "brent", "wti", "荷莫茲", "hormuz"),
+            "taiwan": ("台股", "台灣", "twse", "taiex"),
+            "nvidia": ("輝達", "nvidia", "nvda"),
+            "micron": ("美光", "micron"),
+            "federal reserve": ("聯準會", "fed", "fomc"),
+            "nikkei": ("日經", "nikkei"),
+        }
+        for canonical, words in aliases.items():
+            if any(word.casefold() in scene_text for word in words) and canonical in source_text:
+                score += 1.5
+        return score
+
+    @staticmethod
+    def _is_low_information_image(image_file: Path) -> bool:
+        """Reject logo-only / mostly blank article cards while retaining photos."""
+        try:
+            with Image.open(image_file) as image:
+                gray = ImageOps.grayscale(image).resize((320, 180), Image.Resampling.LANCZOS)
+                entropy = gray.entropy()
+                stddev = ImageStat.Stat(gray).stddev[0]
+                # Real editorial photos are normally comfortably above this.
+                # Publisher logo cards (for example the AP fallback image) are not.
+                return entropy < 2.15 or stddev < 16.0
+        except Exception:
+            return True
+
     def _request(self, url: str, params: dict | None = None) -> requests.Response:
-        host = urlparse(url).netloc
+        host = urlparse(url).netloc.lower()
         last_error: Exception | None = None
+
+        if host in self._hard_blocked_hosts:
+            raise RuntimeError(f"{host} blocked automated access earlier in this run")
 
         blocked_until = self._blocked_until.get(host, 0.0)
         if blocked_until > time.monotonic():
@@ -318,6 +417,12 @@ class ResilientMediaProvider(MediaProvider):
             try:
                 response = self.session.get(url, params=params, timeout=45)
                 self._last_request_at[host] = time.monotonic()
+
+                if response.status_code in {401, 403}:
+                    self._hard_blocked_hosts.add(host)
+                    raise RuntimeError(
+                        f"{host} returned HTTP {response.status_code}; skipping this domain for the rest of the media run"
+                    )
 
                 if response.status_code == 429:
                     retry_after = response.headers.get("Retry-After")
@@ -378,15 +483,17 @@ class ResilientMediaProvider(MediaProvider):
             ratio = width / max(height, 1)
             ratio_error = abs(math.log(max(ratio, 0.01) / self.TARGET_RATIO))
             resolution_score = min(width / self.TARGET_WIDTH, 1.5) + min(height / self.TARGET_HEIGHT, 1.5)
-            landscape_bonus = 1.5 if width >= height else -2.5
-            full_hd_bonus = 2.0 if width >= self.TARGET_WIDTH and height >= self.TARGET_HEIGHT else 0.0
-            low_res_penalty = 2.0 if width < self.MIN_SOURCE_WIDTH or height < self.MIN_SOURCE_HEIGHT else 0.0
+            full_hd_bonus = 1.5 if width >= self.TARGET_WIDTH and height >= self.TARGET_HEIGHT else 0.0
+            low_res_penalty = 1.5 if width < 640 or height < 360 else 0.0
             title_terms = set(re.findall(r"[a-z0-9]+", title))
-            relevance_bonus = min(3.0, len(query_terms & title_terms) * 0.75)
+            relevance_bonus = min(4.0, len(query_terms & title_terms) * 1.0)
 
+            # Relevance and readable resolution matter more than 16:9. A 4:3,
+            # square, or portrait source is acceptable because the renderer
+            # letterboxes/pillarboxes instead of cropping important content.
             score = (
-                resolution_score + landscape_bonus + full_hd_bonus + relevance_bonus
-                - ratio_error * 5.0 - low_res_penalty
+                resolution_score + full_hd_bonus + relevance_bonus
+                - ratio_error * 0.6 - low_res_penalty
             )
             ranked.append((score, info))
 
@@ -411,7 +518,7 @@ class ResilientMediaProvider(MediaProvider):
             raise ValueError("downloaded bytes are not a valid image") from exc
 
         output_file.parent.mkdir(parents=True, exist_ok=True)
-        # Keep a reviewable source copy before the 16:9 crop. New workspaces use
+        # Keep a reviewable source copy before fitting it on the video canvas. New workspaces use
         # assets/source and assets/rendered so it is obvious what was found vs.
         # what FFmpeg will consume.
         if output_file.parent.name == "rendered":
@@ -562,13 +669,14 @@ class ResilientMediaProvider(MediaProvider):
         return ImageFont.load_default()
 
     def _fit_to_full_hd(self, image: Image.Image) -> Image.Image:
+        """Fit the whole source image inside a 1920x1080 canvas without cropping."""
         image = ImageOps.exif_transpose(image).convert("RGB")
-        return ImageOps.fit(
-            image,
-            (self.TARGET_WIDTH, self.TARGET_HEIGHT),
-            method=Image.Resampling.LANCZOS,
-            centering=(0.5, 0.5),
-        )
+        image.thumbnail((self.TARGET_WIDTH, self.TARGET_HEIGHT), Image.Resampling.LANCZOS)
+        canvas = Image.new("RGB", (self.TARGET_WIDTH, self.TARGET_HEIGHT), "black")
+        x = (self.TARGET_WIDTH - image.width) // 2
+        y = (self.TARGET_HEIGHT - image.height) // 2
+        canvas.paste(image, (x, y))
+        return canvas
 
     @staticmethod
     def _save_jpeg(image: Image.Image, output_file: Path) -> None:

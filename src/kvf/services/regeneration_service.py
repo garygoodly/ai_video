@@ -40,8 +40,13 @@ class RegenerationService:
         subtitles_enabled: bool | None = None,
     ) -> set[str]:
         expanded: set[str] = set()
+        unknown = selected.difference(cls.DEPENDENCIES)
+        if unknown:
+            raise ValueError(
+                "Unknown regeneration stage(s): " + ", ".join(sorted(unknown))
+            )
         for stage in selected:
-            expanded.update(cls.DEPENDENCIES.get(stage, {stage}))
+            expanded.update(cls.DEPENDENCIES[stage])
 
         for stage in cls.ORDER:
             if stage not in expanded:

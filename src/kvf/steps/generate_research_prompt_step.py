@@ -52,6 +52,20 @@ class GenerateResearchPromptStep(BaseStep):
             "prompts/research.md",
             context,
         )
+        prompt += """
+
+## Primary-source visual evidence
+
+When a material event originates from a first-party public source, preserve the
+exact public URL in the top-level `sources` array whenever available. Prefer:
+- the original X/Twitter post from a public figure or company over a repost;
+- official government/central-bank/statistics releases;
+- official company investor-relations announcements.
+
+These URLs are used downstream as visual evidence in the video. Do not invent
+or guess an X/status URL. If the exact primary-source URL cannot be verified,
+use the reliable article/source URL you actually found instead.
+"""
 
         prompt_path.parent.mkdir(
             parents=True,

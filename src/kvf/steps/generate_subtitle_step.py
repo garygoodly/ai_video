@@ -1,3 +1,5 @@
+import json
+
 from kvf.models.application import Application
 from kvf.models.subtitle import Subtitle
 from kvf.repositories.script_repository import ScriptRepository
@@ -5,6 +7,7 @@ from kvf.repositories.subtitle_repository import SubtitleRepository
 from kvf.services.exact_subtitle_service import ExactSubtitleService
 from kvf.services.forced_alignment_service import ForcedAlignmentService
 from kvf.services.session_service import SessionService
+from kvf.services.native_timing_alignment_service import NativeTimingAlignmentService
 from kvf.steps.base_step import BaseStep
 
 
@@ -21,7 +24,9 @@ class GenerateSubtitleStep(BaseStep):
         if not session_metadata.get("subtitles_enabled", True):
             srt.write_text("", encoding="utf-8")
             source_srt.write_text("", encoding="utf-8")
-            SubtitleRepository().save(Subtitle(provider="disabled", file="subtitle.srt"), metadata_path)
+            SubtitleRepository().save(
+                Subtitle(provider="disabled", file="subtitle.srt"), metadata_path
+            )
             print("Subtitles disabled for this session.")
             return
 
@@ -43,16 +48,56 @@ class GenerateSubtitleStep(BaseStep):
         mode = session_metadata.get("narration_mode", "continuous")
 
         if mode == "continuous":
-            exact_text = service.segment_sections(sections)
-            cues = ForcedAlignmentService().align(
-                exact_text, voice, session_metadata.get("language_code", "en-US")
-            )
+            exact_sections = [service.segment_sections([text]) for text in sections]
+            timing_payload = {}
+            if timing.exists():
+                try:
+                    timing_payload = json.loads(timing.read_text(encoding="utf-8"))
+                except (OSError, json.JSONDecodeError):
+                    timing_payload = {}
+            section_timings = timing_payload.get("sections", []) if isinstance(timing_payload, dict) else []
+            if section_timings and all(
+                isinstance(item.get("word_timings"), list) and item.get("word_timings")
+                for item in section_timings
+            ):
+                aligner = NativeTimingAlignmentService()
+                cues = []
+                for index, exact_group in enumerate(exact_sections):
+                    if index >= len(section_timings):
+                        break
+                    item = section_timings[index]
+                    cues.extend(
+                        aligner.align_texts(
+                            exact_group,
+                            item.get("word_timings", []),
+                            float(item.get("speech_start", 0.0)),
+                            float(item.get("speech_end", 0.0)),
+                        )
+                    )
+                provider = "approved_script_edge_native_word_timing"
+            elif section_timings:
+                cues = ForcedAlignmentService().align_sections(
+                    exact_sections,
+                    voice,
+                    session_metadata.get("language_code", "en-US"),
+                    section_timings,
+                )
+                provider = "approved_script_section_forced_alignment"
+            else:
+                exact_text = [cue for group in exact_sections for cue in group]
+                cues = ForcedAlignmentService().align(
+                    exact_text,
+                    voice,
+                    session_metadata.get("language_code", "en-US"),
+                )
+                provider = "approved_script_forced_alignment"
             service.write_cues(cues, srt)
-            provider = "approved_script_forced_alignment"
         else:
             cues = service.generate(sections, voice, srt, timing_file=timing)
             provider = "approved_script_exact_tts_timing"
 
-        SubtitleRepository().save(Subtitle(provider=provider, file="subtitle.srt"), metadata_path)
+        SubtitleRepository().save(
+            Subtitle(provider=provider, file="subtitle.srt"), metadata_path
+        )
         source_srt.write_text(srt.read_text(encoding="utf-8"), encoding="utf-8")
         print(f"Exact approved-script subtitles generated with {len(cues)} cues: {srt}")
